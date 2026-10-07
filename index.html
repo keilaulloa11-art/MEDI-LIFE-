@@ -1,56 +1,155 @@
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MEDI-LIFE | L.A.C. Salud Metabólica</title>
+<title>MEDI-LIFE PRO | L.A.C. Salud Metabólica</title>
 
 <style>
+
+/* =====================================================
+   MEDI-LIFE PRO
+   ===================================================== */
 
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
-    font-family:Arial,sans-serif;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+:root{
+    --azul:#102f4a;
+    --azul2:#173f5f;
+    --teal:#51b9b0;
+    --teal2:#9ed8d2;
+    --blanco:#ffffff;
+    --gris:#f2f7f8;
+    --texto:#17324d;
+    --grisTexto:#687985;
+    --borde:#d8e5e8;
+    --rosa:#e98fa3;
 }
 
 body{
-    background:#f4f8f8;
-    color:#17324d;
+    min-height:100vh;
+    color:var(--texto);
+    background:
+        radial-gradient(circle at 10% 15%,rgba(81,185,176,.13) 0 45px,transparent 46px),
+        radial-gradient(circle at 90% 20%,rgba(233,143,163,.10) 0 35px,transparent 36px),
+        radial-gradient(circle at 15% 85%,rgba(81,185,176,.10) 0 55px,transparent 56px),
+        linear-gradient(135deg,#f7fbfc,#eaf5f5);
 }
+
+/* Fondo médico decorativo */
+
+body::before{
+    content:"🩺   ♡   🫀   ✚   🩺   ♡   🧬   ✚   🩺   ♡";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    opacity:.035;
+    font-size:65px;
+    line-height:2;
+    letter-spacing:25px;
+    transform:rotate(-12deg) scale(1.2);
+    pointer-events:none;
+}
+
+/* HEADER */
 
 header{
-    background:#102f4a;
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(135deg,#0d2942,#173f5f 60%,#176b70);
     color:white;
-    padding:25px 20px;
+    padding:28px 20px 32px;
     text-align:center;
+    box-shadow:0 8px 30px rgba(16,47,74,.20);
 }
 
-header h1{
-    font-size:30px;
+header::after{
+    content:"♡  🩺  ♡  🩺  ♡";
+    position:absolute;
+    right:25px;
+    top:10px;
+    font-size:35px;
+    opacity:.12;
 }
 
-header p{
+.logo{
+    font-size:36px;
+    font-weight:800;
+    letter-spacing:3px;
+}
+
+.logo span{
+    color:var(--teal2);
+}
+
+.subtitulo{
     margin-top:8px;
-    color:#9ed8d2;
+    color:#c9f0ed;
+    font-size:15px;
 }
+
+.badge{
+    display:inline-block;
+    margin-top:12px;
+    padding:6px 14px;
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:30px;
+    font-size:12px;
+    background:rgba(255,255,255,.08);
+}
+
+/* CONTENEDOR */
 
 .contenedor{
-    max-width:1100px;
+    width:min(1150px,94%);
     margin:30px auto;
-    padding:20px;
 }
+
+/* TARJETA */
 
 .bienvenida,
 .panel{
-    background:white;
-    padding:25px;
-    border-radius:18px;
-    box-shadow:0 4px 15px rgba(0,0,0,.08);
-    margin-bottom:25px;
+    background:rgba(255,255,255,.93);
+    backdrop-filter:blur(8px);
+    padding:28px;
+    border-radius:24px;
+    box-shadow:0 12px 35px rgba(16,47,74,.09);
+    border:1px solid rgba(255,255,255,.8);
+    margin-bottom:24px;
 }
+
+.bienvenida{
+    position:relative;
+    overflow:hidden;
+}
+
+.bienvenida::after{
+    content:"🩺";
+    position:absolute;
+    right:35px;
+    top:15px;
+    font-size:75px;
+    opacity:.08;
+}
+
+.bienvenida h2{
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.bienvenida p{
+    color:var(--grisTexto);
+}
+
+/* GRID */
 
 .grid{
     display:grid;
@@ -58,56 +157,149 @@ header p{
     gap:18px;
 }
 
+/* TARJETAS */
+
 .tarjeta{
-    background:white;
-    padding:25px;
-    border-radius:18px;
+    position:relative;
+    overflow:hidden;
+    background:rgba(255,255,255,.95);
+    padding:25px 20px;
+    border-radius:22px;
     text-align:center;
-    box-shadow:0 4px 15px rgba(0,0,0,.08);
+    box-shadow:0 8px 25px rgba(16,47,74,.08);
     cursor:pointer;
-    transition:.2s;
+    border:1px solid var(--borde);
+    transition:.25s ease;
 }
 
 .tarjeta:hover{
-    transform:translateY(-4px);
+    transform:translateY(-6px);
+    box-shadow:0 15px 30px rgba(16,47,74,.15);
+    border-color:var(--teal2);
+}
+
+.tarjeta::after{
+    content:"";
+    position:absolute;
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:rgba(81,185,176,.08);
+    right:-30px;
+    bottom:-30px;
 }
 
 .icono{
-    font-size:38px;
-    margin-bottom:12px;
+    width:68px;
+    height:68px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 14px;
+    border-radius:20px;
+    background:linear-gradient(135deg,#e7f7f5,#f5fbfb);
+    font-size:34px;
 }
 
 .tarjeta h3{
-    margin-bottom:8px;
+    margin-bottom:7px;
+    color:var(--azul);
 }
 
 .tarjeta p{
-    color:#687985;
+    color:var(--grisTexto);
     font-size:14px;
+    line-height:1.4;
 }
 
-.oculto{
-    display:none;
+/* TITULOS */
+
+h2{
+    color:var(--azul);
 }
+
+h3{
+    color:var(--azul);
+}
+
+.titulo-seccion{
+    margin:24px 0 12px;
+}
+
+/* FORMULARIOS */
+
+.formulario{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;
+    margin-top:20px;
+}
+
+.campo{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.campo-completo{
+    grid-column:1/-1;
+}
+
+.campo label{
+    font-weight:700;
+    font-size:13px;
+    color:#36536a;
+}
+
+.campo input,
+.campo select,
+.campo textarea{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid var(--borde);
+    border-radius:12px;
+    background:#fbfdfd;
+    color:var(--texto);
+    font-size:15px;
+    outline:none;
+    transition:.2s;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus{
+    border-color:var(--teal);
+    box-shadow:0 0 0 3px rgba(81,185,176,.12);
+}
+
+.campo textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+/* BOTONES */
 
 .boton{
-    border:none;
-    border-radius:10px;
+    border:0;
+    border-radius:12px;
     padding:12px 18px;
     cursor:pointer;
-    font-size:15px;
+    font-size:14px;
+    font-weight:700;
     margin-top:15px;
-    background:#17324d;
+    background:linear-gradient(135deg,var(--azul),var(--azul2));
     color:white;
+    box-shadow:0 5px 14px rgba(16,47,74,.15);
+    transition:.2s;
 }
 
 .boton:hover{
-    opacity:.9;
+    transform:translateY(-2px);
 }
 
 .boton-secundario{
-    background:#9ed8d2;
-    color:#17324d;
+    background:linear-gradient(135deg,var(--teal2),#c8eeea);
+    color:var(--azul);
     margin-left:8px;
 }
 
@@ -115,83 +307,38 @@ header p{
     background:#b94a48;
 }
 
-.formulario{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:15px;
-    margin-top:20px;
+.boton-verde{
+    background:#258f7e;
 }
 
-.campo{
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-}
-
-.campo label{
-    font-weight:bold;
-    font-size:14px;
-}
-
-.campo input,
-.campo select,
-.campo textarea{
-    padding:11px;
-    border:1px solid #ccd8dc;
-    border-radius:9px;
-    font-size:15px;
-    width:100%;
-}
-
-.campo textarea{
-    min-height:90px;
-    resize:vertical;
-}
-
-.campo-completo{
-    grid-column:1/-1;
-}
+/* RESULTADOS */
 
 .resultado{
     margin-top:20px;
-    padding:15px;
-    border-radius:10px;
-    background:#e8f5f3;
-    font-weight:bold;
+    padding:18px;
+    border-radius:14px;
+    background:#e8f7f5;
+    border:1px solid #c8e9e5;
+    font-weight:700;
 }
+
+/* PACIENTES */
 
 .paciente{
-    background:#f4f8f8;
-    border-radius:12px;
+    background:#f7fbfb;
+    border-radius:15px;
     padding:18px;
     margin-top:12px;
-    border-left:5px solid #9ed8d2;
+    border-left:5px solid var(--teal);
+    box-shadow:0 4px 12px rgba(0,0,0,.04);
 }
 
-.separador{
-    margin:25px 0;
-    border:0;
-    border-top:1px solid #dce6e8;
-}
-
-.titulo-seccion{
-    margin-top:25px;
-    margin-bottom:10px;
-    color:#17324d;
-}
-
-.receta-box{
-    background:white;
-    border:1px solid #d8e2e5;
-    border-radius:15px;
-    padding:20px;
-    margin-top:20px;
-}
+/* MEDICAMENTOS */
 
 .medicamento{
-    border:1px solid #ccd8dc;
-    border-radius:12px;
-    padding:18px;
+    border:1px solid var(--borde);
+    border-radius:16px;
+    padding:20px;
     margin-top:15px;
     background:#f8fbfb;
 }
@@ -202,68 +349,101 @@ header p{
     gap:12px;
 }
 
-.medicamento h4{
-    margin-bottom:12px;
-}
+/* TABLA */
 
-.tabla-resumen{
+.tabla{
     width:100%;
     border-collapse:collapse;
-    margin-top:15px;
+    margin-top:20px;
+    background:white;
 }
 
-.tabla-resumen th,
-.tabla-resumen td{
-    border:1px solid #d5e0e3;
-    padding:10px;
+.tabla th,
+.tabla td{
+    padding:12px;
+    border:1px solid var(--borde);
     text-align:left;
 }
 
-.tabla-resumen th{
-    background:#e8f5f3;
+.tabla th{
+    background:#e8f7f5;
 }
+
+/* RECETA */
 
 .receta-documento{
     background:white;
-    border:1px solid #ccd8dc;
-    padding:30px;
+    border:1px solid var(--borde);
+    padding:35px;
     margin-top:25px;
-    border-radius:12px;
+    border-radius:18px;
 }
 
 .receta-documento h2{
     text-align:center;
-    margin-bottom:5px;
 }
 
 .encabezado-receta{
     text-align:center;
-    color:#687985;
-    margin-bottom:25px;
+    margin:8px 0 25px;
+    color:var(--grisTexto);
 }
 
 .firma{
-    margin-top:60px;
+    margin-top:70px;
     text-align:center;
 }
 
+/* SEPARADOR */
+
+.separador{
+    border:0;
+    border-top:1px solid var(--borde);
+    margin:25px 0;
+}
+
+/* OCULTO */
+
+.oculto{
+    display:none;
+}
+
+/* ALERTA */
+
+.alerta{
+    padding:14px;
+    border-radius:12px;
+    margin-top:15px;
+    background:#eef8f7;
+    border-left:4px solid var(--teal);
+}
+
+/* FOOTER */
+
 footer{
     text-align:center;
-    margin-top:40px;
-    padding:20px;
+    margin-top:50px;
+    padding:25px;
     color:#687985;
     font-size:13px;
 }
 
+/* RESPONSIVE */
+
 @media(max-width:600px){
 
     .contenedor{
-        padding:10px;
+        width:95%;
+        margin:18px auto;
     }
 
     .panel,
     .bienvenida{
-        padding:18px;
+        padding:20px;
+    }
+
+    .logo{
+        font-size:29px;
     }
 
     .boton{
@@ -271,7 +451,13 @@ footer{
         margin-left:0;
     }
 
+    .campo-completo{
+        grid-column:auto;
+    }
+
 }
+
+/* IMPRESIÓN */
 
 @media print{
 
@@ -302,14 +488,20 @@ footer{
 
 <body>
 
+
 <header>
 
-<h1>MEDI-LIFE</h1>
+<div class="logo">
+MEDI-<span>LIFE</span>
+</div>
 
-<p>
-L.A.C. Salud Metabólica ·
-Equilibrio hoy, una mejor versión mañana
-</p>
+<div class="subtitulo">
+L.A.C. Salud Metabólica · Equilibrio hoy, una mejor versión mañana
+</div>
+
+<div class="badge">
+🩺 Sistema de gestión médica
+</div>
 
 </header>
 
@@ -317,18 +509,21 @@ Equilibrio hoy, una mejor versión mañana
 <main class="contenedor">
 
 
-<!-- ========================= -->
-<!-- INICIO -->
-<!-- ========================= -->
+<!-- =====================================================
+     INICIO
+     ===================================================== -->
 
 <section id="inicio">
 
 <div class="bienvenida">
 
-<h2>Bienvenida 👩🏻‍⚕️</h2>
+<h2>
+Bienvenida 👩🏻‍⚕️
+</h2>
 
 <p>
-Sistema de seguimiento y control de pacientes.
+Tu espacio para organizar pacientes, consultas,
+expedientes y seguimiento médico.
 </p>
 
 </div>
@@ -337,33 +532,46 @@ Sistema de seguimiento y control de pacientes.
 <div class="grid">
 
 
-<div class="tarjeta" onclick="mostrarPacientes()">
+<div class="tarjeta" onclick="mostrar('pacientes')">
 
 <div class="icono">👥</div>
 
 <h3>Pacientes</h3>
 
 <p>
-Consulta y administra tus pacientes.
+Registro y administración de pacientes.
 </p>
 
 </div>
 
 
-<div class="tarjeta" onclick="mostrarExpediente()">
+<div class="tarjeta" onclick="mostrar('expediente')">
 
 <div class="icono">🗂️</div>
 
 <h3>Expediente clínico</h3>
 
 <p>
-Datos clínicos y antecedentes.
+Antecedentes, alergias y datos clínicos.
 </p>
 
 </div>
 
 
-<div class="tarjeta" onclick="mostrarReceta()">
+<div class="tarjeta" onclick="mostrar('consulta')">
+
+<div class="icono">🩺</div>
+
+<h3>Nueva consulta</h3>
+
+<p>
+Registra la atención médica.
+</p>
+
+</div>
+
+
+<div class="tarjeta" onclick="mostrar('receta')">
 
 <div class="icono">🧾</div>
 
@@ -376,92 +584,92 @@ Elabora e imprime recetas.
 </div>
 
 
-<div class="tarjeta">
+<div class="tarjeta" onclick="mostrar('medicamentos')">
 
-<div class="icono">🩺</div>
+<div class="icono">💊</div>
 
-<h3>Nueva consulta</h3>
+<h3>Medicamentos</h3>
 
 <p>
-Próximamente.
+Tratamientos y medicamentos.
 </p>
 
 </div>
 
 
-<div class="tarjeta" onclick="mostrarIMC()">
+<div class="tarjeta" onclick="mostrar('imc')">
 
 <div class="icono">⚖️</div>
 
 <h3>Peso e IMC</h3>
 
 <p>
-Calcula el IMC del paciente.
+Calculadora de IMC.
 </p>
 
 </div>
 
 
-<div class="tarjeta">
+<div class="tarjeta" onclick="mostrar('laboratorios')">
 
 <div class="icono">🧪</div>
 
 <h3>Laboratorios</h3>
 
 <p>
-Próximamente.
+Registro de resultados.
 </p>
 
 </div>
 
 
-<div class="tarjeta">
+<div class="tarjeta" onclick="mostrar('dieta')">
 
 <div class="icono">🥗</div>
 
-<h3>Planes alimenticios</h3>
+<h3>Plan alimenticio</h3>
 
 <p>
-Próximamente.
+Plan y seguimiento nutricional.
 </p>
 
 </div>
 
 
-<div class="tarjeta">
+<div class="tarjeta" onclick="mostrar('evolucion')">
 
 <div class="icono">📈</div>
 
 <h3>Evolución</h3>
 
 <p>
-Próximamente.
+Seguimiento del paciente.
 </p>
 
 </div>
 
 
-<div class="tarjeta">
+<div class="tarjeta" onclick="mostrar('citas')">
 
 <div class="icono">📅</div>
 
 <h3>Citas</h3>
 
 <p>
-Próximamente.
+Agenda de pacientes.
 </p>
 
 </div>
 
 
-<div class="tarjeta">
+<div class="tarjeta" onclick="mostrar('configuracion')">
 
 <div class="icono">⚙️</div>
 
 <h3>Configuración</h3>
 
 <p>
-Próximamente.
+Datos del consultorio.
 </p>
 
 </div>
@@ -473,32 +681,34 @@ Próximamente.
 
 
 
-<!-- ========================= -->
-<!-- PACIENTES -->
-<!-- ========================= -->
+<!-- =====================================================
+     PACIENTES
+     ===================================================== -->
 
 <section id="pacientes" class="panel oculto">
 
 <h2>👥 Pacientes</h2>
 
-<p style="margin-top:8px;">
-Registro básico de pacientes.
+<p>
+Administra la información básica de tus pacientes.
 </p>
 
 
-<button class="boton" onclick="mostrarFormularioPaciente()">
+<button class="boton"
+onclick="mostrarFormularioPaciente()">
 ➕ Nuevo paciente
 </button>
 
-<button class="boton boton-secundario" onclick="volverInicio()">
+<button class="boton boton-secundario"
+onclick="volverInicio()">
 ← Inicio
 </button>
 
 
-<div id="formularioPaciente" class="oculto">
+<div id="formPaciente" class="oculto">
 
 <h3 class="titulo-seccion">
-Registrar paciente
+Nuevo paciente
 </h3>
 
 
@@ -506,259 +716,149 @@ Registrar paciente
 
 
 <div class="campo">
-
 <label>Nombre completo</label>
-
-<input id="nombre" type="text">
-
+<input id="pacNombre">
 </div>
 
 
 <div class="campo">
-
 <label>Fecha de nacimiento</label>
-
-<input id="fechaNacimiento" type="date">
-
+<input id="pacNacimiento" type="date">
 </div>
 
 
 <div class="campo">
-
 <label>Sexo</label>
 
-<select id="sexo">
-
-<option value="">
-Seleccionar
-</option>
-
-<option>Mujer</option>
-
-<option>Hombre</option>
-
-<option>Otro</option>
-
-</select>
-
-</div>
-
-
-<div class="campo">
-
-<label>Teléfono</label>
-
-<input id="telefono" type="tel">
-
-</div>
-
-
-<div class="campo">
-
-<label>Peso (kg)</label>
-
-<input id="peso" type="number" step="0.1">
-
-</div>
-
-
-<div class="campo">
-
-<label>Talla (m)</label>
-
-<input id="talla" type="number" step="0.01">
-
-</div>
-
-
-<div class="campo campo-completo">
-
-<label>Antecedentes</label>
-
-<textarea id="antecedentes"></textarea>
-
-</div>
-
-
-<div class="campo campo-completo">
-
-<label>Alergias</label>
-
-<textarea id="alergias"></textarea>
-
-</div>
-
-
-</div>
-
-
-<button class="boton" onclick="guardarPaciente()">
-
-💾 Guardar paciente
-
-</button>
-
-
-<button class="boton boton-secundario" onclick="ocultarFormularioPaciente()">
-
-Cancelar
-
-</button>
-
-
-</div>
-
-
-<div id="listaPacientes" style="margin-top:25px;">
-
-<h3>
-Pacientes registrados
-</h3>
-
-<p id="mensajePacientes" style="margin-top:8px;">
-No hay pacientes registrados.
-</p>
-
-</div>
-
-
-</section>
-
-
-
-<!-- ========================= -->
-<!-- EXPEDIENTE CLÍNICO -->
-<!-- ========================= -->
-
-<section id="expediente" class="panel oculto">
-
-<h2>🗂️ Expediente clínico</h2>
-
-<p style="margin-top:8px;">
-Registro clínico del paciente.
-</p>
-
-
-<button class="boton boton-secundario" onclick="volverInicio()">
-← Inicio
-</button>
-
-
-<div class="formulario">
-
-
-<div class="campo">
-
-<label>Nombre completo</label>
-
-<input id="expNombre" type="text">
-
-</div>
-
-
-<div class="campo">
-
-<label>Fecha de nacimiento</label>
-
-<input id="expNacimiento" type="date">
-
-</div>
-
-
-<div class="campo">
-
-<label>Sexo</label>
-
-<select id="expSexo">
-
-<option value="">
-Seleccionar
-</option>
-
+<select id="pacSexo">
+<option>Seleccionar</option>
 <option>Femenino</option>
-
 <option>Masculino</option>
-
 <option>Otro</option>
-
 </select>
 
 </div>
 
 
 <div class="campo">
-
 <label>Teléfono</label>
+<input id="pacTelefono">
+</div>
 
-<input id="expTelefono" type="tel">
 
+<div class="campo">
+<label>Peso kg</label>
+<input id="pacPeso" type="number" step=".1">
+</div>
+
+
+<div class="campo">
+<label>Talla m</label>
+<input id="pacTalla" type="number" step=".01">
 </div>
 
 
 <div class="campo campo-completo">
+<label>Alergias</label>
+<textarea id="pacAlergias"></textarea>
+</div>
 
-<label>Motivo de consulta</label>
-
-<textarea id="expMotivo"
-placeholder="Motivo principal de la consulta"></textarea>
 
 </div>
 
 
-<div class="campo campo-completo">
-
-<label>⚠️ Alergias</label>
-
-<textarea id="expAlergias"
-placeholder="Medicamentos, alimentos u otras alergias"></textarea>
-
-</div>
-
-
-<div class="campo campo-completo">
-
-<label>Antecedentes heredofamiliares</label>
-
-<textarea id="expAHF"
-placeholder="Diabetes, hipertensión, cáncer, etc."></textarea>
-
-</div>
-
-
-<div class="campo campo-completo">
-
-<label>Antecedentes personales patológicos</label>
-
-<textarea id="expAPP"
-placeholder="Enfermedades, cirugías, hospitalizaciones, etc."></textarea>
-
-</div>
-
-
-<div class="campo campo-completo">
-
-<label>Antecedentes personales no patológicos</label>
-
-<textarea id="expAPNP"
-placeholder="Hábitos, alimentación, actividad física, etc."></textarea>
-
-</div>
-
-
-<div class="campo campo-completo">
-
-<label>💊 Medicamentos actuales</label>
-
-<textarea id="expMedicamentos"
-placeholder="Medicamentos que utiliza actualmente"></textarea>
-
-</div>
-
+<button class="boton boton-verde"
+onclick="guardarPaciente()">
+💾 Guardar paciente
+</button>
 
 </div>
 
 
 <hr class="separador">
+
+
+<h3>
+Pacientes registrados
+</h3>
+
+<div id="listaPacientes">
+
+<p class="alerta">
+No hay pacientes registrados todavía.
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EXPEDIENTE
+     ===================================================== -->
+
+<section id="expediente" class="panel oculto">
+
+<h2>🗂️ Expediente clínico</h2>
+
+<button class="boton boton-secundario"
+onclick="volverInicio()">
+← Inicio
+</button>
+
+
+<div class="formulario">
+
+
+<div class="campo">
+<label>Paciente</label>
+<input id="expPaciente">
+</div>
+
+
+<div class="campo">
+<label>Fecha</label>
+<input id="expFecha" type="date">
+</div>
+
+
+<div class="campo campo-completo">
+<label>Motivo de consulta</label>
+<textarea id="expMotivo"></textarea>
+</div>
+
+
+<div class="campo campo-completo">
+<label>⚠️ Alergias</label>
+<textarea id="expAlergias"></textarea>
+</div>
+
+
+<div class="campo campo-completo">
+<label>Antecedentes heredofamiliares</label>
+<textarea id="expAHF"></textarea>
+</div>
+
+
+<div class="campo campo-completo">
+<label>Antecedentes personales patológicos</label>
+<textarea id="expAPP"></textarea>
+</div>
+
+
+<div class="campo campo-completo">
+<label>Antecedentes personales no patológicos</label>
+<textarea id="expAPNP"></textarea>
+</div>
+
+
+<div class="campo campo-completo">
+<label>Medicamentos actuales</label>
+<textarea id="expMedicamentos"></textarea>
+</div>
+
+</div>
 
 
 <h3 class="titulo-seccion">
@@ -770,258 +870,231 @@ placeholder="Medicamentos que utiliza actualmente"></textarea>
 
 
 <div class="campo">
-
 <label>Presión arterial</label>
-
-<input id="expTA" type="text" placeholder="120/80 mmHg">
-
+<input id="expTA" placeholder="120/80">
 </div>
 
 
 <div class="campo">
-
-<label>Frecuencia cardiaca</label>
-
-<input id="expFC" type="number" placeholder="lpm">
-
+<label>FC</label>
+<input id="expFC" type="number">
 </div>
 
 
 <div class="campo">
-
-<label>Frecuencia respiratoria</label>
-
-<input id="expFR" type="number" placeholder="rpm">
-
+<label>FR</label>
+<input id="expFR" type="number">
 </div>
 
 
 <div class="campo">
-
-<label>Temperatura</label>
-
-<input id="expTemp" type="number" step="0.1" placeholder="°C">
-
+<label>Temperatura °C</label>
+<input id="expTemp" type="number" step=".1">
 </div>
 
 
 <div class="campo">
-
-<label>SpO₂</label>
-
-<input id="expSpO2" type="number" placeholder="%">
-
+<label>SpO₂ %</label>
+<input id="expSpO2" type="number">
 </div>
 
 
 <div class="campo">
-
-<label>Glucosa</label>
-
-<input id="expGlucosa" type="number" placeholder="mg/dL">
-
+<label>Glucosa mg/dL</label>
+<input id="expGlucosa" type="number">
 </div>
 
 
 <div class="campo">
-
-<label>Peso</label>
-
-<input id="expPeso" type="number" step="0.1" placeholder="kg">
-
+<label>Peso kg</label>
+<input id="expPeso" type="number" step=".1">
 </div>
 
 
 <div class="campo">
-
-<label>Talla</label>
-
-<input id="expTalla" type="number" step="0.01" placeholder="m">
-
+<label>Talla m</label>
+<input id="expTalla" type="number" step=".01">
 </div>
 
-
 </div>
-
-
-<hr class="separador">
 
 
 <h3 class="titulo-seccion">
 🔎 Exploración física
 </h3>
 
-
-<div class="campo">
-
-<textarea id="expExploracion"
-placeholder="Exploración física del paciente"></textarea>
-
-</div>
+<textarea
+id="expExploracion"
+style="width:100%;min-height:120px;padding:12px;border:1px solid #d8e5e8;border-radius:12px;">
+</textarea>
 
 
 <h3 class="titulo-seccion">
-🧠 Diagnósticos
+🧠 Diagnóstico
 </h3>
 
-
-<div class="campo">
-
-<textarea id="expDiagnosticos"
-placeholder="Diagnóstico(s) clínico(s)"></textarea>
-
-</div>
+<textarea
+id="expDiagnostico"
+style="width:100%;min-height:100px;padding:12px;border:1px solid #d8e5e8;border-radius:12px;">
+</textarea>
 
 
 <h3 class="titulo-seccion">
-📝 Plan y notas médicas
+📝 Plan médico y notas
 </h3>
 
-
-<div class="campo">
-
-<textarea id="expNotas"
-placeholder="Plan terapéutico, indicaciones y notas"></textarea>
-
-</div>
+<textarea
+id="expPlan"
+style="width:100%;min-height:120px;padding:12px;border:1px solid #d8e5e8;border-radius:12px;">
+</textarea>
 
 
-<button class="boton" onclick="guardarExpediente()">
+<br>
 
+<button class="boton boton-verde"
+onclick="guardarExpediente()">
 💾 Guardar expediente
-
 </button>
 
 
-<button class="boton boton-secundario" onclick="imprimirExpediente()">
-
-🖨️ Imprimir expediente
-
+<button class="boton"
+onclick="window.print()">
+🖨️ Imprimir
 </button>
-
 
 </section>
 
 
 
-<!-- ========================= -->
-<!-- IMC -->
-<!-- ========================= -->
+<!-- =====================================================
+     NUEVA CONSULTA
+     ===================================================== -->
 
-<section id="imc" class="panel oculto">
+<section id="consulta" class="panel oculto">
 
-<h2>⚖️ Calculadora de IMC</h2>
+<h2>🩺 Nueva consulta</h2>
+
+<button class="boton boton-secundario"
+onclick="volverInicio()">
+← Inicio
+</button>
 
 
 <div class="formulario">
 
 
 <div class="campo">
-
-<label>Peso (kg)</label>
-
-<input id="pesoIMC" type="number" step="0.1">
-
+<label>Paciente</label>
+<input id="consultaPaciente">
 </div>
 
 
 <div class="campo">
+<label>Fecha</label>
+<input id="consultaFecha" type="date">
+</div>
 
-<label>Talla (m)</label>
 
-<input id="tallaIMC" type="number" step="0.01">
+<div class="campo campo-completo">
+<label>Motivo de consulta</label>
+<textarea id="consultaMotivo"></textarea>
+</div>
+
+
+<div class="campo">
+<label>Presión arterial</label>
+<input id="consultaTA">
+</div>
+
+
+<div class="campo">
+<label>Frecuencia cardiaca</label>
+<input id="consultaFC">
+</div>
+
+
+<div class="campo">
+<label>Temperatura</label>
+<input id="consultaTemp">
+</div>
+
+
+<div class="campo">
+<label>SpO₂</label>
+<input id="consultaSpO2">
+</div>
+
+
+<div class="campo campo-completo">
+<label>Exploración física</label>
+<textarea id="consultaExploracion"></textarea>
+</div>
+
+
+<div class="campo campo-completo">
+<label>Diagnóstico</label>
+<textarea id="consultaDiagnostico"></textarea>
+</div>
+
+
+<div class="campo campo-completo">
+<label>Plan / tratamiento</label>
+<textarea id="consultaPlan"></textarea>
+</div>
 
 </div>
 
 
-</div>
-
-
-<button class="boton" onclick="calcularIMC()">
-
-Calcular IMC
-
+<button class="boton boton-verde"
+onclick="guardarConsulta()">
+💾 Guardar consulta
 </button>
 
 
-<button class="boton boton-secundario" onclick="volverInicio()">
-
-← Inicio
-
+<button class="boton"
+onclick="window.print()">
+🖨️ Imprimir consulta
 </button>
-
-
-<div id="resultadoCalculadora"
-class="resultado oculto">
-</div>
-
 
 </section>
 
 
 
-<!-- ========================= -->
-<!-- RECETA MÉDICA -->
-<!-- ========================= -->
+<!-- =====================================================
+     RECETA
+     ===================================================== -->
 
 <section id="receta" class="panel oculto">
 
 <h2>🧾 Receta médica</h2>
 
-<p style="margin-top:8px;">
-Elaboración de receta médica.
-</p>
-
-
-<button class="boton boton-secundario" onclick="volverInicio()">
-
+<button class="boton boton-secundario"
+onclick="volverInicio()">
 ← Inicio
-
 </button>
-
-
-<div class="receta-box">
-
-
-<h3 class="titulo-seccion">
-👤 Datos del paciente
-</h3>
 
 
 <div class="formulario">
 
 
 <div class="campo">
-
-<label>Nombre del paciente</label>
-
-<input id="recetaPaciente" type="text">
-
+<label>Paciente</label>
+<input id="recPaciente">
 </div>
 
 
 <div class="campo">
-
 <label>Fecha</label>
-
-<input id="recetaFecha" type="date">
-
+<input id="recFecha" type="date">
 </div>
 
 
 <div class="campo campo-completo">
-
 <label>Diagnóstico</label>
-
-<textarea id="recetaDiagnostico"></textarea>
-
+<textarea id="recDiagnostico"></textarea>
 </div>
 
-
 </div>
-
-
-<hr class="separador">
 
 
 <h3 class="titulo-seccion">
@@ -1029,71 +1102,44 @@ Elaboración de receta médica.
 </h3>
 
 
-<div id="listaMedicamentos">
+<div id="medicamentosReceta">
+
 
 <div class="medicamento">
-
-<h4>
-Medicamento 1
-</h4>
-
 
 <div class="medicamento-grid">
 
 
 <div class="campo">
-
 <label>Medicamento</label>
-
-<input class="med-nombre"
-type="text"
-placeholder="Nombre">
-
+<input class="medNombre">
 </div>
 
 
 <div class="campo">
-
 <label>Presentación</label>
-
-<input class="med-presentacion"
-type="text"
-placeholder="Presentación">
-
+<input class="medPresentacion">
 </div>
 
 
 <div class="campo">
-
 <label>Dosis</label>
-
-<input class="med-dosis"
-type="text"
-placeholder="Dosis">
-
+<input class="medDosis">
 </div>
 
 
 <div class="campo">
-
 <label>Vía</label>
 
-<select class="med-via">
+<select class="medVia">
 
 <option>Oral</option>
-
 <option>Subcutánea</option>
-
 <option>Intramuscular</option>
-
 <option>Intravenosa</option>
-
 <option>Tópica</option>
-
 <option>Oftálmica</option>
-
 <option>Ótica</option>
-
 <option>Otra</option>
 
 </select>
@@ -1102,62 +1148,33 @@ placeholder="Dosis">
 
 
 <div class="campo">
-
 <label>Frecuencia</label>
-
-<input class="med-frecuencia"
-type="text"
-placeholder="Cada cuánto">
-
+<input class="medFrecuencia">
 </div>
 
 
 <div class="campo">
-
 <label>Duración</label>
-
-<input class="med-duracion"
-type="text"
-placeholder="Duración">
-
+<input class="medDuracion">
 </div>
 
 
 <div class="campo campo-completo">
-
 <label>Indicaciones</label>
-
-<textarea class="med-indicaciones"
-placeholder="Indicaciones adicionales"></textarea>
-
+<textarea class="medIndicaciones"></textarea>
 </div>
 
-
 </div>
-
-
-<button
-class="boton boton-rojo"
-onclick="eliminarMedicamento(this)">
-
-🗑️ Eliminar medicamento
-
-</button>
-
 
 </div>
 
 </div>
 
 
-<button class="boton" onclick="agregarMedicamento()">
-
+<button class="boton"
+onclick="agregarMedicamento()">
 ➕ Agregar medicamento
-
 </button>
-
-
-<hr class="separador">
 
 
 <h3 class="titulo-seccion">
@@ -1169,68 +1186,44 @@ onclick="eliminarMedicamento(this)">
 
 
 <div class="campo">
-
 <label>Nombre del médico</label>
-
-<input id="doctorNombre"
-type="text"
-placeholder="Nombre del médico">
-
+<input id="doctor">
 </div>
 
 
 <div class="campo">
-
 <label>Cédula profesional</label>
-
-<input id="doctorCedula"
-type="text"
-placeholder="Cédula profesional">
-
+<input id="cedula">
 </div>
 
 
 <div class="campo campo-completo">
-
 <label>Indicaciones generales</label>
-
-<textarea id="indicacionesGenerales"></textarea>
+<textarea id="indicaciones"></textarea>
+</div>
 
 </div>
 
 
-</div>
+<button class="boton boton-verde"
+onclick="generarReceta()">
+👁️ Generar receta
+</button>
 
 
 <button class="boton"
-onclick="generarReceta()">
-
-👁️ Generar receta
-
-</button>
-
-
-<button class="boton boton-secundario"
 onclick="imprimirReceta()">
-
 🖨️ Imprimir receta
-
 </button>
 
 
-</div>
-
-
-<div id="vistaReceta"
-class="receta-documento oculto">
+<div id="vistaReceta" class="receta-documento oculto">
 
 <h2>RECETA MÉDICA</h2>
 
 <div class="encabezado-receta">
 
-<strong>
-MEDI-LIFE
-</strong>
+<strong>MEDI-LIFE</strong>
 
 <br>
 
@@ -1241,62 +1234,521 @@ L.A.C. Salud Metabólica
 
 <p>
 <strong>Paciente:</strong>
-<span id="vistaPaciente"></span>
+<span id="vPaciente"></span>
 </p>
 
 
-<p style="margin-top:8px;">
-
+<p style="margin-top:8px">
 <strong>Fecha:</strong>
-<span id="vistaFecha"></span>
-
+<span id="vFecha"></span>
 </p>
 
 
-<p style="margin-top:8px;">
-
+<p style="margin-top:8px">
 <strong>Diagnóstico:</strong>
-<span id="vistaDiagnostico"></span>
-
+<span id="vDiagnostico"></span>
 </p>
 
 
 <hr class="separador">
 
 
-<div id="vistaMedicamentos"></div>
+<div id="vMedicamentos"></div>
 
 
-<p style="margin-top:25px;">
-
-<strong>Indicaciones generales:</strong>
-
+<p>
+<strong>Indicaciones:</strong>
 </p>
 
-
-<p id="vistaIndicaciones"
-style="margin-top:8px;white-space:pre-line;">
+<p id="vIndicaciones"
+style="white-space:pre-line;margin-top:8px">
 </p>
 
 
 <div class="firma">
 
-______________________________
+____________________________
 
 <br>
 
-<span id="vistaDoctor"></span>
+<span id="vDoctor"></span>
 
 <br>
 
 Cédula profesional:
-<span id="vistaCedula"></span>
+<span id="vCedula"></span>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MEDICAMENTOS
+     ===================================================== -->
+
+<section id="medicamentos" class="panel oculto">
+
+<h2>💊 Medicamentos y tratamientos</h2>
+
+<button class="boton boton-secundario"
+onclick="volverInicio()">
+← Inicio
+</button>
+
+
+<div class="formulario">
+
+
+<div class="campo">
+<label>Nombre del medicamento</label>
+<input id="medNombre">
+</div>
+
+
+<div class="campo">
+<label>Presentación</label>
+<input id="medPresent">
+</div>
+
+
+<div class="campo">
+<label>Dosis</label>
+<input id="medDose">
+</div>
+
+
+<div class="campo">
+<label>Frecuencia</label>
+<input id="medFreq">
+</div>
+
+
+<div class="campo">
+<label>Duración</label>
+<input id="medDur">
+</div>
+
+
+<div class="campo">
+<label>Vía</label>
+<input id="medRoute">
+</div>
 
 </div>
 
 
+<button class="boton boton-verde"
+onclick="guardarTratamiento()">
+💾 Agregar tratamiento
+</button>
+
+
+<div id="listaTratamientos"></div>
+
+</section>
+
+
+
+<!-- =====================================================
+     IMC
+     ===================================================== -->
+
+<section id="imc" class="panel oculto">
+
+<h2>⚖️ Peso e IMC</h2>
+
+<button class="boton boton-secundario"
+onclick="volverInicio()">
+← Inicio
+</button>
+
+
+<div class="formulario">
+
+
+<div class="campo">
+<label>Peso kg</label>
+<input id="imcPeso" type="number" step=".1">
 </div>
 
+
+<div class="campo">
+<label>Talla m</label>
+<input id="imcTalla" type="number" step=".01">
+</div>
+
+</div>
+
+
+<button class="boton boton-verde"
+onclick="calcularIMC()">
+⚖️ Calcular IMC
+</button>
+
+
+<div id="resultadoIMC"
+class="resultado oculto">
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     LABORATORIOS
+     ===================================================== -->
+
+<section id="laboratorios" class="panel oculto">
+
+<h2>🧪 Laboratorios</h2>
+
+<button class="boton boton-secundario"
+onclick="volverInicio()">
+← Inicio
+</button>
+
+
+<div class="formulario">
+
+
+<div class="campo">
+<label>Paciente</label>
+<input id="labPaciente">
+</div>
+
+
+<div class="campo">
+<label>Fecha</label>
+<input id="labFecha" type="date">
+</div>
+
+
+<div class="campo">
+<label>Glucosa</label>
+<input id="labGlucosa">
+</div>
+
+
+<div class="campo">
+<label>HbA1c</label>
+<input id="labHb">
+</div>
+
+
+<div class="campo">
+<label>Colesterol total</label>
+<input id="labColesterol">
+</div>
+
+
+<div class="campo">
+<label>Triglicéridos</label>
+<input id="labTrigliceridos">
+</div>
+
+
+<div class="campo">
+<label>TSH</label>
+<input id="labTSH">
+</div>
+
+
+<div class="campo">
+<label>T4</label>
+<input id="labT4">
+</div>
+
+
+<div class="campo campo-completo">
+<label>Otros resultados</label>
+<textarea id="labOtros"></textarea>
+</div>
+
+</div>
+
+
+<button class="boton boton-verde"
+onclick="guardarLaboratorio()">
+💾 Guardar laboratorio
+</button>
+
+
+<div id="listaLabs"></div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PLAN ALIMENTICIO
+     ===================================================== -->
+
+<section id="dieta" class="panel oculto">
+
+<h2>🥗 Plan alimenticio</h2>
+
+<button class="boton boton-secundario"
+onclick="volverInicio()">
+← Inicio
+</button>
+
+
+<div class="formulario">
+
+
+<div class="campo">
+<label>Paciente</label>
+<input id="dietaPaciente">
+</div>
+
+
+<div class="campo">
+<label>Calorías objetivo</label>
+<input id="dietaCalorias" type="number">
+</div>
+
+
+<div class="campo campo-completo">
+<label>Objetivo</label>
+<input id="dietaObjetivo"
+placeholder="Ej. control metabólico">
+</div>
+
+
+<div class="campo campo-completo">
+<label>Plan alimenticio</label>
+<textarea id="dietaPlan"
+style="min-height:220px"
+placeholder="Desayuno:
+
+Colación:
+
+Comida:
+
+Colación:
+
+Cena:"></textarea>
+</div>
+
+</div>
+
+
+<button class="boton boton-verde"
+onclick="guardarDieta()">
+💾 Guardar plan
+</button>
+
+
+<div id="resultadoDieta"></div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EVOLUCIÓN
+     ===================================================== -->
+
+<section id="evolucion" class="panel oculto">
+
+<h2>📈 Evolución</h2>
+
+<button class="boton boton-secundario"
+onclick="volverInicio()">
+← Inicio
+</button>
+
+
+<div class="formulario">
+
+
+<div class="campo">
+<label>Paciente</label>
+<input id="evoPaciente">
+</div>
+
+
+<div class="campo">
+<label>Fecha</label>
+<input id="evoFecha" type="date">
+</div>
+
+
+<div class="campo">
+<label>Peso kg</label>
+<input id="evoPeso">
+</div>
+
+
+<div class="campo">
+<label>IMC</label>
+<input id="evoIMC">
+</div>
+
+
+<div class="campo">
+<label>Presión arterial</label>
+<input id="evoTA">
+</div>
+
+
+<div class="campo">
+<label>Glucosa</label>
+<input id="evoGlucosa">
+</div>
+
+
+<div class="campo campo-completo">
+<label>Observaciones</label>
+<textarea id="evoNotas"></textarea>
+</div>
+
+</div>
+
+
+<button class="boton boton-verde"
+onclick="guardarEvolucion()">
+💾 Registrar evolución
+</button>
+
+
+<div id="listaEvolucion"></div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CITAS
+     ===================================================== -->
+
+<section id="citas" class="panel oculto">
+
+<h2>📅 Citas</h2>
+
+<button class="boton boton-secundario"
+onclick="volverInicio()">
+← Inicio
+</button>
+
+
+<div class="formulario">
+
+
+<div class="campo">
+<label>Paciente</label>
+<input id="citaPaciente">
+</div>
+
+
+<div class="campo">
+<label>Fecha</label>
+<input id="citaFecha" type="date">
+</div>
+
+
+<div class="campo">
+<label>Hora</label>
+<input id="citaHora" type="time">
+</div>
+
+
+<div class="campo">
+<label>Tipo de consulta</label>
+
+<select id="citaTipo">
+
+<option>Consulta general</option>
+<option>Seguimiento</option>
+<option>Control de peso</option>
+<option>Salud metabólica</option>
+<option>Primera consulta</option>
+
+</select>
+
+</div>
+
+
+<div class="campo campo-completo">
+<label>Notas</label>
+<textarea id="citaNotas"></textarea>
+</div>
+
+</div>
+
+
+<button class="boton boton-verde"
+onclick="guardarCita()">
+📅 Agendar cita
+</button>
+
+
+<div id="listaCitas"></div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONFIGURACIÓN
+     ===================================================== -->
+
+<section id="configuracion" class="panel oculto">
+
+<h2>⚙️ Configuración</h2>
+
+<button class="boton boton-secundario"
+onclick="volverInicio()">
+← Inicio
+</button>
+
+
+<div class="formulario">
+
+
+<div class="campo">
+<label>Nombre del médico</label>
+<input id="configDoctor">
+</div>
+
+
+<div class="campo">
+<label>Cédula profesional</label>
+<input id="configCedula">
+</div>
+
+
+<div class="campo">
+<label>Teléfono</label>
+<input id="configTelefono">
+</div>
+
+
+<div class="campo">
+<label>Consultorio</label>
+<input id="configConsultorio">
+</div>
+
+
+<div class="campo campo-completo">
+<label>Dirección</label>
+<textarea id="configDireccion"></textarea>
+</div>
+
+</div>
+
+
+<button class="boton boton-verde"
+onclick="guardarConfiguracion()">
+💾 Guardar configuración
+</button>
+
+
+<div id="configResultado"></div>
 
 </section>
 
@@ -1306,7 +1758,13 @@ Cédula profesional:
 
 <footer>
 
-MEDI-LIFE · L.A.C. Salud Metabólica © 2026
+<strong>MEDI-LIFE</strong>
+<br>
+L.A.C. Salud Metabólica
+<br><br>
+Equilibrio hoy, una mejor versión mañana
+<br>
+© 2026
 
 </footer>
 
@@ -1314,103 +1772,78 @@ MEDI-LIFE · L.A.C. Salud Metabólica © 2026
 
 <script>
 
-
-/* ========================= */
-/* NAVEGACIÓN */
-/* ========================= */
-
+/* =====================================================
+   NAVEGACIÓN
+   ===================================================== */
 
 function ocultarTodo(){
 
-document.getElementById("inicio").style.display="none";
+const secciones=document.querySelectorAll("main section");
 
-document.getElementById("pacientes").style.display="none";
-
-document.getElementById("expediente").style.display="none";
-
-document.getElementById("imc").style.display="none";
-
-document.getElementById("receta").style.display="none";
+secciones.forEach(function(sec){
+sec.style.display="none";
+});
 
 }
 
+function mostrar(id){
+
+ocultarTodo();
+
+document.getElementById(id).style.display="block";
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
 
 function volverInicio(){
 
-ocultarTodo();
-
-document.getElementById("inicio").style.display="block";
-
-}
-
-
-function mostrarPacientes(){
-
-ocultarTodo();
-
-document.getElementById("pacientes").style.display="block";
-
-}
-
-
-function mostrarExpediente(){
-
-ocultarTodo();
-
-document.getElementById("expediente").style.display="block";
-
-}
-
-
-function mostrarIMC(){
-
-ocultarTodo();
-
-document.getElementById("imc").style.display="block";
-
-}
-
-
-function mostrarReceta(){
-
-ocultarTodo();
-
-document.getElementById("receta").style.display="block";
+mostrar("inicio");
 
 }
 
 
 
-/* ========================= */
-/* PACIENTES */
-/* ========================= */
+/* =====================================================
+   FECHA
+   ===================================================== */
 
+function fechaHoy(){
+
+return new Date().toISOString().split("T")[0];
+
+}
+
+document.addEventListener("DOMContentLoaded",function(){
+
+document.querySelectorAll('input[type="date"]').forEach(function(input){
+
+if(!input.value){
+input.value=fechaHoy();
+}
+
+});
+
+});
+
+
+
+/* =====================================================
+   PACIENTES
+   ===================================================== */
 
 function mostrarFormularioPaciente(){
 
-document.getElementById("formularioPaciente").style.display="block";
+document.getElementById("formPaciente").style.display="block";
 
 }
-
-
-function ocultarFormularioPaciente(){
-
-document.getElementById("formularioPaciente").style.display="none";
-
-}
-
 
 function guardarPaciente(){
 
-const nombre=
-document.getElementById("nombre").value.trim();
-
-const peso=
-parseFloat(document.getElementById("peso").value);
-
-const talla=
-parseFloat(document.getElementById("talla").value);
-
+const nombre=document.getElementById("pacNombre").value.trim();
 
 if(!nombre){
 
@@ -1420,43 +1853,40 @@ return;
 
 }
 
+const peso=parseFloat(document.getElementById("pacPeso").value);
 
-let imcTexto="No calculado";
+const talla=parseFloat(document.getElementById("pacTalla").value);
 
+let imc="No calculado";
 
-if(peso && talla && talla>0){
+if(peso && talla){
 
-const imc=peso/(talla*talla);
-
-imcTexto=imc.toFixed(1);
+imc=(peso/(talla*talla)).toFixed(1);
 
 }
 
+const div=document.createElement("div");
 
-const paciente=
-document.createElement("div");
+div.className="paciente";
 
-paciente.className="paciente";
+div.innerHTML=`
 
-
-paciente.innerHTML=`
-
-<strong>${nombre}</strong>
+<strong>👤 ${nombre}</strong>
 
 <br><br>
 
 Fecha de nacimiento:
-${document.getElementById("fechaNacimiento").value || "No registrada"}
+${document.getElementById("pacNacimiento").value || "No registrada"}
 
 <br>
 
 Sexo:
-${document.getElementById("sexo").value || "No registrado"}
+${document.getElementById("pacSexo").value}
 
 <br>
 
 Teléfono:
-${document.getElementById("telefono").value || "No registrado"}
+${document.getElementById("pacTelefono").value || "No registrado"}
 
 <br>
 
@@ -1471,13 +1901,12 @@ ${talla || "No registrada"} m
 <br>
 
 IMC:
-${imcTexto}
+${imc}
 
 <br><br>
 
-<button
-class="boton"
-onclick="mostrarExpedienteDesdePaciente('${nombre.replace(/'/g,"\\'")}')">
+<button class="boton"
+onclick="abrirExpediente('${nombre.replace(/'/g,"\\'")}')">
 
 🗂️ Abrir expediente
 
@@ -1485,96 +1914,102 @@ onclick="mostrarExpedienteDesdePaciente('${nombre.replace(/'/g,"\\'")}')">
 
 `;
 
+document.getElementById("listaPacientes").appendChild(div);
 
-document
-.getElementById("listaPacientes")
-.appendChild(paciente);
+document.getElementById("formPaciente").style.display="none";
 
-
-document.getElementById("mensajePacientes").style.display="none";
-
-
-alert("Paciente agregado correctamente.");
-
-
-ocultarFormularioPaciente();
+alert("✅ Paciente registrado correctamente.");
 
 }
 
 
-function mostrarExpedienteDesdePaciente(nombre){
+function abrirExpediente(nombre){
 
-mostrarExpediente();
+mostrar("expediente");
 
-document.getElementById("expNombre").value=nombre;
+document.getElementById("expPaciente").value=nombre;
 
 }
 
 
 
-/* ========================= */
-/* CALCULADORA IMC */
-/* ========================= */
+/* =====================================================
+   EXPEDIENTE
+   ===================================================== */
 
+function guardarExpediente(){
 
-function calcularIMC(){
+const paciente=document.getElementById("expPaciente").value.trim();
 
-const peso=
-parseFloat(document.getElementById("pesoIMC").value);
+if(!paciente){
 
-const talla=
-parseFloat(document.getElementById("tallaIMC").value);
-
-
-if(!peso || !talla || talla<=0){
-
-alert("Ingresa un peso y una talla válidos.");
+alert("Ingresa el paciente.");
 
 return;
 
 }
 
+alert(
+"✅ Expediente capturado correctamente.\n\nPaciente: "
++ paciente
+);
 
-const imc=
-peso/(talla*talla);
+}
 
+
+
+/* =====================================================
+   IMC
+   ===================================================== */
+
+function calcularIMC(){
+
+const peso=parseFloat(document.getElementById("imcPeso").value);
+
+const talla=parseFloat(document.getElementById("imcTalla").value);
+
+if(!peso || !talla || talla<=0){
+
+alert("Ingresa peso y talla válidos.");
+
+return;
+
+}
+
+const imc=peso/(talla*talla);
 
 let clasificacion="";
-
 
 if(imc<18.5){
 
 clasificacion="Bajo peso";
 
-}
-else if(imc<25){
+}else if(imc<25){
 
 clasificacion="Peso normal";
 
-}
-else if(imc<30){
+}else if(imc<30){
 
 clasificacion="Sobrepeso";
 
-}
-else{
+}else{
 
 clasificacion="Obesidad";
 
 }
 
+const resultado=document.getElementById("resultadoIMC");
 
-const resultado=
-document.getElementById("resultadoCalculadora");
+resultado.innerHTML=`
 
+⚖️ <strong>IMC: ${imc.toFixed(1)}</strong>
 
-resultado.innerHTML=
+<br><br>
 
-"IMC: "
-+ imc.toFixed(1)
-+ "<br>Clasificación: "
-+ clasificacion;
+Clasificación:
+<strong>${clasificacion}</strong>
 
+`;
 
 resultado.style.display="block";
 
@@ -1582,321 +2017,175 @@ resultado.style.display="block";
 
 
 
-/* ========================= */
-/* EXPEDIENTE */
-/* ========================= */
+/* =====================================================
+   CONSULTA
+   ===================================================== */
 
+function guardarConsulta(){
 
-function guardarExpediente(){
+const paciente=document.getElementById("consultaPaciente").value;
 
-const nombre=
-document.getElementById("expNombre").value.trim();
+if(!paciente){
 
-
-if(!nombre){
-
-alert("Ingresa el nombre del paciente.");
+alert("Ingresa el paciente.");
 
 return;
 
 }
 
-
 alert(
-"✅ Expediente capturado correctamente.\n\n" +
-"Paciente: " + nombre
+"✅ Consulta registrada correctamente.\n\nPaciente: "
++ paciente
 );
 
 }
 
 
-function imprimirExpediente(){
 
-window.print();
-
-}
-
-
-
-/* ========================= */
-/* RECETA */
-/* ========================= */
-
+/* =====================================================
+   RECETA
+   ===================================================== */
 
 function agregarMedicamento(){
 
-const lista=
-document.getElementById("listaMedicamentos");
+const contenedor=document.getElementById("medicamentosReceta");
 
+const nuevo=document.createElement("div");
 
-const numero=
-lista.children.length+1;
+nuevo.className="medicamento";
 
-
-const medicamento=
-document.createElement("div");
-
-
-medicamento.className="medicamento";
-
-
-medicamento.innerHTML=`
-
-<h4>
-Medicamento ${numero}
-</h4>
-
+nuevo.innerHTML=`
 
 <div class="medicamento-grid">
 
-
 <div class="campo">
-
 <label>Medicamento</label>
-
-<input class="med-nombre"
-type="text"
-placeholder="Nombre">
-
+<input class="medNombre">
 </div>
 
-
 <div class="campo">
-
 <label>Presentación</label>
-
-<input class="med-presentacion"
-type="text"
-placeholder="Presentación">
-
+<input class="medPresentacion">
 </div>
 
-
 <div class="campo">
-
 <label>Dosis</label>
-
-<input class="med-dosis"
-type="text"
-placeholder="Dosis">
-
+<input class="medDosis">
 </div>
 
-
 <div class="campo">
-
 <label>Vía</label>
 
-<select class="med-via">
+<select class="medVia">
 
 <option>Oral</option>
-
 <option>Subcutánea</option>
-
 <option>Intramuscular</option>
-
 <option>Intravenosa</option>
-
 <option>Tópica</option>
-
 <option>Oftálmica</option>
-
 <option>Ótica</option>
-
 <option>Otra</option>
 
 </select>
 
 </div>
 
-
 <div class="campo">
-
 <label>Frecuencia</label>
-
-<input class="med-frecuencia"
-type="text"
-placeholder="Cada cuánto">
-
+<input class="medFrecuencia">
 </div>
-
 
 <div class="campo">
-
 <label>Duración</label>
-
-<input class="med-duracion"
-type="text"
-placeholder="Duración">
-
+<input class="medDuracion">
 </div>
-
 
 <div class="campo campo-completo">
-
 <label>Indicaciones</label>
-
-<textarea
-class="med-indicaciones"
-placeholder="Indicaciones adicionales">
-</textarea>
-
+<textarea class="medIndicaciones"></textarea>
 </div>
 
-
 </div>
-
 
 <button
 class="boton boton-rojo"
-onclick="eliminarMedicamento(this)">
+onclick="this.parentElement.remove()">
 
-🗑️ Eliminar medicamento
+🗑️ Eliminar
 
 </button>
 
 `;
 
-
-lista.appendChild(medicamento);
-
-}
-
-
-function eliminarMedicamento(boton){
-
-const medicamentos=
-document.querySelectorAll(".medicamento");
-
-
-if(medicamentos.length<=1){
-
-alert("Debe existir al menos un medicamento.");
-
-return;
+contenedor.appendChild(nuevo);
 
 }
-
-
-boton.parentElement.remove();
-
-}
-
 
 
 function generarReceta(){
 
-const paciente=
-document.getElementById("recetaPaciente").value;
+document.getElementById("vPaciente").textContent=
+document.getElementById("recPaciente").value || "No registrado";
 
-const fecha=
-document.getElementById("recetaFecha").value;
+document.getElementById("vFecha").textContent=
+document.getElementById("recFecha").value || "No registrada";
 
-const diagnostico=
-document.getElementById("recetaDiagnostico").value;
+document.getElementById("vDiagnostico").textContent=
+document.getElementById("recDiagnostico").value || "No registrado";
 
-const doctor=
-document.getElementById("doctorNombre").value;
+document.getElementById("vDoctor").textContent=
+document.getElementById("doctor").value || "Médico tratante";
 
-const cedula=
-document.getElementById("doctorCedula").value;
+document.getElementById("vCedula").textContent=
+document.getElementById("cedula").value || "________________";
 
-const indicaciones=
-document.getElementById("indicacionesGenerales").value;
+document.getElementById("vIndicaciones").textContent=
+document.getElementById("indicaciones").value || "Sin indicaciones generales.";
 
-
-document.getElementById("vistaPaciente").textContent=
-paciente || "No registrado";
-
-
-document.getElementById("vistaFecha").textContent=
-fecha || "No registrada";
-
-
-document.getElementById("vistaDiagnostico").textContent=
-diagnostico || "No registrado";
-
-
-document.getElementById("vistaDoctor").textContent=
-doctor || "Médico tratante";
-
-
-document.getElementById("vistaCedula").textContent=
-cedula || "________________";
-
-
-document.getElementById("vistaIndicaciones").textContent=
-indicaciones || "Sin indicaciones generales.";
-
-
-const medicamentos=
-document.querySelectorAll(".medicamento");
-
+const medicamentos=document.querySelectorAll(".medicamento");
 
 let html="";
 
-
-medicamentos.forEach(function(med,index){
-
-const nombre=
-med.querySelector(".med-nombre").value;
-
-const presentacion=
-med.querySelector(".med-presentacion").value;
-
-const dosis=
-med.querySelector(".med-dosis").value;
-
-const via=
-med.querySelector(".med-via").value;
-
-const frecuencia=
-med.querySelector(".med-frecuencia").value;
-
-const duracion=
-med.querySelector(".med-duracion").value;
-
-const instrucciones=
-med.querySelector(".med-indicaciones").value;
-
+medicamentos.forEach(function(med,i){
 
 html+=`
 
-<div style="margin-bottom:25px;">
+<div style="margin-bottom:22px">
 
 <strong>
-${index+1}. ${nombre || "Medicamento"}
+${i+1}. ${med.querySelector(".medNombre").value || "Medicamento"}
 </strong>
 
 <br>
 
 Presentación:
-${presentacion || "No especificada"}
+${med.querySelector(".medPresentacion").value || "No especificada"}
 
 <br>
 
 Dosis:
-${dosis || "No especificada"}
+${med.querySelector(".medDosis").value || "No especificada"}
 
 <br>
 
 Vía:
-${via || "No especificada"}
+${med.querySelector(".medVia").value}
 
 <br>
 
 Frecuencia:
-${frecuencia || "No especificada"}
+${med.querySelector(".medFrecuencia").value || "No especificada"}
 
 <br>
 
 Duración:
-${duracion || "No especificada"}
+${med.querySelector(".medDuracion").value || "No especificada"}
 
 <br>
 
 Indicaciones:
-${instrucciones || "Sin indicaciones adicionales"}
+${med.querySelector(".medIndicaciones").value || "Sin indicaciones adicionales"}
 
 </div>
 
@@ -1904,14 +2193,11 @@ ${instrucciones || "Sin indicaciones adicionales"}
 
 });
 
-
-document.getElementById("vistaMedicamentos").innerHTML=html;
-
+document.getElementById("vMedicamentos").innerHTML=html;
 
 document.getElementById("vistaReceta").style.display="block";
 
 }
-
 
 
 function imprimirReceta(){
@@ -1928,27 +2214,360 @@ window.print();
 
 
 
-/* ========================= */
-/* FECHA AUTOMÁTICA RECETA */
-/* ========================= */
+/* =====================================================
+   TRATAMIENTOS
+   ===================================================== */
 
+function guardarTratamiento(){
 
-document.addEventListener("DOMContentLoaded",function(){
+const nombre=document.getElementById("medNombre").value;
 
-const fecha=
-document.getElementById("recetaFecha");
+if(!nombre){
 
-if(fecha){
+alert("Ingresa el nombre del medicamento.");
 
-const hoy=
-new Date().toISOString().split("T")[0];
-
-fecha.value=hoy;
+return;
 
 }
 
-});
+const div=document.createElement("div");
 
+div.className="paciente";
+
+div.innerHTML=`
+
+💊 <strong>${nombre}</strong>
+
+<br>
+
+Presentación:
+${document.getElementById("medPresent").value}
+
+<br>
+
+Dosis:
+${document.getElementById("medDose").value}
+
+<br>
+
+Frecuencia:
+${document.getElementById("medFreq").value}
+
+<br>
+
+Duración:
+${document.getElementById("medDur").value}
+
+<br>
+
+Vía:
+${document.getElementById("medRoute").value}
+
+`;
+
+document.getElementById("listaTratamientos").appendChild(div);
+
+}
+
+
+
+/* =====================================================
+   LABORATORIOS
+   ===================================================== */
+
+function guardarLaboratorio(){
+
+const paciente=document.getElementById("labPaciente").value;
+
+if(!paciente){
+
+alert("Ingresa el paciente.");
+
+return;
+
+}
+
+const div=document.createElement("div");
+
+div.className="paciente";
+
+div.innerHTML=`
+
+🧪 <strong>${paciente}</strong>
+
+<br>
+
+Fecha:
+${document.getElementById("labFecha").value}
+
+<br>
+
+Glucosa:
+${document.getElementById("labGlucosa").value || "—"}
+
+<br>
+
+HbA1c:
+${document.getElementById("labHb").value || "—"}
+
+<br>
+
+Colesterol:
+${document.getElementById("labColesterol").value || "—"}
+
+<br>
+
+Triglicéridos:
+${document.getElementById("labTrigliceridos").value || "—"}
+
+<br>
+
+TSH:
+${document.getElementById("labTSH").value || "—"}
+
+<br>
+
+T4:
+${document.getElementById("labT4").value || "—"}
+
+<br>
+
+Otros:
+${document.getElementById("labOtros").value || "—"}
+
+`;
+
+document.getElementById("listaLabs").appendChild(div);
+
+alert("✅ Laboratorio registrado.");
+
+}
+
+
+
+/* =====================================================
+   PLAN ALIMENTICIO
+   ===================================================== */
+
+function guardarDieta(){
+
+const paciente=document.getElementById("dietaPaciente").value;
+
+const plan=document.getElementById("dietaPlan").value;
+
+if(!paciente || !plan){
+
+alert("Completa paciente y plan alimenticio.");
+
+return;
+
+}
+
+document.getElementById("resultadoDieta").innerHTML=`
+
+<div class="alerta">
+
+🥗 <strong>Plan guardado</strong>
+
+<br><br>
+
+Paciente:
+${paciente}
+
+<br>
+
+Calorías objetivo:
+${document.getElementById("dietaCalorias").value || "No especificadas"}
+
+<br>
+
+Objetivo:
+${document.getElementById("dietaObjetivo").value || "No especificado"}
+
+<br><br>
+
+<pre style="white-space:pre-wrap;font-family:inherit">${plan}</pre>
+
+</div>
+
+`;
+
+}
+
+
+
+/* =====================================================
+   EVOLUCIÓN
+   ===================================================== */
+
+function guardarEvolucion(){
+
+const paciente=document.getElementById("evoPaciente").value;
+
+if(!paciente){
+
+alert("Ingresa el paciente.");
+
+return;
+
+}
+
+const div=document.createElement("div");
+
+div.className="paciente";
+
+div.innerHTML=`
+
+📈 <strong>${paciente}</strong>
+
+<br>
+
+Fecha:
+${document.getElementById("evoFecha").value}
+
+<br>
+
+Peso:
+${document.getElementById("evoPeso").value || "—"} kg
+
+<br>
+
+IMC:
+${document.getElementById("evoIMC").value || "—"}
+
+<br>
+
+TA:
+${document.getElementById("evoTA").value || "—"}
+
+<br>
+
+Glucosa:
+${document.getElementById("evoGlucosa").value || "—"}
+
+<br>
+
+Observaciones:
+${document.getElementById("evoNotas").value || "—"}
+
+`;
+
+document.getElementById("listaEvolucion").appendChild(div);
+
+alert("✅ Evolución registrada.");
+
+}
+
+
+
+/* =====================================================
+   CITAS
+   ===================================================== */
+
+function guardarCita(){
+
+const paciente=document.getElementById("citaPaciente").value;
+
+if(!paciente){
+
+alert("Ingresa el paciente.");
+
+return;
+
+}
+
+const div=document.createElement("div");
+
+div.className="paciente";
+
+div.innerHTML=`
+
+📅 <strong>${paciente}</strong>
+
+<br>
+
+Fecha:
+${document.getElementById("citaFecha").value}
+
+<br>
+
+Hora:
+${document.getElementById("citaHora").value}
+
+<br>
+
+Tipo:
+${document.getElementById("citaTipo").value}
+
+<br>
+
+Notas:
+${document.getElementById("citaNotas").value || "—"}
+
+`;
+
+document.getElementById("listaCitas").appendChild(div);
+
+alert("✅ Cita agendada.");
+
+}
+
+
+
+/* =====================================================
+   CONFIGURACIÓN
+   ===================================================== */
+
+function guardarConfiguracion(){
+
+const doctor=document.getElementById("configDoctor").value;
+
+if(!doctor){
+
+alert("Ingresa el nombre del médico.");
+
+return;
+
+}
+
+document.getElementById("configResultado").innerHTML=`
+
+<div class="alerta">
+
+⚙️ <strong>Configuración guardada</strong>
+
+<br><br>
+
+Médico:
+${doctor}
+
+<br>
+
+Cédula:
+${document.getElementById("configCedula").value || "No registrada"}
+
+<br>
+
+Teléfono:
+${document.getElementById("configTelefono").value || "No registrado"}
+
+<br>
+
+Consultorio:
+${document.getElementById("configConsultorio").value || "No registrado"}
+
+</div>
+
+`;
+
+}
+
+
+/* =====================================================
+   INICIO
+   ===================================================== */
+
+mostrar("inicio");
 
 </script>
 
