@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L.A.C. Salud Metabólica</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f8f8;
+      color: #17324d;
+    }
+
+    header {
+      background: #102f4a;
+      color: white;
+      padding: 25px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      margin-top: 8px;
+      color: #9ed8d2;
+    }
+
+    .contenedor {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .bienvenida {
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      margin-bottom: 25px;
+    }
+
+    .bienvenida h2 {
+      margin-bottom: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+    }
+
+    .tarjeta {
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .tarjeta:hover {
+      transform: translateY(-4px);
+    }
+
+    .icono {
+      font-size: 35px;
+      margin-bottom: 12px;
+    }
+
+    .tarjeta h3 {
+      margin-bottom: 8px;
+    }
+
+    .tarjeta p {
+      color: #687985;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      color: #687985;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>L.A.C. Salud Metabólica</h1>
+    <p>Equilibrio hoy, una mejor versión mañana</p>
+  </header>
+
+  <main class="contenedor">
+
+    <section class="bienvenida">
+      <h2>Bienvenida 👩🏻‍⚕️</h2>
+      <p>
+        Sistema de seguimiento y control de pacientes.
+      </p>
+    </section>
+
+    <section class="grid">
+
+      <div class="tarjeta">
+        <div class="icono">👥</div>
+        <h3>Pacientes</h3>
+        <p>Consulta y administra tus pacientes.</p>
+      </div>
+
+      <div class="tarjeta">
+        <div class="icono">🩺</div>
+        <h3>Nueva consulta</h3>
+        <p>Registra una nueva consulta médica.</p>
+      </div>
+
+      <div class="tarjeta">
+        <div class="icono">⚖️</div>
+        <h3>Peso e IMC</h3>
+        <p>Registra peso, talla e IMC.</p>
+      </div>
+
+      <div class="tarjeta">
+        <div class="icono">🥗</div>
+        <h3>Planes alimenticios</h3>
+        <p>Crea y consulta planes nutricionales.</p>
+      </div>
+
+      <div class="tarjeta">
+        <div class="icono">📈</div>
+        <h3>Evolución</h3>
+        <p>Consulta el progreso del paciente.</p>
+      </div>
+
+      <div class="tarjeta">
+        <div class="icono">📅</div>
+        <h3>Citas</h3>
+        <p>Organiza tus próximas consultas.</p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    L.A.C. Salud Metabólica © 2026
+  </footer>
+
+</body>
+</html>
