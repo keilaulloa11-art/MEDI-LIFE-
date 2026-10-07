@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>L.A.C. Salud Metabólica</title>
+  <title>MEDI-LIFE | L.A.C. Salud Metabólica</title>
 
   <style>
     * {
@@ -27,7 +27,6 @@
 
     header h1 {
       font-size: 28px;
-      letter-spacing: 1px;
     }
 
     header p {
@@ -36,21 +35,18 @@
     }
 
     .contenedor {
-      max-width: 900px;
+      max-width: 950px;
       margin: 30px auto;
       padding: 20px;
     }
 
-    .bienvenida {
+    .bienvenida,
+    .panel {
       background: white;
       padding: 25px;
       border-radius: 18px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.08);
       margin-bottom: 25px;
-    }
-
-    .bienvenida h2 {
-      margin-bottom: 10px;
     }
 
     .grid {
@@ -87,6 +83,74 @@
       font-size: 14px;
     }
 
+    .oculto {
+      display: none;
+    }
+
+    .boton {
+      border: none;
+      border-radius: 10px;
+      padding: 12px 18px;
+      cursor: pointer;
+      font-size: 15px;
+      margin-top: 15px;
+      background: #17324d;
+      color: white;
+    }
+
+    .boton-secundario {
+      background: #9ed8d2;
+      color: #17324d;
+      margin-left: 8px;
+    }
+
+    .formulario {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .campo {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .campo label {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .campo input,
+    .campo select,
+    .campo textarea {
+      padding: 11px;
+      border: 1px solid #ccd8dc;
+      border-radius: 9px;
+      font-size: 15px;
+    }
+
+    .campo textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .resultado {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      background: #e8f5f3;
+      font-weight: bold;
+    }
+
+    .paciente {
+      background: #f4f8f8;
+      border-radius: 12px;
+      padding: 15px;
+      margin-top: 12px;
+    }
+
     footer {
       text-align: center;
       margin-top: 40px;
@@ -99,23 +163,24 @@
 
 <body>
 
-  <header>
-    <h1>L.A.C. Salud Metabólica</h1>
-    <p>Equilibrio hoy, una mejor versión mañana</p>
-  </header>
+<header>
+  <h1>MEDI-LIFE</h1>
+  <p>L.A.C. Salud Metabólica · Equilibrio hoy, una mejor versión mañana</p>
+</header>
 
-  <main class="contenedor">
+<main class="contenedor">
 
-    <section class="bienvenida">
+  <!-- INICIO -->
+  <section id="inicio">
+
+    <div class="bienvenida">
       <h2>Bienvenida 👩🏻‍⚕️</h2>
-      <p>
-        Sistema de seguimiento y control de pacientes.
-      </p>
-    </section>
+      <p>Sistema de seguimiento y control de pacientes.</p>
+    </div>
 
-    <section class="grid">
+    <div class="grid">
 
-      <div class="tarjeta">
+      <div class="tarjeta" onclick="mostrarPacientes()">
         <div class="icono">👥</div>
         <h3>Pacientes</h3>
         <p>Consulta y administra tus pacientes.</p>
@@ -124,40 +189,267 @@
       <div class="tarjeta">
         <div class="icono">🩺</div>
         <h3>Nueva consulta</h3>
-        <p>Registra una nueva consulta médica.</p>
+        <p>Próximamente.</p>
       </div>
 
-      <div class="tarjeta">
+      <div class="tarjeta" onclick="mostrarIMC()">
         <div class="icono">⚖️</div>
         <h3>Peso e IMC</h3>
-        <p>Registra peso, talla e IMC.</p>
+        <p>Calcula el IMC de un paciente.</p>
       </div>
 
       <div class="tarjeta">
         <div class="icono">🥗</div>
         <h3>Planes alimenticios</h3>
-        <p>Crea y consulta planes nutricionales.</p>
+        <p>Próximamente.</p>
       </div>
 
       <div class="tarjeta">
         <div class="icono">📈</div>
         <h3>Evolución</h3>
-        <p>Consulta el progreso del paciente.</p>
+        <p>Próximamente.</p>
       </div>
 
       <div class="tarjeta">
         <div class="icono">📅</div>
         <h3>Citas</h3>
-        <p>Organiza tus próximas consultas.</p>
+        <p>Próximamente.</p>
       </div>
 
-    </section>
+    </div>
 
-  </main>
+  </section>
 
-  <footer>
-    L.A.C. Salud Metabólica © 2026
-  </footer>
+
+  <!-- PACIENTES -->
+  <section id="pacientes" class="panel oculto">
+
+    <h2>👥 Pacientes</h2>
+    <p style="margin-top:8px;">
+      Registro básico de pacientes.
+    </p>
+
+    <button class="boton" onclick="mostrarFormulario()">
+      ➕ Nuevo paciente
+    </button>
+
+    <button class="boton boton-secundario" onclick="volverInicio()">
+      ← Inicio
+    </button>
+
+    <div id="formularioPaciente" class="oculto">
+
+      <h3 style="margin-top:25px;">Registrar paciente</h3>
+
+      <div class="formulario">
+
+        <div class="campo">
+          <label>Nombre completo</label>
+          <input id="nombre" type="text">
+        </div>
+
+        <div class="campo">
+          <label>Fecha de nacimiento</label>
+          <input id="fechaNacimiento" type="date">
+        </div>
+
+        <div class="campo">
+          <label>Sexo</label>
+          <select id="sexo">
+            <option value="">Seleccionar</option>
+            <option>Mujer</option>
+            <option>Hombre</option>
+            <option>Otro</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label>Teléfono</label>
+          <input id="telefono" type="tel">
+        </div>
+
+        <div class="campo">
+          <label>Peso (kg)</label>
+          <input id="peso" type="number" step="0.1">
+        </div>
+
+        <div class="campo">
+          <label>Talla (m)</label>
+          <input id="talla" type="number" step="0.01">
+        </div>
+
+        <div class="campo">
+          <label>Antecedentes</label>
+          <textarea id="antecedentes"></textarea>
+        </div>
+
+        <div class="campo">
+          <label>Alergias</label>
+          <textarea id="alergias"></textarea>
+        </div>
+
+      </div>
+
+      <button class="boton" onclick="guardarPaciente()">
+        💾 Guardar paciente
+      </button>
+
+      <button class="boton boton-secundario" onclick="ocultarFormulario()">
+        Cancelar
+      </button>
+
+      <div id="resultadoIMC" class="resultado oculto"></div>
+
+    </div>
+
+    <div id="listaPacientes" style="margin-top:25px;">
+      <h3>Pacientes registrados</h3>
+      <p style="margin-top:8px;">No hay pacientes registrados.</p>
+    </div>
+
+  </section>
+
+
+  <!-- IMC -->
+  <section id="imc" class="panel oculto">
+
+    <h2>⚖️ Calculadora de IMC</h2>
+
+    <div class="formulario">
+
+      <div class="campo">
+        <label>Peso (kg)</label>
+        <input id="pesoIMC" type="number" step="0.1">
+      </div>
+
+      <div class="campo">
+        <label>Talla (m)</label>
+        <input id="tallaIMC" type="number" step="0.01">
+      </div>
+
+    </div>
+
+    <button class="boton" onclick="calcularIMC()">
+      Calcular IMC
+    </button>
+
+    <button class="boton boton-secundario" onclick="volverInicio()">
+      ← Inicio
+    </button>
+
+    <div id="resultadoCalculadora" class="resultado oculto"></div>
+
+  </section>
+
+</main>
+
+<footer>
+  MEDI-LIFE · L.A.C. Salud Metabólica © 2026
+</footer>
+
+
+<script>
+
+  function ocultarTodo() {
+    document.getElementById("inicio").style.display = "none";
+    document.getElementById("pacientes").style.display = "none";
+    document.getElementById("imc").style.display = "none";
+  }
+
+  function volverInicio() {
+    ocultarTodo();
+    document.getElementById("inicio").style.display = "block";
+  }
+
+  function mostrarPacientes() {
+    ocultarTodo();
+    document.getElementById("pacientes").style.display = "block";
+  }
+
+  function mostrarIMC() {
+    ocultarTodo();
+    document.getElementById("imc").style.display = "block";
+  }
+
+  function mostrarFormulario() {
+    document.getElementById("formularioPaciente").style.display = "block";
+  }
+
+  function ocultarFormulario() {
+    document.getElementById("formularioPaciente").style.display = "none";
+  }
+
+  function calcularIMC() {
+
+    const peso = parseFloat(document.getElementById("pesoIMC").value);
+    const talla = parseFloat(document.getElementById("tallaIMC").value);
+
+    if (!peso || !talla || talla <= 0) {
+      alert("Ingresa un peso y una talla válidos.");
+      return;
+    }
+
+    const imc = peso / (talla * talla);
+
+    let clasificacion = "";
+
+    if (imc < 18.5) {
+      clasificacion = "Bajo peso";
+    } else if (imc < 25) {
+      clasificacion = "Peso normal";
+    } else if (imc < 30) {
+      clasificacion = "Sobrepeso";
+    } else {
+      clasificacion = "Obesidad";
+    }
+
+    const resultado = document.getElementById("resultadoCalculadora");
+
+    resultado.innerHTML =
+      "IMC: " + imc.toFixed(1) +
+      "<br>Clasificación: " + clasificacion;
+
+    resultado.style.display = "block";
+  }
+
+
+  function guardarPaciente() {
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const peso = parseFloat(document.getElementById("peso").value);
+    const talla = parseFloat(document.getElementById("talla").value);
+
+    if (!nombre) {
+      alert("Ingresa el nombre del paciente.");
+      return;
+    }
+
+    let imcTexto = "No calculado";
+
+    if (peso && talla && talla > 0) {
+      const imc = peso / (talla * talla);
+      imcTexto = imc.toFixed(1);
+    }
+
+    const paciente = document.createElement("div");
+
+    paciente.className = "paciente";
+
+    paciente.innerHTML = `
+      <strong>${nombre}</strong><br>
+      Peso: ${peso || "No registrado"} kg<br>
+      Talla: ${talla || "No registrada"} m<br>
+      IMC: ${imcTexto}
+    `;
+
+    document.getElementById("listaPacientes").appendChild(paciente);
+
+    alert("Paciente agregado correctamente.");
+
+    ocultarFormulario();
+  }
+
+</script>
 
 </body>
 </html>
