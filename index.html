@@ -1,229 +1,302 @@
-<!DOCTYPE html>
+
+    <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>MEDI-LIFE | L.A.C. Salud Metabólica</title>
+<title>MEDI-LIFE | L.A.C. Salud Metabólica</title>
 
-  <style>
+<style>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f8f8;
+    color:#17324d;
+}
+
+header{
+    background:#102f4a;
+    color:white;
+    padding:25px 20px;
+    text-align:center;
+}
+
+header h1{
+    font-size:30px;
+}
+
+header p{
+    margin-top:8px;
+    color:#9ed8d2;
+}
+
+.contenedor{
+    max-width:1100px;
+    margin:30px auto;
+    padding:20px;
+}
+
+.bienvenida,
+.panel{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+    margin-bottom:25px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:18px;
+}
+
+.tarjeta{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+    cursor:pointer;
+    transition:.2s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-4px);
+}
+
+.icono{
+    font-size:38px;
+    margin-bottom:12px;
+}
+
+.tarjeta h3{
+    margin-bottom:8px;
+}
+
+.tarjeta p{
+    color:#687985;
+    font-size:14px;
+}
+
+.oculto{
+    display:none;
+}
+
+.boton{
+    border:none;
+    border-radius:10px;
+    padding:12px 18px;
+    cursor:pointer;
+    font-size:15px;
+    margin-top:15px;
+    background:#17324d;
+    color:white;
+}
+
+.boton:hover{
+    opacity:.9;
+}
+
+.boton-secundario{
+    background:#9ed8d2;
+    color:#17324d;
+    margin-left:8px;
+}
+
+.boton-rojo{
+    background:#b94a48;
+}
+
+.formulario{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    margin-top:20px;
+}
+
+.campo{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.campo label{
+    font-weight:bold;
+    font-size:14px;
+}
+
+.campo input,
+.campo select,
+.campo textarea{
+    padding:11px;
+    border:1px solid #ccd8dc;
+    border-radius:9px;
+    font-size:15px;
+    width:100%;
+}
+
+.campo textarea{
+    min-height:90px;
+    resize:vertical;
+}
+
+.campo-completo{
+    grid-column:1/-1;
+}
+
+.resultado{
+    margin-top:20px;
+    padding:15px;
+    border-radius:10px;
+    background:#e8f5f3;
+    font-weight:bold;
+}
+
+.paciente{
+    background:#f4f8f8;
+    border-radius:12px;
+    padding:18px;
+    margin-top:12px;
+    border-left:5px solid #9ed8d2;
+}
+
+.separador{
+    margin:25px 0;
+    border:0;
+    border-top:1px solid #dce6e8;
+}
+
+.titulo-seccion{
+    margin-top:25px;
+    margin-bottom:10px;
+    color:#17324d;
+}
+
+.receta-box{
+    background:white;
+    border:1px solid #d8e2e5;
+    border-radius:15px;
+    padding:20px;
+    margin-top:20px;
+}
+
+.medicamento{
+    border:1px solid #ccd8dc;
+    border-radius:12px;
+    padding:18px;
+    margin-top:15px;
+    background:#f8fbfb;
+}
+
+.medicamento-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:12px;
+}
+
+.medicamento h4{
+    margin-bottom:12px;
+}
+
+.tabla-resumen{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.tabla-resumen th,
+.tabla-resumen td{
+    border:1px solid #d5e0e3;
+    padding:10px;
+    text-align:left;
+}
+
+.tabla-resumen th{
+    background:#e8f5f3;
+}
+
+.receta-documento{
+    background:white;
+    border:1px solid #ccd8dc;
+    padding:30px;
+    margin-top:25px;
+    border-radius:12px;
+}
+
+.receta-documento h2{
+    text-align:center;
+    margin-bottom:5px;
+}
+
+.encabezado-receta{
+    text-align:center;
+    color:#687985;
+    margin-bottom:25px;
+}
+
+.firma{
+    margin-top:60px;
+    text-align:center;
+}
+
+footer{
+    text-align:center;
+    margin-top:40px;
+    padding:20px;
+    color:#687985;
+    font-size:13px;
+}
+
+@media(max-width:600px){
+
+    .contenedor{
+        padding:10px;
     }
 
-    body {
-      background: #f4f8f8;
-      color: #17324d;
+    .panel,
+    .bienvenida{
+        padding:18px;
     }
 
-    header {
-      background: #102f4a;
-      color: white;
-      padding: 25px 20px;
-      text-align: center;
+    .boton{
+        width:100%;
+        margin-left:0;
     }
 
-    header h1 {
-      font-size: 30px;
+}
+
+@media print{
+
+    body{
+        background:white;
     }
 
-    header p {
-      margin-top: 8px;
-      color: #9ed8d2;
+    header,
+    footer,
+    .no-imprimir{
+        display:none!important;
     }
 
-    .contenedor {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 20px;
+    .panel{
+        box-shadow:none;
+        border:none;
     }
 
-    .bienvenida,
-    .panel {
-      background: white;
-      padding: 25px;
-      border-radius: 18px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      margin-bottom: 25px;
+    .receta-documento{
+        border:none;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 18px;
-    }
+}
 
-    .tarjeta {
-      background: white;
-      padding: 25px;
-      border-radius: 18px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .tarjeta:hover {
-      transform: translateY(-4px);
-    }
-
-    .icono {
-      font-size: 35px;
-      margin-bottom: 12px;
-    }
-
-    .tarjeta h3 {
-      margin-bottom: 8px;
-    }
-
-    .tarjeta p {
-      color: #687985;
-      font-size: 14px;
-    }
-
-    .oculto {
-      display: none;
-    }
-
-    .boton {
-      border: none;
-      border-radius: 10px;
-      padding: 12px 18px;
-      cursor: pointer;
-      font-size: 15px;
-      margin-top: 15px;
-      background: #17324d;
-      color: white;
-    }
-
-    .boton-secundario {
-      background: #9ed8d2;
-      color: #17324d;
-      margin-left: 8px;
-    }
-
-    .boton-eliminar {
-      background: #b54b4b;
-      margin-left: 8px;
-    }
-
-    .formulario {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .campo {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .campo label {
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    .campo input,
-    .campo select,
-    .campo textarea {
-      padding: 11px;
-      border: 1px solid #ccd8dc;
-      border-radius: 9px;
-      font-size: 15px;
-    }
-
-    .campo textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-
-    .resultado {
-      margin-top: 20px;
-      padding: 15px;
-      border-radius: 10px;
-      background: #e8f5f3;
-      font-weight: bold;
-    }
-
-    .medicamento {
-      background: #f4f8f8;
-      padding: 18px;
-      border-radius: 12px;
-      margin-top: 15px;
-      border-left: 5px solid #9ed8d2;
-    }
-
-    .receta {
-      background: white;
-      color: #17324d;
-      border: 1px solid #d5dddd;
-      padding: 35px;
-      margin-top: 25px;
-      border-radius: 12px;
-    }
-
-    .receta-header {
-      text-align: center;
-      border-bottom: 2px solid #17324d;
-      padding-bottom: 15px;
-      margin-bottom: 20px;
-    }
-
-    .receta-header h2 {
-      color: #102f4a;
-    }
-
-    .medicamento-receta {
-      padding: 15px 0;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .firma {
-      margin-top: 50px;
-      text-align: center;
-    }
-
-    @media print {
-
-      body {
-        background: white;
-      }
-
-      header,
-      .no-imprimir {
-        display: none !important;
-      }
-
-      .contenedor {
-        margin: 0;
-        max-width: 100%;
-      }
-
-      .panel {
-        box-shadow: none;
-      }
-
-      .receta {
-        border: none;
-      }
-
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 40px;
-      padding: 20px;
-      color: #687985;
-      font-size: 13px;
-    }
-
-  </style>
+</style>
 </head>
 
 
@@ -231,11 +304,12 @@
 
 <header>
 
-  <h1>MEDI-LIFE</h1>
+<h1>MEDI-LIFE</h1>
 
-  <p>
-    L.A.C. Salud Metabólica · Equilibrio hoy, una mejor versión mañana
-  </p>
+<p>
+L.A.C. Salud Metabólica ·
+Equilibrio hoy, una mejor versión mañana
+</p>
 
 </header>
 
@@ -243,469 +317,988 @@
 <main class="contenedor">
 
 
-  <!-- INICIO -->
+<!-- ========================= -->
+<!-- INICIO -->
+<!-- ========================= -->
 
-  <section id="inicio">
+<section id="inicio">
 
-    <div class="bienvenida">
+<div class="bienvenida">
 
-      <h2>Bienvenida 👩🏻‍⚕️</h2>
+<h2>Bienvenida 👩🏻‍⚕️</h2>
 
-      <p>
-        Sistema de seguimiento y control de pacientes.
-      </p>
+<p>
+Sistema de seguimiento y control de pacientes.
+</p>
 
-    </div>
+</div>
 
 
-    <div class="grid">
+<div class="grid">
 
 
-      <div class="tarjeta" onclick="mostrarPacientes()">
+<div class="tarjeta" onclick="mostrarPacientes()">
 
-        <div class="icono">👥</div>
+<div class="icono">👥</div>
 
-        <h3>Pacientes</h3>
+<h3>Pacientes</h3>
 
-        <p>
-          Consulta y administra tus pacientes.
-        </p>
+<p>
+Consulta y administra tus pacientes.
+</p>
 
-      </div>
+</div>
 
 
-      <div class="tarjeta" onclick="mostrarReceta()">
+<div class="tarjeta" onclick="mostrarExpediente()">
 
-        <div class="icono">🧾</div>
+<div class="icono">🗂️</div>
 
-        <h3>Receta médica</h3>
+<h3>Expediente clínico</h3>
 
-        <p>
-          Crear e imprimir recetas.
-        </p>
+<p>
+Datos clínicos y antecedentes.
+</p>
 
-      </div>
+</div>
 
 
-      <div class="tarjeta" onclick="mostrarIMC()">
+<div class="tarjeta" onclick="mostrarReceta()">
 
-        <div class="icono">⚖️</div>
+<div class="icono">🧾</div>
 
-        <h3>Peso e IMC</h3>
+<h3>Receta médica</h3>
 
-        <p>
-          Calcula el IMC de un paciente.
-        </p>
+<p>
+Elabora e imprime recetas.
+</p>
 
-      </div>
+</div>
 
 
-      <div class="tarjeta">
+<div class="tarjeta">
 
-        <div class="icono">🩺</div>
+<div class="icono">🩺</div>
 
-        <h3>Nueva consulta</h3>
+<h3>Nueva consulta</h3>
 
-        <p>
-          Próximamente.
-        </p>
+<p>
+Próximamente.
+</p>
 
-      </div>
+</div>
 
 
-      <div class="tarjeta">
+<div class="tarjeta" onclick="mostrarIMC()">
 
-        <div class="icono">🥗</div>
+<div class="icono">⚖️</div>
 
-        <h3>Planes alimenticios</h3>
+<h3>Peso e IMC</h3>
 
-        <p>
-          Próximamente.
-        </p>
+<p>
+Calcula el IMC del paciente.
+</p>
 
-      </div>
+</div>
 
 
-      <div class="tarjeta">
+<div class="tarjeta">
 
-        <div class="icono">📈</div>
+<div class="icono">🧪</div>
 
-        <h3>Evolución</h3>
+<h3>Laboratorios</h3>
 
-        <p>
-          Próximamente.
-        </p>
+<p>
+Próximamente.
+</p>
 
-      </div>
+</div>
 
 
-      <div class="tarjeta">
+<div class="tarjeta">
 
-        <div class="icono">📅</div>
+<div class="icono">🥗</div>
 
-        <h3>Citas</h3>
+<h3>Planes alimenticios</h3>
 
-        <p>
-          Próximamente.
-        </p>
+<p>
+Próximamente.
+</p>
 
-      </div>
+</div>
 
 
-    </div>
+<div class="tarjeta">
 
-  </section>
+<div class="icono">📈</div>
 
+<h3>Evolución</h3>
 
-  <!-- PACIENTES -->
+<p>
+Próximamente.
+</p>
 
-  <section id="pacientes" class="panel oculto">
+</div>
 
-    <h2>👥 Pacientes</h2>
 
-    <p style="margin-top:8px;">
-      Registro básico de pacientes.
-    </p>
+<div class="tarjeta">
 
+<div class="icono">📅</div>
 
-    <button class="boton" onclick="mostrarFormularioPaciente()">
-      ➕ Nuevo paciente
-    </button>
+<h3>Citas</h3>
 
-    <button class="boton boton-secundario" onclick="volverInicio()">
-      ← Inicio
-    </button>
+<p>
+Próximamente.
+</p>
 
+</div>
 
-    <div id="formularioPaciente" class="oculto">
 
-      <h3 style="margin-top:25px;">
-        Registrar paciente
-      </h3>
+<div class="tarjeta">
 
+<div class="icono">⚙️</div>
 
-      <div class="formulario">
+<h3>Configuración</h3>
 
-        <div class="campo">
+<p>
+Próximamente.
+</p>
 
-          <label>Nombre completo</label>
+</div>
 
-          <input id="nombrePaciente" type="text">
 
-        </div>
+</div>
 
+</section>
 
-        <div class="campo">
 
-          <label>Peso (kg)</label>
 
-          <input id="pesoPaciente" type="number" step="0.1">
+<!-- ========================= -->
+<!-- PACIENTES -->
+<!-- ========================= -->
 
-        </div>
+<section id="pacientes" class="panel oculto">
 
+<h2>👥 Pacientes</h2>
 
-        <div class="campo">
+<p style="margin-top:8px;">
+Registro básico de pacientes.
+</p>
 
-          <label>Talla (m)</label>
 
-          <input id="tallaPaciente" type="number" step="0.01">
+<button class="boton" onclick="mostrarFormularioPaciente()">
+➕ Nuevo paciente
+</button>
 
-        </div>
+<button class="boton boton-secundario" onclick="volverInicio()">
+← Inicio
+</button>
 
-      </div>
 
+<div id="formularioPaciente" class="oculto">
 
-      <button class="boton" onclick="guardarPaciente()">
-        💾 Guardar paciente
-      </button>
+<h3 class="titulo-seccion">
+Registrar paciente
+</h3>
 
 
-    </div>
+<div class="formulario">
 
 
-    <div id="listaPacientes" style="margin-top:25px;">
+<div class="campo">
 
-      <h3>Pacientes registrados</h3>
+<label>Nombre completo</label>
 
-      <p>
-        No hay pacientes registrados.
-      </p>
+<input id="nombre" type="text">
 
-    </div>
+</div>
 
 
-  </section>
+<div class="campo">
 
+<label>Fecha de nacimiento</label>
 
-  <!-- IMC -->
+<input id="fechaNacimiento" type="date">
 
-  <section id="imc" class="panel oculto">
+</div>
 
-    <h2>⚖️ Calculadora de IMC</h2>
 
+<div class="campo">
 
-    <div class="formulario">
+<label>Sexo</label>
 
-      <div class="campo">
+<select id="sexo">
 
-        <label>Peso (kg)</label>
+<option value="">
+Seleccionar
+</option>
 
-        <input id="pesoIMC" type="number" step="0.1">
+<option>Mujer</option>
 
-      </div>
+<option>Hombre</option>
 
+<option>Otro</option>
 
-      <div class="campo">
+</select>
 
-        <label>Talla (m)</label>
+</div>
 
-        <input id="tallaIMC" type="number" step="0.01">
 
-      </div>
+<div class="campo">
 
-    </div>
+<label>Teléfono</label>
 
+<input id="telefono" type="tel">
 
-    <button class="boton" onclick="calcularIMC()">
-      Calcular IMC
-    </button>
+</div>
 
 
-    <button class="boton boton-secundario" onclick="volverInicio()">
-      ← Inicio
-    </button>
+<div class="campo">
 
+<label>Peso (kg)</label>
 
-    <div id="resultadoCalculadora" class="resultado oculto"></div>
+<input id="peso" type="number" step="0.1">
 
-  </section>
+</div>
 
 
-  <!-- RECETA -->
+<div class="campo">
 
-  <section id="receta" class="panel oculto">
+<label>Talla (m)</label>
 
-    <h2>🧾 Receta médica</h2>
+<input id="talla" type="number" step="0.01">
 
-    <p style="margin-top:8px;">
-      Genera una receta médica.
-    </p>
+</div>
 
 
-    <div class="formulario">
+<div class="campo campo-completo">
 
-      <div class="campo">
+<label>Antecedentes</label>
 
-        <label>Nombre del paciente</label>
+<textarea id="antecedentes"></textarea>
 
-        <input id="nombreReceta" type="text">
+</div>
 
-      </div>
 
+<div class="campo campo-completo">
 
-      <div class="campo">
+<label>Alergias</label>
 
-        <label>Fecha</label>
+<textarea id="alergias"></textarea>
 
-        <input id="fechaReceta" type="date">
+</div>
 
-      </div>
 
+</div>
 
-      <div class="campo">
 
-        <label>Diagnóstico</label>
+<button class="boton" onclick="guardarPaciente()">
 
-        <input id="diagnosticoReceta" type="text">
+💾 Guardar paciente
 
-      </div>
+</button>
 
-    </div>
 
+<button class="boton boton-secundario" onclick="ocultarFormularioPaciente()">
 
-    <h3 style="margin-top:30px;">
-      Medicamentos
-    </h3>
+Cancelar
 
+</button>
 
-    <div id="medicamentos">
 
-      <div class="medicamento">
+</div>
 
-        <div class="formulario">
 
-          <div class="campo">
+<div id="listaPacientes" style="margin-top:25px;">
 
-            <label>Medicamento</label>
+<h3>
+Pacientes registrados
+</h3>
 
-            <input class="medicamentoNombre" type="text">
+<p id="mensajePacientes" style="margin-top:8px;">
+No hay pacientes registrados.
+</p>
 
-          </div>
+</div>
 
 
-          <div class="campo">
+</section>
 
-            <label>Presentación</label>
 
-            <input class="medicamentoPresentacion" type="text">
 
-          </div>
+<!-- ========================= -->
+<!-- EXPEDIENTE CLÍNICO -->
+<!-- ========================= -->
 
+<section id="expediente" class="panel oculto">
 
-          <div class="campo">
+<h2>🗂️ Expediente clínico</h2>
 
-            <label>Dosis</label>
+<p style="margin-top:8px;">
+Registro clínico del paciente.
+</p>
 
-            <input class="medicamentoDosis" type="text">
 
-          </div>
+<button class="boton boton-secundario" onclick="volverInicio()">
+← Inicio
+</button>
 
 
-          <div class="campo">
+<div class="formulario">
 
-            <label>Vía</label>
 
-            <select class="medicamentoVia">
+<div class="campo">
 
-              <option>Oral</option>
-              <option>Subcutánea</option>
-              <option>Intramuscular</option>
-              <option>Intravenosa</option>
-              <option>Tópica</option>
-              <option>Oftálmica</option>
-              <option>Ótica</option>
-              <option>Nasal</option>
+<label>Nombre completo</label>
 
-            </select>
+<input id="expNombre" type="text">
 
-          </div>
+</div>
 
 
-          <div class="campo">
+<div class="campo">
 
-            <label>Frecuencia</label>
+<label>Fecha de nacimiento</label>
 
-            <input class="medicamentoFrecuencia" type="text">
+<input id="expNacimiento" type="date">
 
-          </div>
+</div>
 
 
-          <div class="campo">
+<div class="campo">
 
-            <label>Duración</label>
+<label>Sexo</label>
 
-            <input class="medicamentoDuracion" type="text">
+<select id="expSexo">
 
-          </div>
+<option value="">
+Seleccionar
+</option>
 
+<option>Femenino</option>
 
-          <div class="campo">
+<option>Masculino</option>
 
-            <label>Indicaciones</label>
+<option>Otro</option>
 
-            <textarea class="medicamentoIndicaciones"></textarea>
+</select>
 
-          </div>
+</div>
 
-        </div>
 
-      </div>
+<div class="campo">
 
-    </div>
+<label>Teléfono</label>
 
+<input id="expTelefono" type="tel">
 
-    <button class="boton" onclick="agregarMedicamento()">
-      ➕ Agregar medicamento
-    </button>
+</div>
 
 
-    <button class="boton boton-secundario" onclick="generarReceta()">
-      🧾 Generar receta
-    </button>
+<div class="campo campo-completo">
 
+<label>Motivo de consulta</label>
 
-    <button class="boton boton-secundario" onclick="volverInicio()">
-      ← Inicio
-    </button>
+<textarea id="expMotivo"
+placeholder="Motivo principal de la consulta"></textarea>
 
+</div>
 
-    <div id="vistaReceta" class="receta oculto">
 
-      <div class="receta-header">
+<div class="campo campo-completo">
 
-        <h2>MEDI-LIFE</h2>
+<label>⚠️ Alergias</label>
 
-        <p>
-          L.A.C. Salud Metabólica
-        </p>
+<textarea id="expAlergias"
+placeholder="Medicamentos, alimentos u otras alergias"></textarea>
 
-        <p>
-          Equilibrio hoy, una mejor versión mañana
-        </p>
+</div>
 
-      </div>
 
+<div class="campo campo-completo">
 
-      <p>
-        <strong>Paciente:</strong>
-        <span id="vistaNombre"></span>
-      </p>
+<label>Antecedentes heredofamiliares</label>
 
+<textarea id="expAHF"
+placeholder="Diabetes, hipertensión, cáncer, etc."></textarea>
 
-      <p style="margin-top:8px;">
-        <strong>Fecha:</strong>
-        <span id="vistaFecha"></span>
-      </p>
+</div>
 
 
-      <p style="margin-top:8px;">
-        <strong>Diagnóstico:</strong>
-        <span id="vistaDiagnostico"></span>
-      </p>
+<div class="campo campo-completo">
 
+<label>Antecedentes personales patológicos</label>
 
-      <h3 style="margin-top:25px;">
-        Prescripción
-      </h3>
+<textarea id="expAPP"
+placeholder="Enfermedades, cirugías, hospitalizaciones, etc."></textarea>
 
+</div>
 
-      <div id="listaMedicamentosReceta"></div>
 
+<div class="campo campo-completo">
 
-      <div class="firma">
+<label>Antecedentes personales no patológicos</label>
 
-        <p>
-          ______________________________
-        </p>
+<textarea id="expAPNP"
+placeholder="Hábitos, alimentación, actividad física, etc."></textarea>
 
-        <p>
-          Dra. Keila Ulloa
-        </p>
+</div>
 
-        <p>
-          Médico general
-        </p>
 
-        <p>
-          Cédula profesional: __________
-        </p>
+<div class="campo campo-completo">
 
-      </div>
+<label>💊 Medicamentos actuales</label>
 
+<textarea id="expMedicamentos"
+placeholder="Medicamentos que utiliza actualmente"></textarea>
 
-      <div class="no-imprimir">
+</div>
 
-        <button class="boton" onclick="window.print()">
-          🖨️ Imprimir receta
-        </button>
 
-      </div>
+</div>
 
 
-    </div>
+<hr class="separador">
 
 
-  </section>
+<h3 class="titulo-seccion">
+❤️ Signos vitales
+</h3>
+
+
+<div class="formulario">
+
+
+<div class="campo">
+
+<label>Presión arterial</label>
+
+<input id="expTA" type="text" placeholder="120/80 mmHg">
+
+</div>
+
+
+<div class="campo">
+
+<label>Frecuencia cardiaca</label>
+
+<input id="expFC" type="number" placeholder="lpm">
+
+</div>
+
+
+<div class="campo">
+
+<label>Frecuencia respiratoria</label>
+
+<input id="expFR" type="number" placeholder="rpm">
+
+</div>
+
+
+<div class="campo">
+
+<label>Temperatura</label>
+
+<input id="expTemp" type="number" step="0.1" placeholder="°C">
+
+</div>
+
+
+<div class="campo">
+
+<label>SpO₂</label>
+
+<input id="expSpO2" type="number" placeholder="%">
+
+</div>
+
+
+<div class="campo">
+
+<label>Glucosa</label>
+
+<input id="expGlucosa" type="number" placeholder="mg/dL">
+
+</div>
+
+
+<div class="campo">
+
+<label>Peso</label>
+
+<input id="expPeso" type="number" step="0.1" placeholder="kg">
+
+</div>
+
+
+<div class="campo">
+
+<label>Talla</label>
+
+<input id="expTalla" type="number" step="0.01" placeholder="m">
+
+</div>
+
+
+</div>
+
+
+<hr class="separador">
+
+
+<h3 class="titulo-seccion">
+🔎 Exploración física
+</h3>
+
+
+<div class="campo">
+
+<textarea id="expExploracion"
+placeholder="Exploración física del paciente"></textarea>
+
+</div>
+
+
+<h3 class="titulo-seccion">
+🧠 Diagnósticos
+</h3>
+
+
+<div class="campo">
+
+<textarea id="expDiagnosticos"
+placeholder="Diagnóstico(s) clínico(s)"></textarea>
+
+</div>
+
+
+<h3 class="titulo-seccion">
+📝 Plan y notas médicas
+</h3>
+
+
+<div class="campo">
+
+<textarea id="expNotas"
+placeholder="Plan terapéutico, indicaciones y notas"></textarea>
+
+</div>
+
+
+<button class="boton" onclick="guardarExpediente()">
+
+💾 Guardar expediente
+
+</button>
+
+
+<button class="boton boton-secundario" onclick="imprimirExpediente()">
+
+🖨️ Imprimir expediente
+
+</button>
+
+
+</section>
+
+
+
+<!-- ========================= -->
+<!-- IMC -->
+<!-- ========================= -->
+
+<section id="imc" class="panel oculto">
+
+<h2>⚖️ Calculadora de IMC</h2>
+
+
+<div class="formulario">
+
+
+<div class="campo">
+
+<label>Peso (kg)</label>
+
+<input id="pesoIMC" type="number" step="0.1">
+
+</div>
+
+
+<div class="campo">
+
+<label>Talla (m)</label>
+
+<input id="tallaIMC" type="number" step="0.01">
+
+</div>
+
+
+</div>
+
+
+<button class="boton" onclick="calcularIMC()">
+
+Calcular IMC
+
+</button>
+
+
+<button class="boton boton-secundario" onclick="volverInicio()">
+
+← Inicio
+
+</button>
+
+
+<div id="resultadoCalculadora"
+class="resultado oculto">
+</div>
+
+
+</section>
+
+
+
+<!-- ========================= -->
+<!-- RECETA MÉDICA -->
+<!-- ========================= -->
+
+<section id="receta" class="panel oculto">
+
+<h2>🧾 Receta médica</h2>
+
+<p style="margin-top:8px;">
+Elaboración de receta médica.
+</p>
+
+
+<button class="boton boton-secundario" onclick="volverInicio()">
+
+← Inicio
+
+</button>
+
+
+<div class="receta-box">
+
+
+<h3 class="titulo-seccion">
+👤 Datos del paciente
+</h3>
+
+
+<div class="formulario">
+
+
+<div class="campo">
+
+<label>Nombre del paciente</label>
+
+<input id="recetaPaciente" type="text">
+
+</div>
+
+
+<div class="campo">
+
+<label>Fecha</label>
+
+<input id="recetaFecha" type="date">
+
+</div>
+
+
+<div class="campo campo-completo">
+
+<label>Diagnóstico</label>
+
+<textarea id="recetaDiagnostico"></textarea>
+
+</div>
+
+
+</div>
+
+
+<hr class="separador">
+
+
+<h3 class="titulo-seccion">
+💊 Medicamentos
+</h3>
+
+
+<div id="listaMedicamentos">
+
+<div class="medicamento">
+
+<h4>
+Medicamento 1
+</h4>
+
+
+<div class="medicamento-grid">
+
+
+<div class="campo">
+
+<label>Medicamento</label>
+
+<input class="med-nombre"
+type="text"
+placeholder="Nombre">
+
+</div>
+
+
+<div class="campo">
+
+<label>Presentación</label>
+
+<input class="med-presentacion"
+type="text"
+placeholder="Presentación">
+
+</div>
+
+
+<div class="campo">
+
+<label>Dosis</label>
+
+<input class="med-dosis"
+type="text"
+placeholder="Dosis">
+
+</div>
+
+
+<div class="campo">
+
+<label>Vía</label>
+
+<select class="med-via">
+
+<option>Oral</option>
+
+<option>Subcutánea</option>
+
+<option>Intramuscular</option>
+
+<option>Intravenosa</option>
+
+<option>Tópica</option>
+
+<option>Oftálmica</option>
+
+<option>Ótica</option>
+
+<option>Otra</option>
+
+</select>
+
+</div>
+
+
+<div class="campo">
+
+<label>Frecuencia</label>
+
+<input class="med-frecuencia"
+type="text"
+placeholder="Cada cuánto">
+
+</div>
+
+
+<div class="campo">
+
+<label>Duración</label>
+
+<input class="med-duracion"
+type="text"
+placeholder="Duración">
+
+</div>
+
+
+<div class="campo campo-completo">
+
+<label>Indicaciones</label>
+
+<textarea class="med-indicaciones"
+placeholder="Indicaciones adicionales"></textarea>
+
+</div>
+
+
+</div>
+
+
+<button
+class="boton boton-rojo"
+onclick="eliminarMedicamento(this)">
+
+🗑️ Eliminar medicamento
+
+</button>
+
+
+</div>
+
+</div>
+
+
+<button class="boton" onclick="agregarMedicamento()">
+
+➕ Agregar medicamento
+
+</button>
+
+
+<hr class="separador">
+
+
+<h3 class="titulo-seccion">
+👩🏻‍⚕️ Datos del médico
+</h3>
+
+
+<div class="formulario">
+
+
+<div class="campo">
+
+<label>Nombre del médico</label>
+
+<input id="doctorNombre"
+type="text"
+placeholder="Nombre del médico">
+
+</div>
+
+
+<div class="campo">
+
+<label>Cédula profesional</label>
+
+<input id="doctorCedula"
+type="text"
+placeholder="Cédula profesional">
+
+</div>
+
+
+<div class="campo campo-completo">
+
+<label>Indicaciones generales</label>
+
+<textarea id="indicacionesGenerales"></textarea>
+
+</div>
+
+
+</div>
+
+
+<button class="boton"
+onclick="generarReceta()">
+
+👁️ Generar receta
+
+</button>
+
+
+<button class="boton boton-secundario"
+onclick="imprimirReceta()">
+
+🖨️ Imprimir receta
+
+</button>
+
+
+</div>
+
+
+<div id="vistaReceta"
+class="receta-documento oculto">
+
+<h2>RECETA MÉDICA</h2>
+
+<div class="encabezado-receta">
+
+<strong>
+MEDI-LIFE
+</strong>
+
+<br>
+
+L.A.C. Salud Metabólica
+
+</div>
+
+
+<p>
+<strong>Paciente:</strong>
+<span id="vistaPaciente"></span>
+</p>
+
+
+<p style="margin-top:8px;">
+
+<strong>Fecha:</strong>
+<span id="vistaFecha"></span>
+
+</p>
+
+
+<p style="margin-top:8px;">
+
+<strong>Diagnóstico:</strong>
+<span id="vistaDiagnostico"></span>
+
+</p>
+
+
+<hr class="separador">
+
+
+<div id="vistaMedicamentos"></div>
+
+
+<p style="margin-top:25px;">
+
+<strong>Indicaciones generales:</strong>
+
+</p>
+
+
+<p id="vistaIndicaciones"
+style="margin-top:8px;white-space:pre-line;">
+</p>
+
+
+<div class="firma">
+
+______________________________
+
+<br>
+
+<span id="vistaDoctor"></span>
+
+<br>
+
+Cédula profesional:
+<span id="vistaCedula"></span>
+
+</div>
+
+
+</div>
+
+
+</section>
 
 
 </main>
@@ -713,436 +1306,651 @@
 
 <footer>
 
-  MEDI-LIFE · L.A.C. Salud Metabólica © 2026
+MEDI-LIFE · L.A.C. Salud Metabólica © 2026
 
 </footer>
+
 
 
 <script>
 
 
-function ocultarTodo() {
-
-  document.getElementById("inicio").style.display = "none";
-
-  document.getElementById("pacientes").style.display = "none";
-
-  document.getElementById("imc").style.display = "none";
-
-  document.getElementById("receta").style.display = "none";
-
-}
+/* ========================= */
+/* NAVEGACIÓN */
+/* ========================= */
 
 
-function volverInicio() {
+function ocultarTodo(){
 
-  ocultarTodo();
+document.getElementById("inicio").style.display="none";
 
-  document.getElementById("inicio").style.display = "block";
+document.getElementById("pacientes").style.display="none";
+
+document.getElementById("expediente").style.display="none";
+
+document.getElementById("imc").style.display="none";
+
+document.getElementById("receta").style.display="none";
 
 }
 
 
-function mostrarPacientes() {
+function volverInicio(){
 
-  ocultarTodo();
+ocultarTodo();
 
-  document.getElementById("pacientes").style.display = "block";
-
-}
-
-
-function mostrarIMC() {
-
-  ocultarTodo();
-
-  document.getElementById("imc").style.display = "block";
+document.getElementById("inicio").style.display="block";
 
 }
 
 
-function mostrarReceta() {
+function mostrarPacientes(){
 
-  ocultarTodo();
+ocultarTodo();
 
-  document.getElementById("receta").style.display = "block";
-
-}
-
-
-function mostrarFormularioPaciente() {
-
-  document.getElementById("formularioPaciente").style.display = "block";
+document.getElementById("pacientes").style.display="block";
 
 }
 
 
-function calcularIMC() {
+function mostrarExpediente(){
 
-  const peso =
-    parseFloat(document.getElementById("pesoIMC").value);
+ocultarTodo();
 
-  const talla =
-    parseFloat(document.getElementById("tallaIMC").value);
-
-
-  if (!peso || !talla || talla <= 0) {
-
-    alert("Ingresa un peso y una talla válidos.");
-
-    return;
-
-  }
-
-
-  const imc = peso / (talla * talla);
-
-
-  let clasificacion = "";
-
-
-  if (imc < 18.5) {
-
-    clasificacion = "Bajo peso";
-
-  } else if (imc < 25) {
-
-    clasificacion = "Peso normal";
-
-  } else if (imc < 30) {
-
-    clasificacion = "Sobrepeso";
-
-  } else {
-
-    clasificacion = "Obesidad";
-
-  }
-
-
-  const resultado =
-    document.getElementById("resultadoCalculadora");
-
-
-  resultado.innerHTML =
-    "IMC: " + imc.toFixed(1) +
-    "<br>Clasificación: " + clasificacion;
-
-
-  resultado.style.display = "block";
+document.getElementById("expediente").style.display="block";
 
 }
 
 
-function guardarPaciente() {
+function mostrarIMC(){
 
-  const nombre =
-    document.getElementById("nombrePaciente").value.trim();
+ocultarTodo();
 
-  const peso =
-    parseFloat(document.getElementById("pesoPaciente").value);
-
-  const talla =
-    parseFloat(document.getElementById("tallaPaciente").value);
-
-
-  if (!nombre) {
-
-    alert("Ingresa el nombre del paciente.");
-
-    return;
-
-  }
-
-
-  let imcTexto = "No calculado";
-
-
-  if (peso && talla && talla > 0) {
-
-    const imc = peso / (talla * talla);
-
-    imcTexto = imc.toFixed(1);
-
-  }
-
-
-  const paciente =
-    document.createElement("div");
-
-
-  paciente.className = "medicamento";
-
-
-  paciente.innerHTML = `
-
-    <strong>${nombre}</strong><br>
-
-    Peso: ${peso || "No registrado"} kg<br>
-
-    Talla: ${talla || "No registrada"} m<br>
-
-    IMC: ${imcTexto}
-
-  `;
-
-
-  document
-    .getElementById("listaPacientes")
-    .appendChild(paciente);
-
-
-  alert("Paciente agregado correctamente.");
+document.getElementById("imc").style.display="block";
 
 }
 
 
-function agregarMedicamento() {
+function mostrarReceta(){
 
-  const medicamentos =
-    document.getElementById("medicamentos");
+ocultarTodo();
 
-
-  const nuevo =
-    document.createElement("div");
-
-
-  nuevo.className = "medicamento";
-
-
-  nuevo.innerHTML = `
-
-    <div class="formulario">
-
-      <div class="campo">
-
-        <label>Medicamento</label>
-
-        <input class="medicamentoNombre" type="text">
-
-      </div>
-
-
-      <div class="campo">
-
-        <label>Presentación</label>
-
-        <input class="medicamentoPresentacion" type="text">
-
-      </div>
-
-
-      <div class="campo">
-
-        <label>Dosis</label>
-
-        <input class="medicamentoDosis" type="text">
-
-      </div>
-
-
-      <div class="campo">
-
-        <label>Vía</label>
-
-        <select class="medicamentoVia">
-
-          <option>Oral</option>
-          <option>Subcutánea</option>
-          <option>Intramuscular</option>
-          <option>Intravenosa</option>
-          <option>Tópica</option>
-          <option>Oftálmica</option>
-          <option>Ótica</option>
-          <option>Nasal</option>
-
-        </select>
-
-      </div>
-
-
-      <div class="campo">
-
-        <label>Frecuencia</label>
-
-        <input class="medicamentoFrecuencia" type="text">
-
-      </div>
-
-
-      <div class="campo">
-
-        <label>Duración</label>
-
-        <input class="medicamentoDuracion" type="text">
-
-      </div>
-
-
-      <div class="campo">
-
-        <label>Indicaciones</label>
-
-        <textarea class="medicamentoIndicaciones"></textarea>
-
-      </div>
-
-    </div>
-
-
-    <button
-      class="boton boton-eliminar"
-      onclick="this.parentElement.remove()">
-
-      🗑️ Eliminar
-
-    </button>
-
-  `;
-
-
-  medicamentos.appendChild(nuevo);
+document.getElementById("receta").style.display="block";
 
 }
 
 
-function generarReceta() {
 
-  const nombre =
-    document.getElementById("nombreReceta").value;
-
-  const fecha =
-    document.getElementById("fechaReceta").value;
-
-  const diagnostico =
-    document.getElementById("diagnosticoReceta").value;
+/* ========================= */
+/* PACIENTES */
+/* ========================= */
 
 
-  if (!nombre) {
+function mostrarFormularioPaciente(){
 
-    alert("Ingresa el nombre del paciente.");
-
-    return;
-
-  }
-
-
-  document.getElementById("vistaNombre")
-    .textContent = nombre;
-
-
-  document.getElementById("vistaFecha")
-    .textContent = fecha;
-
-
-  document.getElementById("vistaDiagnostico")
-    .textContent = diagnostico || "No especificado";
-
-
-  const nombres =
-    document.querySelectorAll(".medicamentoNombre");
-
-
-  const presentaciones =
-    document.querySelectorAll(".medicamentoPresentacion");
-
-
-  const dosis =
-    document.querySelectorAll(".medicamentoDosis");
-
-
-  const vias =
-    document.querySelectorAll(".medicamentoVia");
-
-
-  const frecuencias =
-    document.querySelectorAll(".medicamentoFrecuencia");
-
-
-  const duraciones =
-    document.querySelectorAll(".medicamentoDuracion");
-
-
-  const indicaciones =
-    document.querySelectorAll(".medicamentoIndicaciones");
-
-
-  let html = "";
-
-
-  for (let i = 0; i < nombres.length; i++) {
-
-    if (!nombres[i].value.trim()) {
-      continue;
-    }
-
-
-    html += `
-
-      <div class="medicamento-receta">
-
-        <strong>
-          ${i + 1}. ${nombres[i].value}
-        </strong>
-
-        <br>
-
-        Presentación:
-        ${presentaciones[i].value || "No especificada"}
-
-        <br>
-
-        Dosis:
-        ${dosis[i].value || "No especificada"}
-
-        <br>
-
-        Vía:
-        ${vias[i].value}
-
-        <br>
-
-        Frecuencia:
-        ${frecuencias[i].value || "No especificada"}
-
-        <br>
-
-        Duración:
-        ${duraciones[i].value || "No especificada"}
-
-        <br>
-
-        Indicaciones:
-        ${indicaciones[i].value || "Sin indicaciones adicionales"}
-
-      </div>
-
-    `;
-
-  }
-
-
-  if (!html) {
-
-    alert("Agrega al menos un medicamento.");
-
-    return;
-
-  }
-
-
-  document.getElementById("listaMedicamentosReceta")
-    .innerHTML = html;
-
-
-  document.getElementById("vistaReceta")
-    .style.display = "block";
+document.getElementById("formularioPaciente").style.display="block";
 
 }
+
+
+function ocultarFormularioPaciente(){
+
+document.getElementById("formularioPaciente").style.display="none";
+
+}
+
+
+function guardarPaciente(){
+
+const nombre=
+document.getElementById("nombre").value.trim();
+
+const peso=
+parseFloat(document.getElementById("peso").value);
+
+const talla=
+parseFloat(document.getElementById("talla").value);
+
+
+if(!nombre){
+
+alert("Ingresa el nombre del paciente.");
+
+return;
+
+}
+
+
+let imcTexto="No calculado";
+
+
+if(peso && talla && talla>0){
+
+const imc=peso/(talla*talla);
+
+imcTexto=imc.toFixed(1);
+
+}
+
+
+const paciente=
+document.createElement("div");
+
+paciente.className="paciente";
+
+
+paciente.innerHTML=`
+
+<strong>${nombre}</strong>
+
+<br><br>
+
+Fecha de nacimiento:
+${document.getElementById("fechaNacimiento").value || "No registrada"}
+
+<br>
+
+Sexo:
+${document.getElementById("sexo").value || "No registrado"}
+
+<br>
+
+Teléfono:
+${document.getElementById("telefono").value || "No registrado"}
+
+<br>
+
+Peso:
+${peso || "No registrado"} kg
+
+<br>
+
+Talla:
+${talla || "No registrada"} m
+
+<br>
+
+IMC:
+${imcTexto}
+
+<br><br>
+
+<button
+class="boton"
+onclick="mostrarExpedienteDesdePaciente('${nombre.replace(/'/g,"\\'")}')">
+
+🗂️ Abrir expediente
+
+</button>
+
+`;
+
+
+document
+.getElementById("listaPacientes")
+.appendChild(paciente);
+
+
+document.getElementById("mensajePacientes").style.display="none";
+
+
+alert("Paciente agregado correctamente.");
+
+
+ocultarFormularioPaciente();
+
+}
+
+
+function mostrarExpedienteDesdePaciente(nombre){
+
+mostrarExpediente();
+
+document.getElementById("expNombre").value=nombre;
+
+}
+
+
+
+/* ========================= */
+/* CALCULADORA IMC */
+/* ========================= */
+
+
+function calcularIMC(){
+
+const peso=
+parseFloat(document.getElementById("pesoIMC").value);
+
+const talla=
+parseFloat(document.getElementById("tallaIMC").value);
+
+
+if(!peso || !talla || talla<=0){
+
+alert("Ingresa un peso y una talla válidos.");
+
+return;
+
+}
+
+
+const imc=
+peso/(talla*talla);
+
+
+let clasificacion="";
+
+
+if(imc<18.5){
+
+clasificacion="Bajo peso";
+
+}
+else if(imc<25){
+
+clasificacion="Peso normal";
+
+}
+else if(imc<30){
+
+clasificacion="Sobrepeso";
+
+}
+else{
+
+clasificacion="Obesidad";
+
+}
+
+
+const resultado=
+document.getElementById("resultadoCalculadora");
+
+
+resultado.innerHTML=
+
+"IMC: "
++ imc.toFixed(1)
++ "<br>Clasificación: "
++ clasificacion;
+
+
+resultado.style.display="block";
+
+}
+
+
+
+/* ========================= */
+/* EXPEDIENTE */
+/* ========================= */
+
+
+function guardarExpediente(){
+
+const nombre=
+document.getElementById("expNombre").value.trim();
+
+
+if(!nombre){
+
+alert("Ingresa el nombre del paciente.");
+
+return;
+
+}
+
+
+alert(
+"✅ Expediente capturado correctamente.\n\n" +
+"Paciente: " + nombre
+);
+
+}
+
+
+function imprimirExpediente(){
+
+window.print();
+
+}
+
+
+
+/* ========================= */
+/* RECETA */
+/* ========================= */
+
+
+function agregarMedicamento(){
+
+const lista=
+document.getElementById("listaMedicamentos");
+
+
+const numero=
+lista.children.length+1;
+
+
+const medicamento=
+document.createElement("div");
+
+
+medicamento.className="medicamento";
+
+
+medicamento.innerHTML=`
+
+<h4>
+Medicamento ${numero}
+</h4>
+
+
+<div class="medicamento-grid">
+
+
+<div class="campo">
+
+<label>Medicamento</label>
+
+<input class="med-nombre"
+type="text"
+placeholder="Nombre">
+
+</div>
+
+
+<div class="campo">
+
+<label>Presentación</label>
+
+<input class="med-presentacion"
+type="text"
+placeholder="Presentación">
+
+</div>
+
+
+<div class="campo">
+
+<label>Dosis</label>
+
+<input class="med-dosis"
+type="text"
+placeholder="Dosis">
+
+</div>
+
+
+<div class="campo">
+
+<label>Vía</label>
+
+<select class="med-via">
+
+<option>Oral</option>
+
+<option>Subcutánea</option>
+
+<option>Intramuscular</option>
+
+<option>Intravenosa</option>
+
+<option>Tópica</option>
+
+<option>Oftálmica</option>
+
+<option>Ótica</option>
+
+<option>Otra</option>
+
+</select>
+
+</div>
+
+
+<div class="campo">
+
+<label>Frecuencia</label>
+
+<input class="med-frecuencia"
+type="text"
+placeholder="Cada cuánto">
+
+</div>
+
+
+<div class="campo">
+
+<label>Duración</label>
+
+<input class="med-duracion"
+type="text"
+placeholder="Duración">
+
+</div>
+
+
+<div class="campo campo-completo">
+
+<label>Indicaciones</label>
+
+<textarea
+class="med-indicaciones"
+placeholder="Indicaciones adicionales">
+</textarea>
+
+</div>
+
+
+</div>
+
+
+<button
+class="boton boton-rojo"
+onclick="eliminarMedicamento(this)">
+
+🗑️ Eliminar medicamento
+
+</button>
+
+`;
+
+
+lista.appendChild(medicamento);
+
+}
+
+
+function eliminarMedicamento(boton){
+
+const medicamentos=
+document.querySelectorAll(".medicamento");
+
+
+if(medicamentos.length<=1){
+
+alert("Debe existir al menos un medicamento.");
+
+return;
+
+}
+
+
+boton.parentElement.remove();
+
+}
+
+
+
+function generarReceta(){
+
+const paciente=
+document.getElementById("recetaPaciente").value;
+
+const fecha=
+document.getElementById("recetaFecha").value;
+
+const diagnostico=
+document.getElementById("recetaDiagnostico").value;
+
+const doctor=
+document.getElementById("doctorNombre").value;
+
+const cedula=
+document.getElementById("doctorCedula").value;
+
+const indicaciones=
+document.getElementById("indicacionesGenerales").value;
+
+
+document.getElementById("vistaPaciente").textContent=
+paciente || "No registrado";
+
+
+document.getElementById("vistaFecha").textContent=
+fecha || "No registrada";
+
+
+document.getElementById("vistaDiagnostico").textContent=
+diagnostico || "No registrado";
+
+
+document.getElementById("vistaDoctor").textContent=
+doctor || "Médico tratante";
+
+
+document.getElementById("vistaCedula").textContent=
+cedula || "________________";
+
+
+document.getElementById("vistaIndicaciones").textContent=
+indicaciones || "Sin indicaciones generales.";
+
+
+const medicamentos=
+document.querySelectorAll(".medicamento");
+
+
+let html="";
+
+
+medicamentos.forEach(function(med,index){
+
+const nombre=
+med.querySelector(".med-nombre").value;
+
+const presentacion=
+med.querySelector(".med-presentacion").value;
+
+const dosis=
+med.querySelector(".med-dosis").value;
+
+const via=
+med.querySelector(".med-via").value;
+
+const frecuencia=
+med.querySelector(".med-frecuencia").value;
+
+const duracion=
+med.querySelector(".med-duracion").value;
+
+const instrucciones=
+med.querySelector(".med-indicaciones").value;
+
+
+html+=`
+
+<div style="margin-bottom:25px;">
+
+<strong>
+${index+1}. ${nombre || "Medicamento"}
+</strong>
+
+<br>
+
+Presentación:
+${presentacion || "No especificada"}
+
+<br>
+
+Dosis:
+${dosis || "No especificada"}
+
+<br>
+
+Vía:
+${via || "No especificada"}
+
+<br>
+
+Frecuencia:
+${frecuencia || "No especificada"}
+
+<br>
+
+Duración:
+${duracion || "No especificada"}
+
+<br>
+
+Indicaciones:
+${instrucciones || "Sin indicaciones adicionales"}
+
+</div>
+
+`;
+
+});
+
+
+document.getElementById("vistaMedicamentos").innerHTML=html;
+
+
+document.getElementById("vistaReceta").style.display="block";
+
+}
+
+
+
+function imprimirReceta(){
+
+generarReceta();
+
+setTimeout(function(){
+
+window.print();
+
+},300);
+
+}
+
+
+
+/* ========================= */
+/* FECHA AUTOMÁTICA RECETA */
+/* ========================= */
+
+
+document.addEventListener("DOMContentLoaded",function(){
+
+const fecha=
+document.getElementById("recetaFecha");
+
+if(fecha){
+
+const hoy=
+new Date().toISOString().split("T")[0];
+
+fecha.value=hoy;
+
+}
+
+});
 
 
 </script>
-
 
 </body>
 </html>
