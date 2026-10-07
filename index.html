@@ -1,493 +1,486 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>MEDI-LIFE PRO | L.A.C. Salud Metabólica</title>
 
 <style>
-
-/* =====================================================
-   MEDI-LIFE PRO
-   ===================================================== */
-
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:"Segoe UI",Arial,sans-serif;
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:"Segoe UI",Arial,sans-serif;
 }
 
 :root{
-    --azul:#102f4a;
-    --azul2:#173f5f;
-    --teal:#51b9b0;
-    --teal2:#9ed8d2;
-    --blanco:#ffffff;
-    --gris:#f2f7f8;
-    --texto:#17324d;
-    --grisTexto:#687985;
-    --borde:#d8e5e8;
-    --rosa:#e98fa3;
+--azul:#102f4a;
+--azul2:#173f5f;
+--teal:#51b9b0;
+--teal2:#9ed8d2;
+--blanco:#ffffff;
+--gris:#f2f7f8;
+--texto:#17324d;
+--grisTexto:#687985;
+--borde:#d8e5e8;
+--rosa:#e98fa3;
 }
 
 body{
-    min-height:100vh;
-    color:var(--texto);
-    background:
-        radial-gradient(circle at 10% 15%,rgba(81,185,176,.13) 0 45px,transparent 46px),
-        radial-gradient(circle at 90% 20%,rgba(233,143,163,.10) 0 35px,transparent 36px),
-        radial-gradient(circle at 15% 85%,rgba(81,185,176,.10) 0 55px,transparent 56px),
-        linear-gradient(135deg,#f7fbfc,#eaf5f5);
+min-height:100vh;
+color:var(--texto);
+background:
+radial-gradient(circle at 10% 15%,rgba(81,185,176,.13) 0 45px,transparent 46px),
+radial-gradient(circle at 90% 20%,rgba(233,143,163,.10) 0 35px,transparent 36px),
+radial-gradient(circle at 15% 85%,rgba(81,185,176,.10) 0 55px,transparent 56px),
+linear-gradient(135deg,#f7fbfc,#eaf5f5);
 }
-
-/* Fondo médico decorativo */
 
 body::before{
-    content:"🩺   ♡   🫀   ✚   🩺   ♡   🧬   ✚   🩺   ♡";
-    position:fixed;
-    inset:0;
-    z-index:-1;
-    opacity:.035;
-    font-size:65px;
-    line-height:2;
-    letter-spacing:25px;
-    transform:rotate(-12deg) scale(1.2);
-    pointer-events:none;
+content:"🩺   ♡   🫀   ✚   🩺   ♡   🧬   ✚   🩺   ♡";
+position:fixed;
+inset:0;
+z-index:-1;
+opacity:.035;
+font-size:65px;
+line-height:2;
+letter-spacing:25px;
+transform:rotate(-12deg) scale(1.2);
+pointer-events:none;
 }
 
-/* HEADER */
-
 header{
-    position:relative;
-    overflow:hidden;
-    background:
-        linear-gradient(135deg,#0d2942,#173f5f 60%,#176b70);
-    color:white;
-    padding:28px 20px 32px;
-    text-align:center;
-    box-shadow:0 8px 30px rgba(16,47,74,.20);
+position:relative;
+overflow:hidden;
+background:linear-gradient(135deg,#0d2942,#173f5f 60%,#176b70);
+color:white;
+padding:28px 20px 32px;
+text-align:center;
+box-shadow:0 8px 30px rgba(16,47,74,.20);
 }
 
 header::after{
-    content:"♡  🩺  ♡  🩺  ♡";
-    position:absolute;
-    right:25px;
-    top:10px;
-    font-size:35px;
-    opacity:.12;
+content:"♡  🩺  ♡  🩺  ♡";
+position:absolute;
+right:25px;
+top:10px;
+font-size:35px;
+opacity:.12;
 }
 
 .logo{
-    font-size:36px;
-    font-weight:800;
-    letter-spacing:3px;
+font-size:36px;
+font-weight:800;
+letter-spacing:3px;
 }
 
 .logo span{
-    color:var(--teal2);
+color:var(--teal2);
 }
 
 .subtitulo{
-    margin-top:8px;
-    color:#c9f0ed;
-    font-size:15px;
+margin-top:8px;
+color:#c9f0ed;
+font-size:15px;
 }
 
 .badge{
-    display:inline-block;
-    margin-top:12px;
-    padding:6px 14px;
-    border:1px solid rgba(255,255,255,.25);
-    border-radius:30px;
-    font-size:12px;
-    background:rgba(255,255,255,.08);
+display:inline-block;
+margin-top:12px;
+padding:6px 14px;
+border:1px solid rgba(255,255,255,.25);
+border-radius:30px;
+font-size:12px;
+background:rgba(255,255,255,.08);
 }
-
-/* CONTENEDOR */
 
 .contenedor{
-    width:min(1150px,94%);
-    margin:30px auto;
+width:min(1150px,94%);
+margin:30px auto;
 }
-
-/* TARJETA */
 
 .bienvenida,
 .panel{
-    background:rgba(255,255,255,.93);
-    backdrop-filter:blur(8px);
-    padding:28px;
-    border-radius:24px;
-    box-shadow:0 12px 35px rgba(16,47,74,.09);
-    border:1px solid rgba(255,255,255,.8);
-    margin-bottom:24px;
+background:rgba(255,255,255,.93);
+backdrop-filter:blur(8px);
+padding:28px;
+border-radius:24px;
+box-shadow:0 12px 35px rgba(16,47,74,.09);
+border:1px solid rgba(255,255,255,.8);
+margin-bottom:24px;
 }
 
 .bienvenida{
-    position:relative;
-    overflow:hidden;
+position:relative;
+overflow:hidden;
 }
 
 .bienvenida::after{
-    content:"🩺";
-    position:absolute;
-    right:35px;
-    top:15px;
-    font-size:75px;
-    opacity:.08;
+content:"🩺";
+position:absolute;
+right:35px;
+top:15px;
+font-size:75px;
+opacity:.08;
 }
 
 .bienvenida h2{
-    font-size:28px;
-    margin-bottom:8px;
+font-size:28px;
+margin-bottom:8px;
 }
 
 .bienvenida p{
-    color:var(--grisTexto);
+color:var(--grisTexto);
 }
-
-/* GRID */
 
 .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-    gap:18px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+gap:18px;
 }
 
-/* TARJETAS */
-
 .tarjeta{
-    position:relative;
-    overflow:hidden;
-    background:rgba(255,255,255,.95);
-    padding:25px 20px;
-    border-radius:22px;
-    text-align:center;
-    box-shadow:0 8px 25px rgba(16,47,74,.08);
-    cursor:pointer;
-    border:1px solid var(--borde);
-    transition:.25s ease;
+position:relative;
+overflow:hidden;
+background:rgba(255,255,255,.95);
+padding:25px 20px;
+border-radius:22px;
+text-align:center;
+box-shadow:0 8px 25px rgba(16,47,74,.08);
+cursor:pointer;
+border:1px solid var(--borde);
+transition:.25s ease;
 }
 
 .tarjeta:hover{
-    transform:translateY(-6px);
-    box-shadow:0 15px 30px rgba(16,47,74,.15);
-    border-color:var(--teal2);
+transform:translateY(-6px);
+box-shadow:0 15px 30px rgba(16,47,74,.15);
+border-color:var(--teal2);
 }
 
 .tarjeta::after{
-    content:"";
-    position:absolute;
-    width:80px;
-    height:80px;
-    border-radius:50%;
-    background:rgba(81,185,176,.08);
-    right:-30px;
-    bottom:-30px;
+content:"";
+position:absolute;
+width:80px;
+height:80px;
+border-radius:50%;
+background:rgba(81,185,176,.08);
+right:-30px;
+bottom:-30px;
 }
 
 .icono{
-    width:68px;
-    height:68px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:0 auto 14px;
-    border-radius:20px;
-    background:linear-gradient(135deg,#e7f7f5,#f5fbfb);
-    font-size:34px;
+width:68px;
+height:68px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:0 auto 14px;
+border-radius:20px;
+background:linear-gradient(135deg,#e7f7f5,#f5fbfb);
+font-size:34px;
 }
 
 .tarjeta h3{
-    margin-bottom:7px;
-    color:var(--azul);
+margin-bottom:7px;
+color:var(--azul);
 }
 
 .tarjeta p{
-    color:var(--grisTexto);
-    font-size:14px;
-    line-height:1.4;
+color:var(--grisTexto);
+font-size:14px;
+line-height:1.4;
 }
 
-/* TITULOS */
-
-h2{
-    color:var(--azul);
-}
-
-h3{
-    color:var(--azul);
+h2,h3{
+color:var(--azul);
 }
 
 .titulo-seccion{
-    margin:24px 0 12px;
+margin:24px 0 12px;
 }
 
-/* FORMULARIOS */
-
 .formulario{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:16px;
-    margin-top:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:16px;
+margin-top:20px;
 }
 
 .campo{
-    display:flex;
-    flex-direction:column;
-    gap:7px;
+display:flex;
+flex-direction:column;
+gap:7px;
 }
 
 .campo-completo{
-    grid-column:1/-1;
+grid-column:1/-1;
 }
 
 .campo label{
-    font-weight:700;
-    font-size:13px;
-    color:#36536a;
+font-weight:700;
+font-size:13px;
+color:#36536a;
 }
 
 .campo input,
 .campo select,
 .campo textarea{
-    width:100%;
-    padding:12px 14px;
-    border:1px solid var(--borde);
-    border-radius:12px;
-    background:#fbfdfd;
-    color:var(--texto);
-    font-size:15px;
-    outline:none;
-    transition:.2s;
+width:100%;
+padding:12px 14px;
+border:1px solid var(--borde);
+border-radius:12px;
+background:#fbfdfd;
+color:var(--texto);
+font-size:15px;
+outline:none;
+transition:.2s;
 }
 
 .campo input:focus,
 .campo select:focus,
 .campo textarea:focus{
-    border-color:var(--teal);
-    box-shadow:0 0 0 3px rgba(81,185,176,.12);
+border-color:var(--teal);
+box-shadow:0 0 0 3px rgba(81,185,176,.12);
 }
 
 .campo textarea{
-    min-height:100px;
-    resize:vertical;
+min-height:100px;
+resize:vertical;
 }
 
-/* BOTONES */
-
 .boton{
-    border:0;
-    border-radius:12px;
-    padding:12px 18px;
-    cursor:pointer;
-    font-size:14px;
-    font-weight:700;
-    margin-top:15px;
-    background:linear-gradient(135deg,var(--azul),var(--azul2));
-    color:white;
-    box-shadow:0 5px 14px rgba(16,47,74,.15);
-    transition:.2s;
+border:0;
+border-radius:12px;
+padding:12px 18px;
+cursor:pointer;
+font-size:14px;
+font-weight:700;
+margin-top:15px;
+background:linear-gradient(135deg,var(--azul),var(--azul2));
+color:white;
+box-shadow:0 5px 14px rgba(16,47,74,.15);
+transition:.2s;
 }
 
 .boton:hover{
-    transform:translateY(-2px);
+transform:translateY(-2px);
 }
 
 .boton-secundario{
-    background:linear-gradient(135deg,var(--teal2),#c8eeea);
-    color:var(--azul);
-    margin-left:8px;
+background:linear-gradient(135deg,var(--teal2),#c8eeea);
+color:var(--azul);
+margin-left:8px;
 }
 
 .boton-rojo{
-    background:#b94a48;
+background:#b94a48;
 }
 
 .boton-verde{
-    background:#258f7e;
+background:#258f7e;
 }
-
-/* RESULTADOS */
 
 .resultado{
-    margin-top:20px;
-    padding:18px;
-    border-radius:14px;
-    background:#e8f7f5;
-    border:1px solid #c8e9e5;
-    font-weight:700;
+margin-top:20px;
+padding:18px;
+border-radius:14px;
+background:#e8f7f5;
+border:1px solid #c8e9e5;
+font-weight:700;
 }
-
-/* PACIENTES */
 
 .paciente{
-    background:#f7fbfb;
-    border-radius:15px;
-    padding:18px;
-    margin-top:12px;
-    border-left:5px solid var(--teal);
-    box-shadow:0 4px 12px rgba(0,0,0,.04);
+background:#f7fbfb;
+border-radius:15px;
+padding:18px;
+margin-top:12px;
+border-left:5px solid var(--teal);
+box-shadow:0 4px 12px rgba(0,0,0,.04);
 }
 
-/* MEDICAMENTOS */
-
 .medicamento{
-    border:1px solid var(--borde);
-    border-radius:16px;
-    padding:20px;
-    margin-top:15px;
-    background:#f8fbfb;
+border:1px solid var(--borde);
+border-radius:16px;
+padding:20px;
+margin-top:15px;
+background:#f8fbfb;
 }
 
 .medicamento-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:12px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:12px;
 }
 
-/* TABLA */
-
 .tabla{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:20px;
-    background:white;
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+background:white;
 }
 
 .tabla th,
 .tabla td{
-    padding:12px;
-    border:1px solid var(--borde);
-    text-align:left;
+padding:12px;
+border:1px solid var(--borde);
+text-align:left;
 }
 
 .tabla th{
-    background:#e8f7f5;
+background:#e8f7f5;
 }
 
-/* RECETA */
-
 .receta-documento{
-    background:white;
-    border:1px solid var(--borde);
-    padding:35px;
-    margin-top:25px;
-    border-radius:18px;
+background:white;
+border:1px solid var(--borde);
+padding:35px;
+margin-top:25px;
+border-radius:18px;
 }
 
 .receta-documento h2{
-    text-align:center;
+text-align:center;
 }
 
 .encabezado-receta{
-    text-align:center;
-    margin:8px 0 25px;
-    color:var(--grisTexto);
+text-align:center;
+margin:8px 0 25px;
+color:var(--grisTexto);
 }
 
 .firma{
-    margin-top:70px;
-    text-align:center;
+margin-top:70px;
+text-align:center;
 }
-
-/* SEPARADOR */
 
 .separador{
-    border:0;
-    border-top:1px solid var(--borde);
-    margin:25px 0;
+border:0;
+border-top:1px solid var(--borde);
+margin:25px 0;
 }
-
-/* OCULTO */
 
 .oculto{
-    display:none;
+display:none;
 }
-
-/* ALERTA */
 
 .alerta{
-    padding:14px;
-    border-radius:12px;
-    margin-top:15px;
-    background:#eef8f7;
-    border-left:4px solid var(--teal);
+padding:14px;
+border-radius:12px;
+margin-top:15px;
+background:#eef8f7;
+border-left:4px solid var(--teal);
 }
-
-/* FOOTER */
 
 footer{
-    text-align:center;
-    margin-top:50px;
-    padding:25px;
-    color:#687985;
-    font-size:13px;
+text-align:center;
+margin-top:50px;
+padding:25px;
+color:#687985;
+font-size:13px;
 }
 
-/* RESPONSIVE */
+.menu-fijo{
+position:fixed;
+top:16px;
+left:16px;
+z-index:9999;
+display:flex;
+align-items:center;
+gap:8px;
+padding:11px 16px;
+border-radius:999px;
+background:linear-gradient(135deg,#ffffff,#e8f7f5);
+color:#102f4a;
+border:1px solid rgba(255,255,255,.8);
+box-shadow:0 8px 22px rgba(16,47,74,.18);
+font-weight:800;
+font-size:14px;
+cursor:pointer;
+transition:.2s ease;
+backdrop-filter:blur(8px);
+}
+
+.menu-fijo:hover{
+transform:translateY(-2px) scale(1.02);
+}
+
+.boton-menu{
+display:block;
+margin:0 0 20px 0;
+background:linear-gradient(135deg,#173f5f,#51b9b0);
+}
 
 @media(max-width:600px){
 
-    .contenedor{
-        width:95%;
-        margin:18px auto;
-    }
+.contenedor{
+width:95%;
+margin:18px auto;
+}
 
-    .panel,
-    .bienvenida{
-        padding:20px;
-    }
+.panel,
+.bienvenida{
+padding:20px;
+}
 
-    .logo{
-        font-size:29px;
-    }
+.logo{
+font-size:29px;
+}
 
-    .boton{
-        width:100%;
-        margin-left:0;
-    }
+.boton{
+width:100%;
+margin-left:0;
+}
 
-    .campo-completo{
-        grid-column:auto;
-    }
+.campo-completo{
+grid-column:auto;
+}
+
+.menu-fijo{
+top:10px;
+left:10px;
+padding:9px 12px;
+font-size:12px;
+}
+
+.menu-fijo span{
+display:none;
+}
 
 }
 
-/* IMPRESIÓN */
-
 @media print{
 
-    body{
-        background:white;
-    }
+body{
+background:white;
+}
 
-    header,
-    footer,
-    .no-imprimir{
-        display:none!important;
-    }
+header,
+footer,
+.no-imprimir,
+.boton-menu{
+display:none!important;
+}
 
-    .panel{
-        box-shadow:none;
-        border:none;
-    }
+.panel{
+box-shadow:none;
+border:none;
+}
 
-    .receta-documento{
-        border:none;
-    }
+.receta-documento{
+border:none;
+}
 
 }
 
 </style>
 </head>
 
-
 <body>
 
+<div class="menu-fijo no-imprimir" onclick="volverInicio()" title="Volver al menú principal">
+🏠 <span>Menú principal</span>
+</div>
 
 <header>
 
@@ -505,21 +498,15 @@ L.A.C. Salud Metabólica · Equilibrio hoy, una mejor versión mañana
 
 </header>
 
-
 <main class="contenedor">
 
-
-<!-- =====================================================
-     INICIO
-     ===================================================== -->
+<!-- INICIO -->
 
 <section id="inicio">
 
 <div class="bienvenida">
 
-<h2>
-Bienvenida 👩🏻‍⚕️
-</h2>
+<h2>Bienvenida 👩🏻‍⚕️</h2>
 
 <p>
 Tu espacio para organizar pacientes, consultas,
@@ -528,611 +515,415 @@ expedientes y seguimiento médico.
 
 </div>
 
-
 <div class="grid">
 
-
 <div class="tarjeta" onclick="mostrar('pacientes')">
-
 <div class="icono">👥</div>
-
 <h3>Pacientes</h3>
-
-<p>
-Registro y administración de pacientes.
-</p>
-
+<p>Registro y administración de pacientes.</p>
 </div>
-
 
 <div class="tarjeta" onclick="mostrar('expediente')">
-
 <div class="icono">🗂️</div>
-
 <h3>Expediente clínico</h3>
-
-<p>
-Antecedentes, alergias y datos clínicos.
-</p>
-
+<p>Antecedentes, alergias y datos clínicos.</p>
 </div>
-
 
 <div class="tarjeta" onclick="mostrar('consulta')">
-
 <div class="icono">🩺</div>
-
 <h3>Nueva consulta</h3>
-
-<p>
-Registra la atención médica.
-</p>
-
+<p>Registra la atención médica.</p>
 </div>
-
 
 <div class="tarjeta" onclick="mostrar('receta')">
-
 <div class="icono">🧾</div>
-
 <h3>Receta médica</h3>
-
-<p>
-Elabora e imprime recetas.
-</p>
-
+<p>Elabora e imprime recetas.</p>
 </div>
-
 
 <div class="tarjeta" onclick="mostrar('medicamentos')">
-
 <div class="icono">💊</div>
-
 <h3>Medicamentos</h3>
-
-<p>
-Tratamientos y medicamentos.
-</p>
-
+<p>Tratamientos y medicamentos.</p>
 </div>
-
 
 <div class="tarjeta" onclick="mostrar('imc')">
-
 <div class="icono">⚖️</div>
-
-<h3>Peso e IMC</h3>
-
-<p>
-Calculadora de IMC.
-</p>
-
+<h3>IMC</h3>
+<p>Calcula índice de masa corporal.</p>
 </div>
-
 
 <div class="tarjeta" onclick="mostrar('laboratorios')">
-
 <div class="icono">🧪</div>
-
 <h3>Laboratorios</h3>
-
-<p>
-Registro de resultados.
-</p>
-
+<p>Registra resultados de laboratorio.</p>
 </div>
-
 
 <div class="tarjeta" onclick="mostrar('dieta')">
-
 <div class="icono">🥗</div>
-
 <h3>Plan alimenticio</h3>
-
-<p>
-Plan y seguimiento nutricional.
-</p>
-
+<p>Elabora planes de alimentación.</p>
 </div>
-
 
 <div class="tarjeta" onclick="mostrar('evolucion')">
-
 <div class="icono">📈</div>
-
 <h3>Evolución</h3>
-
-<p>
-Seguimiento del paciente.
-</p>
-
+<p>Seguimiento del paciente.</p>
 </div>
-
 
 <div class="tarjeta" onclick="mostrar('citas')">
-
 <div class="icono">📅</div>
-
 <h3>Citas</h3>
-
-<p>
-Agenda de pacientes.
-</p>
-
+<p>Agenda y organiza consultas.</p>
 </div>
-
 
 <div class="tarjeta" onclick="mostrar('configuracion')">
-
 <div class="icono">⚙️</div>
-
 <h3>Configuración</h3>
-
-<p>
-Datos del consultorio.
-</p>
-
+<p>Datos del médico y consultorio.</p>
 </div>
-
 
 </div>
 
 </section>
 
-
-
-<!-- =====================================================
-     PACIENTES
-     ===================================================== -->
+<!-- PACIENTES -->
 
 <section id="pacientes" class="panel oculto">
 
+<button class="boton boton-menu" onclick="volverInicio()">🏠 Menú principal</button>
+
 <h2>👥 Pacientes</h2>
 
-<p>
-Administra la información básica de tus pacientes.
+<p class="titulo-seccion">
+Registro y administración de pacientes.
 </p>
 
-
-<button class="boton"
-onclick="mostrarFormularioPaciente()">
-➕ Nuevo paciente
-</button>
-
-<button class="boton boton-secundario"
-onclick="volverInicio()">
-← Inicio
-</button>
-
-
-<div id="formPaciente" class="oculto">
-
-<h3 class="titulo-seccion">
-Nuevo paciente
-</h3>
-
-
 <div class="formulario">
-
 
 <div class="campo">
 <label>Nombre completo</label>
 <input id="pacNombre">
 </div>
 
-
 <div class="campo">
 <label>Fecha de nacimiento</label>
 <input id="pacNacimiento" type="date">
 </div>
 
-
 <div class="campo">
 <label>Sexo</label>
-
 <select id="pacSexo">
-<option>Seleccionar</option>
+<option value="">Seleccionar</option>
 <option>Femenino</option>
 <option>Masculino</option>
 <option>Otro</option>
 </select>
-
 </div>
-
 
 <div class="campo">
 <label>Teléfono</label>
 <input id="pacTelefono">
 </div>
 
-
 <div class="campo">
-<label>Peso kg</label>
-<input id="pacPeso" type="number" step=".1">
+<label>Correo electrónico</label>
+<input id="pacCorreo" type="email">
 </div>
 
-
 <div class="campo">
-<label>Talla m</label>
-<input id="pacTalla" type="number" step=".01">
+<label>Ocupación</label>
+<input id="pacOcupacion">
 </div>
-
 
 <div class="campo campo-completo">
-<label>Alergias</label>
-<textarea id="pacAlergias"></textarea>
+<label>Dirección</label>
+<input id="pacDireccion">
 </div>
 
-
 </div>
 
-
-<button class="boton boton-verde"
-onclick="guardarPaciente()">
+<button class="boton boton-verde" onclick="guardarPaciente()">
 💾 Guardar paciente
 </button>
 
-</div>
-
-
 <hr class="separador">
 
+<h3>Pacientes registrados</h3>
 
-<h3>
-Pacientes registrados
-</h3>
-
-<div id="listaPacientes">
-
-<p class="alerta">
-No hay pacientes registrados todavía.
-</p>
-
-</div>
+<div id="listaPacientes"></div>
 
 </section>
 
-
-
-<!-- =====================================================
-     EXPEDIENTE
-     ===================================================== -->
+<!-- EXPEDIENTE -->
 
 <section id="expediente" class="panel oculto">
 
+<button class="boton boton-menu" onclick="volverInicio()">🏠 Menú principal</button>
+
 <h2>🗂️ Expediente clínico</h2>
 
-<button class="boton boton-secundario"
-onclick="volverInicio()">
-← Inicio
-</button>
-
-
 <div class="formulario">
-
 
 <div class="campo">
 <label>Paciente</label>
 <input id="expPaciente">
 </div>
 
-
 <div class="campo">
 <label>Fecha</label>
 <input id="expFecha" type="date">
 </div>
-
 
 <div class="campo campo-completo">
 <label>Motivo de consulta</label>
 <textarea id="expMotivo"></textarea>
 </div>
 
-
 <div class="campo campo-completo">
-<label>⚠️ Alergias</label>
+<label>Alergias</label>
 <textarea id="expAlergias"></textarea>
 </div>
-
 
 <div class="campo campo-completo">
 <label>Antecedentes heredofamiliares</label>
 <textarea id="expAHF"></textarea>
 </div>
 
-
 <div class="campo campo-completo">
 <label>Antecedentes personales patológicos</label>
 <textarea id="expAPP"></textarea>
 </div>
-
 
 <div class="campo campo-completo">
 <label>Antecedentes personales no patológicos</label>
 <textarea id="expAPNP"></textarea>
 </div>
 
-
 <div class="campo campo-completo">
 <label>Medicamentos actuales</label>
 <textarea id="expMedicamentos"></textarea>
 </div>
 
-</div>
-
-
-<h3 class="titulo-seccion">
-❤️ Signos vitales
-</h3>
-
-
-<div class="formulario">
-
-
 <div class="campo">
 <label>Presión arterial</label>
-<input id="expTA" placeholder="120/80">
+<input id="expTA">
 </div>
 
-
 <div class="campo">
-<label>FC</label>
+<label>Frecuencia cardiaca</label>
 <input id="expFC" type="number">
 </div>
 
-
 <div class="campo">
-<label>FR</label>
+<label>Frecuencia respiratoria</label>
 <input id="expFR" type="number">
 </div>
 
-
 <div class="campo">
-<label>Temperatura °C</label>
-<input id="expTemp" type="number" step=".1">
+<label>Temperatura</label>
+<input id="expTemp" type="number" step="0.1">
 </div>
 
-
 <div class="campo">
-<label>SpO₂ %</label>
-<input id="expSpO2" type="number">
+<label>Saturación O₂</label>
+<input id="expSat" type="number">
 </div>
-
-
-<div class="campo">
-<label>Glucosa mg/dL</label>
-<input id="expGlucosa" type="number">
-</div>
-
 
 <div class="campo">
 <label>Peso kg</label>
-<input id="expPeso" type="number" step=".1">
+<input id="expPeso" type="number" step="0.1">
 </div>
-
 
 <div class="campo">
 <label>Talla m</label>
-<input id="expTalla" type="number" step=".01">
+<input id="expTalla" type="number" step="0.01">
+</div>
+
+<div class="campo campo-completo">
+<label>Exploración física</label>
+<textarea id="expExploracion"></textarea>
+</div>
+
+<div class="campo campo-completo">
+<label>Diagnóstico</label>
+<textarea id="expDiagnostico"></textarea>
+</div>
+
+<div class="campo campo-completo">
+<label>Plan</label>
+<textarea id="expPlan"></textarea>
 </div>
 
 </div>
 
-
-<h3 class="titulo-seccion">
-🔎 Exploración física
-</h3>
-
-<textarea
-id="expExploracion"
-style="width:100%;min-height:120px;padding:12px;border:1px solid #d8e5e8;border-radius:12px;">
-</textarea>
-
-
-<h3 class="titulo-seccion">
-🧠 Diagnóstico
-</h3>
-
-<textarea
-id="expDiagnostico"
-style="width:100%;min-height:100px;padding:12px;border:1px solid #d8e5e8;border-radius:12px;">
-</textarea>
-
-
-<h3 class="titulo-seccion">
-📝 Plan médico y notas
-</h3>
-
-<textarea
-id="expPlan"
-style="width:100%;min-height:120px;padding:12px;border:1px solid #d8e5e8;border-radius:12px;">
-</textarea>
-
-
-<br>
-
-<button class="boton boton-verde"
-onclick="guardarExpediente()">
+<button class="boton boton-verde" onclick="guardarExpediente()">
 💾 Guardar expediente
 </button>
 
-
-<button class="boton"
-onclick="window.print()">
-🖨️ Imprimir
+<button class="boton boton-secundario" onclick="mostrar('consulta')">
+🩺 Nueva consulta
 </button>
 
 </section>
 
-
-
-<!-- =====================================================
-     NUEVA CONSULTA
-     ===================================================== -->
+<!-- CONSULTA -->
 
 <section id="consulta" class="panel oculto">
 
+<button class="boton boton-menu" onclick="volverInicio()">🏠 Menú principal</button>
+
 <h2>🩺 Nueva consulta</h2>
 
-<button class="boton boton-secundario"
-onclick="volverInicio()">
-← Inicio
-</button>
-
-
 <div class="formulario">
-
 
 <div class="campo">
 <label>Paciente</label>
 <input id="consultaPaciente">
 </div>
 
-
 <div class="campo">
 <label>Fecha</label>
 <input id="consultaFecha" type="date">
 </div>
-
 
 <div class="campo campo-completo">
 <label>Motivo de consulta</label>
 <textarea id="consultaMotivo"></textarea>
 </div>
 
-
 <div class="campo">
-<label>Presión arterial</label>
+<label>TA</label>
 <input id="consultaTA">
 </div>
 
-
 <div class="campo">
-<label>Frecuencia cardiaca</label>
-<input id="consultaFC">
+<label>FC</label>
+<input id="consultaFC" type="number">
 </div>
 
+<div class="campo">
+<label>FR</label>
+<input id="consultaFR" type="number">
+</div>
 
 <div class="campo">
 <label>Temperatura</label>
-<input id="consultaTemp">
+<input id="consultaTemp" type="number" step="0.1">
 </div>
-
 
 <div class="campo">
-<label>SpO₂</label>
-<input id="consultaSpO2">
+<label>SatO₂</label>
+<input id="consultaSat" type="number">
 </div>
 
+<div class="campo">
+<label>Peso</label>
+<input id="consultaPeso" type="number" step="0.1">
+</div>
+
+<div class="campo">
+<label>Talla</label>
+<input id="consultaTalla" type="number" step="0.01">
+</div>
 
 <div class="campo campo-completo">
 <label>Exploración física</label>
 <textarea id="consultaExploracion"></textarea>
 </div>
 
-
 <div class="campo campo-completo">
 <label>Diagnóstico</label>
 <textarea id="consultaDiagnostico"></textarea>
 </div>
 
-
 <div class="campo campo-completo">
-<label>Plan / tratamiento</label>
+<label>Plan y tratamiento</label>
 <textarea id="consultaPlan"></textarea>
 </div>
 
 </div>
 
-
-<button class="boton boton-verde"
-onclick="guardarConsulta()">
+<button class="boton boton-verde" onclick="guardarConsulta()">
 💾 Guardar consulta
 </button>
 
-
-<button class="boton"
-onclick="window.print()">
-🖨️ Imprimir consulta
+<button class="boton boton-secundario" onclick="mostrar('receta')">
+🧾 Ir a receta
 </button>
 
 </section>
 
-
-
-<!-- =====================================================
-     RECETA
-     ===================================================== -->
+<!-- RECETA -->
 
 <section id="receta" class="panel oculto">
 
+<button class="boton boton-menu" onclick="volverInicio()">🏠 Menú principal</button>
+
 <h2>🧾 Receta médica</h2>
 
-<button class="boton boton-secundario"
-onclick="volverInicio()">
-← Inicio
-</button>
-
-
 <div class="formulario">
-
 
 <div class="campo">
 <label>Paciente</label>
 <input id="recPaciente">
 </div>
 
-
 <div class="campo">
 <label>Fecha</label>
 <input id="recFecha" type="date">
 </div>
-
 
 <div class="campo campo-completo">
 <label>Diagnóstico</label>
 <textarea id="recDiagnostico"></textarea>
 </div>
 
+<div class="campo">
+<label>Médico</label>
+<input id="doctor">
 </div>
 
+<div class="campo">
+<label>Cédula profesional</label>
+<input id="cedula">
+</div>
+
+<div class="campo campo-completo">
+<label>Indicaciones generales</label>
+<textarea id="indicaciones"></textarea>
+</div>
+
+</div>
 
 <h3 class="titulo-seccion">
-💊 Medicamentos
+Medicamentos
 </h3>
 
-
 <div id="medicamentosReceta">
-
 
 <div class="medicamento">
 
 <div class="medicamento-grid">
-
 
 <div class="campo">
 <label>Medicamento</label>
 <input class="medNombre">
 </div>
 
-
 <div class="campo">
 <label>Presentación</label>
 <input class="medPresentacion">
 </div>
-
 
 <div class="campo">
 <label>Dosis</label>
 <input class="medDosis">
 </div>
 
-
 <div class="campo">
 <label>Vía</label>
-
 <select class="medVia">
-
 <option>Oral</option>
 <option>Subcutánea</option>
 <option>Intramuscular</option>
@@ -1141,23 +932,18 @@ onclick="volverInicio()">
 <option>Oftálmica</option>
 <option>Ótica</option>
 <option>Otra</option>
-
 </select>
-
 </div>
-
 
 <div class="campo">
 <label>Frecuencia</label>
 <input class="medFrecuencia">
 </div>
 
-
 <div class="campo">
 <label>Duración</label>
 <input class="medDuracion">
 </div>
-
 
 <div class="campo campo-completo">
 <label>Indicaciones</label>
@@ -1170,113 +956,53 @@ onclick="volverInicio()">
 
 </div>
 
-
-<button class="boton"
-onclick="agregarMedicamento()">
+<button class="boton boton-secundario" onclick="agregarMedicamento()">
 ➕ Agregar medicamento
 </button>
 
-
-<h3 class="titulo-seccion">
-👩🏻‍⚕️ Datos del médico
-</h3>
-
-
-<div class="formulario">
-
-
-<div class="campo">
-<label>Nombre del médico</label>
-<input id="doctor">
-</div>
-
-
-<div class="campo">
-<label>Cédula profesional</label>
-<input id="cedula">
-</div>
-
-
-<div class="campo campo-completo">
-<label>Indicaciones generales</label>
-<textarea id="indicaciones"></textarea>
-</div>
-
-</div>
-
-
-<button class="boton boton-verde"
-onclick="generarReceta()">
-👁️ Generar receta
+<button class="boton boton-verde" onclick="generarReceta()">
+🧾 Generar receta
 </button>
 
-
-<button class="boton"
-onclick="imprimirReceta()">
+<button class="boton" onclick="imprimirReceta()">
 🖨️ Imprimir receta
 </button>
 
-
-<div id="vistaReceta" class="receta-documento oculto">
+<div id="vistaReceta" class="receta-documento" style="display:none;">
 
 <h2>RECETA MÉDICA</h2>
 
 <div class="encabezado-receta">
-
-<strong>MEDI-LIFE</strong>
-
-<br>
-
+MEDI-LIFE PRO<br>
 L.A.C. Salud Metabólica
-
 </div>
-
-
-<p>
-<strong>Paciente:</strong>
-<span id="vPaciente"></span>
-</p>
-
-
-<p style="margin-top:8px">
-<strong>Fecha:</strong>
-<span id="vFecha"></span>
-</p>
-
-
-<p style="margin-top:8px">
-<strong>Diagnóstico:</strong>
-<span id="vDiagnostico"></span>
-</p>
-
 
 <hr class="separador">
 
+<p><strong>Paciente:</strong> <span id="vPaciente"></span></p>
+
+<p><strong>Fecha:</strong> <span id="vFecha"></span></p>
+
+<p><strong>Diagnóstico:</strong> <span id="vDiagnostico"></span></p>
+
+<hr class="separador">
 
 <div id="vMedicamentos"></div>
 
+<hr class="separador">
 
 <p>
-<strong>Indicaciones:</strong>
+<strong>Indicaciones generales:</strong><br>
+<span id="vIndicaciones"></span>
 </p>
-
-<p id="vIndicaciones"
-style="white-space:pre-line;margin-top:8px">
-</p>
-
 
 <div class="firma">
 
-____________________________
+_____________________________<br>
 
-<br>
+<strong id="vDoctor"></strong><br>
 
-<span id="vDoctor"></span>
-
-<br>
-
-Cédula profesional:
-<span id="vCedula"></span>
+Cédula profesional: <span id="vCedula"></span>
 
 </div>
 
@@ -1284,184 +1010,144 @@ Cédula profesional:
 
 </section>
 
-
-
-<!-- =====================================================
-     MEDICAMENTOS
-     ===================================================== -->
+<!-- MEDICAMENTOS -->
 
 <section id="medicamentos" class="panel oculto">
 
+<button class="boton boton-menu" onclick="volverInicio()">🏠 Menú principal</button>
+
 <h2>💊 Medicamentos y tratamientos</h2>
-
-<button class="boton boton-secundario"
-onclick="volverInicio()">
-← Inicio
-</button>
-
 
 <div class="formulario">
 
-
 <div class="campo">
-<label>Nombre del medicamento</label>
+<label>Medicamento</label>
 <input id="medNombre">
 </div>
-
 
 <div class="campo">
 <label>Presentación</label>
 <input id="medPresent">
 </div>
 
-
 <div class="campo">
 <label>Dosis</label>
 <input id="medDose">
 </div>
-
 
 <div class="campo">
 <label>Frecuencia</label>
 <input id="medFreq">
 </div>
 
-
 <div class="campo">
 <label>Duración</label>
 <input id="medDur">
 </div>
 
-
 <div class="campo">
 <label>Vía</label>
-<input id="medRoute">
+<select id="medRoute">
+<option>Oral</option>
+<option>Subcutánea</option>
+<option>Intramuscular</option>
+<option>Intravenosa</option>
+<option>Tópica</option>
+<option>Oftálmica</option>
+<option>Ótica</option>
+<option>Otra</option>
+</select>
 </div>
 
 </div>
 
-
-<button class="boton boton-verde"
-onclick="guardarTratamiento()">
-💾 Agregar tratamiento
+<button class="boton boton-verde" onclick="guardarTratamiento()">
+💾 Guardar tratamiento
 </button>
-
 
 <div id="listaTratamientos"></div>
 
 </section>
 
-
-
-<!-- =====================================================
-     IMC
-     ===================================================== -->
+<!-- IMC -->
 
 <section id="imc" class="panel oculto">
 
-<h2>⚖️ Peso e IMC</h2>
+<button class="boton boton-menu" onclick="volverInicio()">🏠 Menú principal</button>
 
-<button class="boton boton-secundario"
-onclick="volverInicio()">
-← Inicio
-</button>
-
+<h2>⚖️ Calculadora de IMC</h2>
 
 <div class="formulario">
-
 
 <div class="campo">
 <label>Peso kg</label>
-<input id="imcPeso" type="number" step=".1">
+<input id="imcPeso" type="number" step="0.1">
 </div>
-
 
 <div class="campo">
 <label>Talla m</label>
-<input id="imcTalla" type="number" step=".01">
+<input id="imcTalla" type="number" step="0.01">
 </div>
 
 </div>
 
-
-<button class="boton boton-verde"
-onclick="calcularIMC()">
-⚖️ Calcular IMC
+<button class="boton boton-verde" onclick="calcularIMC()">
+🧮 Calcular IMC
 </button>
 
-
-<div id="resultadoIMC"
-class="resultado oculto">
-</div>
+<div id="resultadoIMC" class="resultado" style="display:none;"></div>
 
 </section>
 
-
-
-<!-- =====================================================
-     LABORATORIOS
-     ===================================================== -->
+<!-- LABORATORIOS -->
 
 <section id="laboratorios" class="panel oculto">
 
+<button class="boton boton-menu" onclick="volverInicio()">🏠 Menú principal</button>
+
 <h2>🧪 Laboratorios</h2>
 
-<button class="boton boton-secundario"
-onclick="volverInicio()">
-← Inicio
-</button>
-
-
 <div class="formulario">
-
 
 <div class="campo">
 <label>Paciente</label>
 <input id="labPaciente">
 </div>
 
-
 <div class="campo">
 <label>Fecha</label>
 <input id="labFecha" type="date">
 </div>
-
 
 <div class="campo">
 <label>Glucosa</label>
 <input id="labGlucosa">
 </div>
 
-
 <div class="campo">
 <label>HbA1c</label>
 <input id="labHb">
 </div>
 
-
 <div class="campo">
-<label>Colesterol total</label>
+<label>Colesterol</label>
 <input id="labColesterol">
 </div>
-
 
 <div class="campo">
 <label>Triglicéridos</label>
 <input id="labTrigliceridos">
 </div>
 
-
 <div class="campo">
 <label>TSH</label>
 <input id="labTSH">
 </div>
 
-
 <div class="campo">
 <label>T4</label>
 <input id="labT4">
 </div>
-
 
 <div class="campo campo-completo">
 <label>Otros resultados</label>
@@ -1470,137 +1156,93 @@ onclick="volverInicio()">
 
 </div>
 
-
-<button class="boton boton-verde"
-onclick="guardarLaboratorio()">
+<button class="boton boton-verde" onclick="guardarLaboratorio()">
 💾 Guardar laboratorio
 </button>
-
 
 <div id="listaLabs"></div>
 
 </section>
 
-
-
-<!-- =====================================================
-     PLAN ALIMENTICIO
-     ===================================================== -->
+<!-- DIETA -->
 
 <section id="dieta" class="panel oculto">
 
+<button class="boton boton-menu" onclick="volverInicio()">🏠 Menú principal</button>
+
 <h2>🥗 Plan alimenticio</h2>
 
-<button class="boton boton-secundario"
-onclick="volverInicio()">
-← Inicio
-</button>
-
-
 <div class="formulario">
-
 
 <div class="campo">
 <label>Paciente</label>
 <input id="dietaPaciente">
 </div>
 
-
 <div class="campo">
 <label>Calorías objetivo</label>
 <input id="dietaCalorias" type="number">
 </div>
 
-
-<div class="campo campo-completo">
+<div class="campo">
 <label>Objetivo</label>
-<input id="dietaObjetivo"
-placeholder="Ej. control metabólico">
+<input id="dietaObjetivo">
 </div>
-
 
 <div class="campo campo-completo">
 <label>Plan alimenticio</label>
-<textarea id="dietaPlan"
-style="min-height:220px"
-placeholder="Desayuno:
-
-Colación:
-
-Comida:
-
-Colación:
-
-Cena:"></textarea>
+<textarea id="dietaPlan" style="min-height:220px;"></textarea>
 </div>
 
 </div>
 
-
-<button class="boton boton-verde"
-onclick="guardarDieta()">
+<button class="boton boton-verde" onclick="guardarDieta()">
 💾 Guardar plan
 </button>
-
 
 <div id="resultadoDieta"></div>
 
 </section>
 
-
-
-<!-- =====================================================
-     EVOLUCIÓN
-     ===================================================== -->
+<!-- EVOLUCIÓN -->
 
 <section id="evolucion" class="panel oculto">
 
-<h2>📈 Evolución</h2>
+<button class="boton boton-menu" onclick="volverInicio()">🏠 Menú principal</button>
 
-<button class="boton boton-secundario"
-onclick="volverInicio()">
-← Inicio
-</button>
-
+<h2>📈 Evolución del paciente</h2>
 
 <div class="formulario">
-
 
 <div class="campo">
 <label>Paciente</label>
 <input id="evoPaciente">
 </div>
 
-
 <div class="campo">
 <label>Fecha</label>
 <input id="evoFecha" type="date">
 </div>
 
-
 <div class="campo">
 <label>Peso kg</label>
-<input id="evoPeso">
+<input id="evoPeso" type="number" step="0.1">
 </div>
-
 
 <div class="campo">
 <label>IMC</label>
 <input id="evoIMC">
 </div>
 
-
 <div class="campo">
-<label>Presión arterial</label>
+<label>TA</label>
 <input id="evoTA">
 </div>
-
 
 <div class="campo">
 <label>Glucosa</label>
 <input id="evoGlucosa">
 </div>
-
 
 <div class="campo campo-completo">
 <label>Observaciones</label>
@@ -1609,69 +1251,49 @@ onclick="volverInicio()">
 
 </div>
 
-
-<button class="boton boton-verde"
-onclick="guardarEvolucion()">
+<button class="boton boton-verde" onclick="guardarEvolucion()">
 💾 Registrar evolución
 </button>
-
 
 <div id="listaEvolucion"></div>
 
 </section>
 
-
-
-<!-- =====================================================
-     CITAS
-     ===================================================== -->
+<!-- CITAS -->
 
 <section id="citas" class="panel oculto">
 
+<button class="boton boton-menu" onclick="volverInicio()">🏠 Menú principal</button>
+
 <h2>📅 Citas</h2>
 
-<button class="boton boton-secundario"
-onclick="volverInicio()">
-← Inicio
-</button>
-
-
 <div class="formulario">
-
 
 <div class="campo">
 <label>Paciente</label>
 <input id="citaPaciente">
 </div>
 
-
 <div class="campo">
 <label>Fecha</label>
 <input id="citaFecha" type="date">
 </div>
-
 
 <div class="campo">
 <label>Hora</label>
 <input id="citaHora" type="time">
 </div>
 
-
 <div class="campo">
-<label>Tipo de consulta</label>
-
+<label>Tipo de cita</label>
 <select id="citaTipo">
-
-<option>Consulta general</option>
+<option>Consulta</option>
 <option>Seguimiento</option>
-<option>Control de peso</option>
-<option>Salud metabólica</option>
-<option>Primera consulta</option>
-
+<option>Valoración</option>
+<option>Control metabólico</option>
+<option>Otro</option>
 </select>
-
 </div>
-
 
 <div class="campo campo-completo">
 <label>Notas</label>
@@ -1680,95 +1302,61 @@ onclick="volverInicio()">
 
 </div>
 
-
-<button class="boton boton-verde"
-onclick="guardarCita()">
+<button class="boton boton-verde" onclick="guardarCita()">
 📅 Agendar cita
 </button>
-
 
 <div id="listaCitas"></div>
 
 </section>
 
-
-
-<!-- =====================================================
-     CONFIGURACIÓN
-     ===================================================== -->
+<!-- CONFIGURACIÓN -->
 
 <section id="configuracion" class="panel oculto">
 
+<button class="boton boton-menu" onclick="volverInicio()">🏠 Menú principal</button>
+
 <h2>⚙️ Configuración</h2>
 
-<button class="boton boton-secundario"
-onclick="volverInicio()">
-← Inicio
-</button>
-
-
 <div class="formulario">
-
 
 <div class="campo">
 <label>Nombre del médico</label>
 <input id="configDoctor">
 </div>
 
-
 <div class="campo">
 <label>Cédula profesional</label>
 <input id="configCedula">
 </div>
-
 
 <div class="campo">
 <label>Teléfono</label>
 <input id="configTelefono">
 </div>
 
-
 <div class="campo">
 <label>Consultorio</label>
 <input id="configConsultorio">
 </div>
 
-
-<div class="campo campo-completo">
-<label>Dirección</label>
-<textarea id="configDireccion"></textarea>
 </div>
 
-</div>
-
-
-<button class="boton boton-verde"
-onclick="guardarConfiguracion()">
+<button class="boton boton-verde" onclick="guardarConfiguracion()">
 💾 Guardar configuración
 </button>
-
 
 <div id="configResultado"></div>
 
 </section>
 
-
 </main>
 
-
 <footer>
-
-<strong>MEDI-LIFE</strong>
+MEDI-LIFE PRO · L.A.C. Salud Metabólica
 <br>
-L.A.C. Salud Metabólica
-<br><br>
 Equilibrio hoy, una mejor versión mañana
-<br>
-© 2026
-
 </footer>
-
-
 
 <script>
 
@@ -1776,70 +1364,33 @@ Equilibrio hoy, una mejor versión mañana
    NAVEGACIÓN
    ===================================================== */
 
-function ocultarTodo(){
+function mostrar(id){
 
 const secciones=document.querySelectorAll("main section");
 
-secciones.forEach(function(sec){
-sec.style.display="none";
+secciones.forEach(function(seccion){
+seccion.classList.add("oculto");
 });
 
-}
+const destino=document.getElementById(id);
 
-function mostrar(id){
-
-ocultarTodo();
-
-document.getElementById(id).style.display="block";
-
+if(destino){
+destino.classList.remove("oculto");
 window.scrollTo({
 top:0,
 behavior:"smooth"
 });
+}
 
 }
 
 function volverInicio(){
-
 mostrar("inicio");
-
 }
-
-
-
-/* =====================================================
-   FECHA
-   ===================================================== */
-
-function fechaHoy(){
-
-return new Date().toISOString().split("T")[0];
-
-}
-
-document.addEventListener("DOMContentLoaded",function(){
-
-document.querySelectorAll('input[type="date"]').forEach(function(input){
-
-if(!input.value){
-input.value=fechaHoy();
-}
-
-});
-
-});
-
-
 
 /* =====================================================
    PACIENTES
    ===================================================== */
-
-function mostrarFormularioPaciente(){
-
-document.getElementById("formPaciente").style.display="block";
-
-}
 
 function guardarPaciente(){
 
@@ -1850,18 +1401,6 @@ if(!nombre){
 alert("Ingresa el nombre del paciente.");
 
 return;
-
-}
-
-const peso=parseFloat(document.getElementById("pacPeso").value);
-
-const talla=parseFloat(document.getElementById("pacTalla").value);
-
-let imc="No calculado";
-
-if(peso && talla){
-
-imc=(peso/(talla*talla)).toFixed(1);
 
 }
 
@@ -1881,7 +1420,7 @@ ${document.getElementById("pacNacimiento").value || "No registrada"}
 <br>
 
 Sexo:
-${document.getElementById("pacSexo").value}
+${document.getElementById("pacSexo").value || "No registrado"}
 
 <br>
 
@@ -1890,25 +1429,32 @@ ${document.getElementById("pacTelefono").value || "No registrado"}
 
 <br>
 
-Peso:
-${peso || "No registrado"} kg
+Correo:
+${document.getElementById("pacCorreo").value || "No registrado"}
 
 <br>
 
-Talla:
-${talla || "No registrada"} m
+Ocupación:
+${document.getElementById("pacOcupacion").value || "No registrada"}
 
 <br>
 
-IMC:
-${imc}
+Dirección:
+${document.getElementById("pacDireccion").value || "No registrada"}
 
 <br><br>
 
-<button class="boton"
+<button class="boton boton-verde"
 onclick="abrirExpediente('${nombre.replace(/'/g,"\\'")}')">
 
 🗂️ Abrir expediente
+
+</button>
+
+<button class="boton boton-secundario"
+onclick="abrirConsulta('${nombre.replace(/'/g,"\\'")}')">
+
+🩺 Nueva consulta
 
 </button>
 
@@ -1916,12 +1462,9 @@ onclick="abrirExpediente('${nombre.replace(/'/g,"\\'")}')">
 
 document.getElementById("listaPacientes").appendChild(div);
 
-document.getElementById("formPaciente").style.display="none";
-
 alert("✅ Paciente registrado correctamente.");
 
 }
-
 
 function abrirExpediente(nombre){
 
@@ -1931,7 +1474,13 @@ document.getElementById("expPaciente").value=nombre;
 
 }
 
+function abrirConsulta(nombre){
 
+mostrar("consulta");
+
+document.getElementById("consultaPaciente").value=nombre;
+
+}
 
 /* =====================================================
    EXPEDIENTE
@@ -1955,8 +1504,6 @@ alert(
 );
 
 }
-
-
 
 /* =====================================================
    IMC
@@ -2015,8 +1562,6 @@ resultado.style.display="block";
 
 }
 
-
-
 /* =====================================================
    CONSULTA
    ===================================================== */
@@ -2039,8 +1584,6 @@ alert(
 );
 
 }
-
-
 
 /* =====================================================
    RECETA
@@ -2122,7 +1665,6 @@ contenedor.appendChild(nuevo);
 
 }
 
-
 function generarReceta(){
 
 document.getElementById("vPaciente").textContent=
@@ -2199,7 +1741,6 @@ document.getElementById("vistaReceta").style.display="block";
 
 }
 
-
 function imprimirReceta(){
 
 generarReceta();
@@ -2211,8 +1752,6 @@ window.print();
 },300);
 
 }
-
-
 
 /* =====================================================
    TRATAMIENTOS
@@ -2268,8 +1807,6 @@ ${document.getElementById("medRoute").value}
 document.getElementById("listaTratamientos").appendChild(div);
 
 }
-
-
 
 /* =====================================================
    LABORATORIOS
@@ -2343,8 +1880,6 @@ alert("✅ Laboratorio registrado.");
 
 }
 
-
-
 /* =====================================================
    PLAN ALIMENTICIO
    ===================================================== */
@@ -2393,8 +1928,6 @@ ${document.getElementById("dietaObjetivo").value || "No especificado"}
 `;
 
 }
-
-
 
 /* =====================================================
    EVOLUCIÓN
@@ -2458,8 +1991,6 @@ alert("✅ Evolución registrada.");
 
 }
 
-
-
 /* =====================================================
    CITAS
    ===================================================== */
@@ -2512,8 +2043,6 @@ alert("✅ Cita agendada.");
 
 }
 
-
-
 /* =====================================================
    CONFIGURACIÓN
    ===================================================== */
@@ -2562,12 +2091,19 @@ ${document.getElementById("configConsultorio").value || "No registrado"}
 
 }
 
-
 /* =====================================================
    INICIO
    ===================================================== */
 
 mostrar("inicio");
+
+document.addEventListener("keydown",function(event){
+
+if(event.key==="Escape"){
+volverInicio();
+}
+
+});
 
 </script>
 
