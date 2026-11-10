@@ -31,6 +31,48 @@
     --borde:#d8e5e8;
     --rosa:#e98fa3;
 }
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  // Detectar los botones y enlaces de navegación
+  document.querySelectorAll(
+    '[data-page], [data-section], .nav-link, .sidebar a'
+  ).forEach(function (element) {
+
+    element.addEventListener("click", function (event) {
+
+      const target =
+        element.dataset.page ||
+        element.dataset.section;
+
+      if (!target) return;
+
+      const section = document.getElementById(target);
+
+      if (section) {
+        event.preventDefault();
+
+        // Ocultar las demás pantallas
+        document.querySelectorAll(
+          ".page, .section, .content-section"
+        ).forEach(function (page) {
+          page.style.display = "none";
+        });
+
+        // Mostrar la pantalla seleccionada
+        section.style.display = "block";
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      }
+    });
+  });
+
+});
+</script>
+
 
 body{
     min-height:100vh;
