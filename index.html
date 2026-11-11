@@ -546,6 +546,28 @@ footer{
 }
 </style>
 
+
+<style>
+@media print {
+  body.printing * { visibility: hidden !important; }
+  body.printing .print-target,
+  body.printing .print-target * { visibility: visible !important; }
+  body.printing .print-target {
+    position: absolute !important;
+    left: 0 !important; top: 0 !important;
+    width: 100% !important;
+    margin: 0 !important; padding: 18mm !important;
+    background: #fff !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+  body.printing .print-target .no-imprimir,
+  body.printing .print-target button,
+  body.printing .print-target .boton { display: none !important; }
+  @page { size: letter; margin: 12mm; }
+}
+</style>
+
 </head>
 
 <body>
@@ -1077,7 +1099,7 @@ style="width:100%;min-height:120px;padding:12px;border:1px solid #d8e5e8;border-
 💾 Guardar expediente
 </button>
 
-<button class="boton" onclick="window.print()">
+<button class="boton" onclick="imprimirElemento('expediente')">
 🖨️ Imprimir
 </button>
 
@@ -1157,7 +1179,7 @@ style="width:100%;min-height:120px;padding:12px;border:1px solid #d8e5e8;border-
 💾 Guardar consulta
 </button>
 
-<button class="boton" onclick="window.print()">
+<button class="boton" onclick="imprimirElemento('consulta')">
 🖨️ Imprimir consulta
 </button>
 
@@ -1201,56 +1223,20 @@ style="width:100%;min-height:120px;padding:12px;border:1px solid #d8e5e8;border-
 <h3 class="titulo-seccion">💊 Medicamentos</h3>
 
 <div id="medicamentosReceta">
-
 <div class="medicamento">
-
-<div class="medicamento-grid">
-
-<div class="campo">
-<label>Medicamento</label>
-<input class="medNombre">
-</div>
-
-<div class="campo">
-<label>Presentación</label>
-<input class="medPresentacion">
-</div>
-
-<div class="campo">
-<label>Dosis</label>
-<input class="medDosis">
-</div>
-
-<div class="campo">
-<label>Vía</label>
-<select class="medVia">
-<option>Oral</option>
-<option>Subcutánea</option>
-<option>Intramuscular</option>
-<option>Intravenosa</option>
-<option>Tópica</option>
-<option>Oftálmica</option>
-<option>Ótica</option>
-<option>Otra</option>
-</select>
-</div>
-
-<div class="campo">
-<label>Frecuencia</label>
-<input class="medFrecuencia">
-</div>
-
-<div class="campo">
-<label>Duración</label>
-<input class="medDuracion">
-</div>
-
-<div class="campo campo-completo">
-<label>Indicaciones</label>
-<textarea class="medIndicaciones"></textarea>
-</div>
-
-</div>
+  <div class="medicamento-grid">
+    <div class="campo campo-completo">
+      <label>Buscar y seleccionar del inventario *</label>
+      <select class="medInventario" onchange="seleccionarMedicamentoReceta(this)"><option value="">Selecciona un medicamento del inventario</option></select>
+    </div>
+    <div class="campo"><label>Medicamento</label><input class="medNombre" readonly></div>
+    <div class="campo"><label>Presentación / concentración</label><input class="medPresentacion" readonly></div>
+    <div class="campo"><label>Dosis indicada</label><input class="medDosis" placeholder="Capturar dosis"></div>
+    <div class="campo"><label>Vía</label><input class="medVia" readonly></div>
+    <div class="campo"><label>Frecuencia</label><input class="medFrecuencia" placeholder="Ej. cada 8 horas"></div>
+    <div class="campo"><label>Duración</label><input class="medDuracion" placeholder="Ej. 5 días"></div>
+    <div class="campo campo-completo"><label>Indicaciones</label><textarea class="medIndicaciones"></textarea></div>
+  </div>
 </div>
 </div>
 
@@ -1339,53 +1325,27 @@ Cédula profesional:
 <!-- MEDICAMENTOS Y TRATAMIENTOS -->
 
 <section id="medicamentos" class="panel oculto">
-
-<h2>💊 Medicamentos y tratamientos</h2>
-
-<button class="boton boton-secundario no-imprimir" onclick="volverInicio()">
-🏠 Menú principal
-</button>
-
+<h2>💊 Inventario de medicamentos</h2>
+<button class="boton boton-secundario no-imprimir" onclick="volverInicio()">🏠 Menú principal</button>
+<p>Registra aquí los medicamentos disponibles. Después podrás seleccionarlos desde la receta médica.</p>
 <div class="formulario">
-
-<div class="campo">
-<label>Nombre del medicamento</label>
-<input id="medNombre">
+  <div class="campo"><label>Nombre del medicamento *</label><input id="invNombre" placeholder="Ej. Paracetamol"></div>
+  <div class="campo"><label>Sustancia activa</label><input id="invSustancia" placeholder="Ej. Paracetamol"></div>
+  <div class="campo"><label>Presentación</label><input id="invPresentacion" placeholder="Ej. Tabletas"></div>
+  <div class="campo"><label>Concentración</label><input id="invConcentracion" placeholder="Ej. 500 mg"></div>
+  <div class="campo"><label>Existencias</label><input id="invExistencias" type="number" min="0" step="1" value="0"></div>
+  <div class="campo"><label>Vía de administración</label>
+    <select id="invVia"><option>Oral</option><option>Subcutánea</option><option>Intramuscular</option><option>Intravenosa</option><option>Tópica</option><option>Oftálmica</option><option>Ótica</option><option>Rectal</option><option>Otra</option></select>
+  </div>
+  <div class="campo"><label>Precio (opcional)</label><input id="invPrecio" type="number" min="0" step="0.01"></div>
 </div>
-
-<div class="campo">
-<label>Presentación</label>
-<input id="medPresent">
-</div>
-
-<div class="campo">
-<label>Dosis</label>
-<input id="medDose">
-</div>
-
-<div class="campo">
-<label>Frecuencia</label>
-<input id="medFreq">
-</div>
-
-<div class="campo">
-<label>Duración</label>
-<input id="medDur">
-</div>
-
-<div class="campo">
-<label>Vía</label>
-<input id="medRoute">
-</div>
-
-</div>
-
-<button class="boton boton-verde" onclick="guardarTratamiento()">
-💾 Agregar tratamiento
-</button>
-
+<button class="boton boton-verde no-imprimir" onclick="guardarMedicamentoInventario()">💾 Guardar en inventario</button>
+<hr class="separador">
+<h3 class="titulo-seccion">📦 Medicamentos registrados</h3>
+<div id="listaInventario"></div>
+<hr class="separador">
+<h3 class="titulo-seccion">🩺 Tratamientos del paciente activo</h3>
 <div id="listaTratamientos"></div>
-
 </section>
 
 <!-- PESO E IMC -->
@@ -2092,7 +2052,7 @@ function mostrar(id){
     if(id === "pacientes") renderPacientes();
     if(id === "expediente") cargarExpediente();
     if(id === "centroPaciente") renderCentroPaciente();
-    if(id === "medicamentos") renderTratamientos();
+    if(id === "medicamentos"){ renderInventario(); renderTratamientos(); }
     if(id === "laboratorios") renderLaboratorios();
     if(id === "dieta") renderDietas();
     if(id === "evolucion") renderEvoluciones();
@@ -2117,6 +2077,7 @@ const datosIniciales = {
     consultas: [],
     recetas: [],
     tratamientos: [],
+    inventario: [],
     laboratorios: [],
     dietas: [],
     evoluciones: [],
@@ -2148,6 +2109,7 @@ function cargarDatos(){
             consultas: Array.isArray(parsed.consultas) ? parsed.consultas : [],
             recetas: Array.isArray(parsed.recetas) ? parsed.recetas : [],
             tratamientos: Array.isArray(parsed.tratamientos) ? parsed.tratamientos : [],
+            inventario: Array.isArray(parsed.inventario) ? parsed.inventario : [],
             laboratorios: Array.isArray(parsed.laboratorios) ? parsed.laboratorios : [],
             dietas: Array.isArray(parsed.dietas) ? parsed.dietas : [],
             evoluciones: Array.isArray(parsed.evoluciones) ? parsed.evoluciones : [],
@@ -2332,6 +2294,8 @@ function renderPacientes(){
     if(!contenedor) return;
 
     if(datos.pacientes.length === 0){
+        const contador = document.getElementById("contadorPacientes");
+        if(contador) contador.textContent = "0 pacientes guardados";
         contenedor.innerHTML =
             `<p class="alerta">No hay pacientes registrados todavía.</p>`;
         return;
@@ -2424,6 +2388,217 @@ function renderPacientes(){
 /* =====================================================
    RESPALDAR DATOS
    ===================================================== */
+
+
+
+function abrirCentroPaciente(id){
+    if(!establecerPacienteActivo(id)) return;
+    mostrar("centroPaciente");
+    renderCentroPaciente();
+}
+
+function abrirMounjaroPaciente(id){
+    const paciente=pacientePorId(id);
+    if(!paciente) return;
+    mostrar("seguimientoMounjaro");
+    const existente=(datos.mounjaroSeguimientos||[]).find(x=>
+        String(x.nombre||"").trim().toLowerCase()===paciente.nombre.trim().toLowerCase()
+    );
+    if(existente){
+        seleccionarSeguimientoMounjaro(existente.id);
+    }else{
+        nuevoSeguimientoMounjaro();
+        const nombre=document.getElementById("mounjaroNombre");
+        const nacimiento=document.getElementById("mounjaroNacimiento");
+        const edad=document.getElementById("mounjaroEdad");
+        if(nombre) nombre.value=paciente.nombre;
+        if(nacimiento) nacimiento.value=paciente.nacimiento||"";
+        if(edad && paciente.nacimiento) edad.value=edadMounjaro(paciente.nacimiento)||"";
+    }
+}
+
+function mostrarFormularioPaciente(){
+    const formulario = document.getElementById("formPaciente");
+    if(formulario) formulario.classList.toggle("oculto");
+}
+
+function guardarPaciente(){
+    const nombre = (document.getElementById("pacNombre")?.value || "").trim().replace(/\s+/g," ");
+    if(!nombre){
+        alert("Escribe el nombre completo del paciente.");
+        document.getElementById("pacNombre")?.focus();
+        return;
+    }
+
+    const existente = pacientePorNombre(nombre);
+    if(existente){
+        establecerPacienteActivo(existente.id);
+        alert("Este paciente ya estaba registrado. Se seleccionó su expediente para evitar duplicados.");
+        const formulario = document.getElementById("formPaciente");
+        if(formulario) formulario.classList.add("oculto");
+        return;
+    }
+
+    const peso = document.getElementById("pacPeso")?.value || "";
+    const talla = document.getElementById("pacTalla")?.value || "";
+    const paciente = {
+        id: generarId("pac"),
+        nombre,
+        nacimiento: document.getElementById("pacNacimiento")?.value || "",
+        sexo: document.getElementById("pacSexo")?.value || "",
+        telefono: document.getElementById("pacTelefono")?.value.trim() || "",
+        peso: peso ? Number(peso) : "",
+        talla: talla ? Number(talla) : "",
+        alergias: document.getElementById("pacAlergias")?.value.trim() || "",
+        creadoEn: new Date().toISOString()
+    };
+
+    datos.pacientes.push(paciente);
+    datos.expedientes[paciente.id] = {
+        pacienteId: paciente.id,
+        fecha: fechaHoy(),
+        alergias: paciente.alergias,
+        peso: paciente.peso,
+        talla: paciente.talla,
+        actualizadoEn: new Date().toISOString()
+    };
+
+    if(guardarDatos()){
+        establecerPacienteActivo(paciente.id);
+        renderPacientes();
+        ["pacNombre","pacNacimiento","pacTelefono","pacPeso","pacTalla","pacAlergias"].forEach(id=>{
+            const el=document.getElementById(id); if(el) el.value="";
+        });
+        const sexo=document.getElementById("pacSexo"); if(sexo) sexo.selectedIndex=0;
+        const formulario=document.getElementById("formPaciente"); if(formulario) formulario.classList.add("oculto");
+        alert("Paciente guardado correctamente. Los demás módulos utilizarán este mismo expediente.");
+    }
+}
+
+/* Vincula todos los registros al ID único del paciente activo. */
+function obtenerPacienteParaGuardar(campoId){
+    const campo = document.getElementById(campoId);
+    const nombreCapturado = (campo?.value || "").trim().replace(/\s+/g," ");
+    let paciente = pacienteActivo();
+
+    if(paciente){
+        if(nombreCapturado && nombreCapturado.toLowerCase() !== paciente.nombre.trim().toLowerCase()){
+            alert("El nombre capturado no coincide con el paciente activo ("+paciente.nombre+"). Cambia el paciente activo o corrige el nombre para evitar mezclar expedientes.");
+            if(campo) campo.value = paciente.nombre;
+            return null;
+        }
+        if(campo) campo.value = paciente.nombre;
+        return paciente;
+    }
+
+    if(nombreCapturado){
+        paciente = pacientePorNombre(nombreCapturado);
+        if(paciente){
+            establecerPacienteActivo(paciente.id);
+            if(campo) campo.value = paciente.nombre;
+            return paciente;
+        }
+    }
+
+    alert("Primero registra al paciente en el módulo Pacientes y selecciónalo como paciente activo. Así todos sus datos quedarán en el mismo expediente.");
+    return null;
+}
+
+function guardarMedicamentoInventario(){
+    const nombre = document.getElementById("invNombre")?.value.trim() || "";
+    if(!nombre){
+        alert("Escribe el nombre del medicamento.");
+        return;
+    }
+    const concentracion = document.getElementById("invConcentracion")?.value.trim() || "";
+    const presentacion = document.getElementById("invPresentacion")?.value.trim() || "";
+    const duplicado = datos.inventario.find(m =>
+        m.nombre.toLowerCase()===nombre.toLowerCase() &&
+        (m.concentracion||"").toLowerCase()===concentracion.toLowerCase() &&
+        (m.presentacion||"").toLowerCase()===presentacion.toLowerCase()
+    );
+    if(duplicado){
+        alert("Ese medicamento con la misma presentación y concentración ya existe. Edita sus existencias desde el inventario.");
+        return;
+    }
+    datos.inventario.push({
+        id: generarId("med"),
+        nombre,
+        sustancia: document.getElementById("invSustancia")?.value.trim() || "",
+        presentacion,
+        concentracion,
+        existencias: Math.max(0, Number(document.getElementById("invExistencias")?.value || 0)),
+        via: document.getElementById("invVia")?.value || "Oral",
+        precio: document.getElementById("invPrecio")?.value || "",
+        creadoEn: new Date().toISOString()
+    });
+    if(guardarDatos()){
+        ["invNombre","invSustancia","invPresentacion","invConcentracion","invPrecio"].forEach(id=>{const e=document.getElementById(id);if(e)e.value="";});
+        const ex=document.getElementById("invExistencias"); if(ex) ex.value="0";
+        renderInventario();
+        alert("Medicamento agregado al inventario y disponible para las recetas.");
+    }
+}
+
+function renderInventario(){
+    const contenedor=document.getElementById("listaInventario");
+    if(!contenedor) return;
+    if(!Array.isArray(datos.inventario)) datos.inventario=[];
+    if(!datos.inventario.length){
+        contenedor.innerHTML='<p class="alerta">El inventario está vacío. Registra medicamentos para poder seleccionarlos en las recetas.</p>';
+    } else {
+        contenedor.innerHTML='<div style="overflow-x:auto"><table class="tabla"><thead><tr><th>Medicamento</th><th>Presentación</th><th>Existencias</th><th>Vía</th><th></th></tr></thead><tbody>'+
+          datos.inventario.map(m=>`<tr><td><strong>${escapeHTML(m.nombre)}</strong><br>${escapeHTML(m.sustancia||"")}</td><td>${escapeHTML([m.presentacion,m.concentracion].filter(Boolean).join(" · "))}</td><td>${Number(m.existencias)||0}</td><td>${escapeHTML(m.via||"—")}</td><td><button class="boton boton-rojo no-imprimir" onclick="eliminarMedicamentoInventario('${m.id}')">Eliminar</button></td></tr>`).join("")+
+          '</tbody></table></div>';
+    }
+    actualizarSelectoresInventario();
+}
+
+function eliminarMedicamentoInventario(id){
+    const med=datos.inventario.find(m=>m.id===id);
+    if(!med) return;
+    if(!confirm("¿Eliminar "+med.nombre+" del inventario? Las recetas ya guardadas conservarán sus datos.")) return;
+    datos.inventario=datos.inventario.filter(m=>m.id!==id);
+    if(guardarDatos()) renderInventario();
+}
+
+function actualizarSelectoresInventario(){
+    document.querySelectorAll("#medicamentosReceta .medInventario").forEach(select=>{
+        const actual=select.value;
+        select.innerHTML='<option value="">Selecciona un medicamento del inventario</option>'+
+          (datos.inventario||[]).map(m=>`<option value="${escapeHTML(m.id)}">${escapeHTML(m.nombre)} — ${escapeHTML([m.presentacion,m.concentracion].filter(Boolean).join(" "))} (${Number(m.existencias)||0} disponibles)</option>`).join("");
+        if(actual && datos.inventario.some(m=>m.id===actual)) select.value=actual;
+    });
+}
+
+function seleccionarMedicamentoReceta(select){
+    const med=(datos.inventario||[]).find(m=>m.id===select.value);
+    const tarjeta=select.closest(".medicamento");
+    if(!tarjeta) return;
+    tarjeta.querySelector(".medNombre").value=med?.nombre||"";
+    tarjeta.querySelector(".medPresentacion").value=[med?.presentacion,med?.concentracion].filter(Boolean).join(" · ");
+    tarjeta.querySelector(".medVia").value=med?.via||"";
+}
+
+function imprimirElemento(id){
+    const elemento=document.getElementById(id);
+    if(!elemento || (elemento.classList.contains("oculto")) || elemento.style.display==="none"){
+        alert("Primero genera y revisa el documento antes de imprimir.");
+        return;
+    }
+    document.querySelectorAll(".print-target").forEach(e=>e.classList.remove("print-target"));
+    elemento.classList.add("print-target");
+    document.body.classList.add("printing");
+    const limpiar=()=>{
+        document.body.classList.remove("printing");
+        elemento.classList.remove("print-target");
+        window.removeEventListener("afterprint",limpiar);
+    };
+    window.addEventListener("afterprint",limpiar,{once:true});
+    window.print();
+    setTimeout(limpiar,2000);
+}
+
 
 function exportarDatos(){
     try{
@@ -2877,85 +3052,44 @@ function guardarConsulta(){
    ===================================================== */
 
 function agregarMedicamento(){
-    const contenedor = document.getElementById("medicamentosReceta");
+    const contenedor=document.getElementById("medicamentosReceta");
     if(!contenedor) return;
-
-    const nuevo = document.createElement("div");
-    nuevo.className = "medicamento";
-
-    nuevo.innerHTML = `
-        <div class="medicamento-grid">
-
-            <div class="campo">
-                <label>Medicamento</label>
-                <input class="medNombre">
-            </div>
-
-            <div class="campo">
-                <label>Presentación</label>
-                <input class="medPresentacion">
-            </div>
-
-            <div class="campo">
-                <label>Dosis</label>
-                <input class="medDosis">
-            </div>
-
-            <div class="campo">
-                <label>Vía</label>
-                <select class="medVia">
-                    <option>Oral</option>
-                    <option>Subcutánea</option>
-                    <option>Intramuscular</option>
-                    <option>Intravenosa</option>
-                    <option>Tópica</option>
-                    <option>Oftálmica</option>
-                    <option>Ótica</option>
-                    <option>Otra</option>
-                </select>
-            </div>
-
-            <div class="campo">
-                <label>Frecuencia</label>
-                <input class="medFrecuencia">
-            </div>
-
-            <div class="campo">
-                <label>Duración</label>
-                <input class="medDuracion">
-            </div>
-
-            <div class="campo campo-completo">
-                <label>Indicaciones</label>
-                <textarea class="medIndicaciones"></textarea>
-            </div>
-
+    const nuevo=document.createElement("div");
+    nuevo.className="medicamento";
+    nuevo.innerHTML=`
+      <div class="medicamento-grid">
+        <div class="campo campo-completo"><label>Buscar y seleccionar del inventario *</label>
+          <select class="medInventario" onchange="seleccionarMedicamentoReceta(this)"><option value="">Selecciona un medicamento del inventario</option></select>
         </div>
-
-        <button class="boton boton-rojo"
-            onclick="this.parentElement.remove()">
-            🗑️ Eliminar medicamento
-        </button>
-    `;
-
+        <div class="campo"><label>Medicamento</label><input class="medNombre" readonly></div>
+        <div class="campo"><label>Presentación / concentración</label><input class="medPresentacion" readonly></div>
+        <div class="campo"><label>Dosis indicada</label><input class="medDosis" placeholder="Capturar dosis"></div>
+        <div class="campo"><label>Vía</label><input class="medVia" readonly></div>
+        <div class="campo"><label>Frecuencia</label><input class="medFrecuencia" placeholder="Ej. cada 8 horas"></div>
+        <div class="campo"><label>Duración</label><input class="medDuracion" placeholder="Ej. 5 días"></div>
+        <div class="campo campo-completo"><label>Indicaciones</label><textarea class="medIndicaciones"></textarea></div>
+      </div>
+      <button type="button" class="boton boton-rojo no-imprimir" onclick="this.parentElement.remove()">🗑️ Eliminar medicamento</button>`;
     contenedor.appendChild(nuevo);
+    actualizarSelectoresInventario();
 }
-
 
 function leerMedicamentosReceta(){
-    return Array.from(
-        document.querySelectorAll("#medicamentosReceta .medicamento")
-    ).map(med => ({
-        nombre: med.querySelector(".medNombre")?.value.trim() || "",
-        presentacion: med.querySelector(".medPresentacion")?.value.trim() || "",
-        dosis: med.querySelector(".medDosis")?.value.trim() || "",
-        via: med.querySelector(".medVia")?.value || "",
-        frecuencia: med.querySelector(".medFrecuencia")?.value.trim() || "",
-        duracion: med.querySelector(".medDuracion")?.value.trim() || "",
-        indicaciones: med.querySelector(".medIndicaciones")?.value.trim() || ""
-    })).filter(m => m.nombre || m.dosis || m.presentacion);
+    return Array.from(document.querySelectorAll("#medicamentosReceta .medicamento")).map(card=>{
+        const select=card.querySelector(".medInventario");
+        const inventario=(datos.inventario||[]).find(m=>m.id===select?.value);
+        return {
+            inventarioId: inventario?.id || "",
+            nombre: card.querySelector(".medNombre")?.value.trim() || "",
+            presentacion: card.querySelector(".medPresentacion")?.value.trim() || "",
+            dosis: card.querySelector(".medDosis")?.value.trim() || "",
+            via: card.querySelector(".medVia")?.value.trim() || "",
+            frecuencia: card.querySelector(".medFrecuencia")?.value.trim() || "",
+            duracion: card.querySelector(".medDuracion")?.value.trim() || "",
+            indicaciones: card.querySelector(".medIndicaciones")?.value.trim() || ""
+        };
+    }).filter(m=>m.inventarioId && m.nombre);
 }
-
 
 function cargarDatosMedicoReceta(){
     const config = datos.configuracion || {};
@@ -2981,6 +3115,10 @@ function generarReceta(){
     cargarDatosMedicoReceta();
 
     const medicamentos = leerMedicamentosReceta();
+    if(!medicamentos.length){
+        alert("Selecciona al menos un medicamento del inventario y captura sus indicaciones.");
+        return false;
+    }
 
     const receta = {
         id: generarId("rec"),
@@ -3064,7 +3202,9 @@ function generarReceta(){
 
     if(guardarDatos()){
         alert("✅ Receta guardada para " + paciente.nombre + ".");
+        return true;
     }
+    return false;
 }
 
 
@@ -3074,11 +3214,7 @@ function patientSafe(valor){
 
 
 function imprimirReceta(){
-    generarReceta();
-
-    setTimeout(function(){
-        window.print();
-    }, 300);
+    if(generarReceta()) imprimirElemento("vistaReceta");
 }
 
 
@@ -3784,10 +3920,7 @@ function generarCertificado(certExistente = null){
 
 function imprimirCertificado(){
     generarCertificado();
-
-    setTimeout(() => {
-        window.print();
-    }, 300);
+    imprimirElemento("vistaCertificado");
 }
 
 function renderCertificados(){
@@ -4046,10 +4179,7 @@ function generarRecetaControlada(recetaExistente = null){
 
 function imprimirRecetaControlada(){
     generarRecetaControlada();
-
-    setTimeout(() => {
-        window.print();
-    }, 300);
+    imprimirElemento("vistaRecetaControlada");
 }
 
 function verRecetaControladaGuardada(id){
@@ -4776,10 +4906,7 @@ function imprimirSeguimientoMounjaro(){
     }
 
     renderHistorialMounjaro();
-
-    setTimeout(() => {
-        window.print();
-    }, 300);
+    imprimirElemento("mounjaroHistorial");
 }
 
 /* =====================================================
@@ -4806,6 +4933,7 @@ function cargarTodoAlIniciar(){
     actualizarBarraPaciente();
     renderPacientes();
     renderTratamientos();
+    renderInventario();
     renderLaboratorios();
     renderDietas();
     renderEvoluciones();
