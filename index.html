@@ -31,49 +31,6 @@
     --borde:#d8e5e8;
     --rosa:#e98fa3;
 }
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-  // Detectar los botones y enlaces de navegación
-  document.querySelectorAll(
-    '[data-page], [data-section], .nav-link, .sidebar a'
-  ).forEach(function (element) {
-
-    element.addEventListener("click", function (event) {
-
-      const target =
-        element.dataset.page ||
-        element.dataset.section;
-
-      if (!target) return;
-
-      const section = document.getElementById(target);
-
-      if (section) {
-        event.preventDefault();
-
-        // Ocultar las demás pantallas
-        document.querySelectorAll(
-          ".page, .section, .content-section"
-        ).forEach(function (page) {
-          page.style.display = "none";
-        });
-
-        // Mostrar la pantalla seleccionada
-        section.style.display = "block";
-
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
-      }
-    });
-  });
-
-});
-</script>
-
-
 body{
     min-height:100vh;
     color:var(--texto);
@@ -2116,6 +2073,41 @@ Equilibrio hoy, una mejor versión mañana
    Los datos se guardan en el navegador.
    ===================================================== */
 
+// Navegación central: muestra una sola pantalla del sistema.
+function mostrar(id){
+    const destino = document.getElementById(id);
+    if(!destino){
+        console.warn("Módulo no encontrado:", id);
+        return;
+    }
+
+    document.querySelectorAll("main > section").forEach(seccion => {
+        seccion.classList.add("oculto");
+    });
+
+    destino.classList.remove("oculto");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // Actualiza la información visible al entrar a cada módulo.
+    if(id === "pacientes") renderPacientes();
+    if(id === "expediente") cargarExpediente();
+    if(id === "centroPaciente") renderCentroPaciente();
+    if(id === "medicamentos") renderTratamientos();
+    if(id === "laboratorios") renderLaboratorios();
+    if(id === "dieta") renderDietas();
+    if(id === "evolucion") renderEvoluciones();
+    if(id === "citas") renderCitas();
+    if(id === "certificado") renderCertificados();
+    if(id === "recetaControlada") renderRecetasControladas();
+    if(id === "seguimientoMounjaro") cargarSeguimientoMounjaro();
+    if(id === "receta") cargarDatosMedicoReceta();
+    if(id === "configuracion") cargarConfiguracionEnFormulario();
+}
+
+function volverInicio(){
+    mostrar("inicio");
+}
+
 const STORAGE_KEY = "MEDI_LIFE_DATOS_V2";
 
 const datosIniciales = {
@@ -2327,8 +2319,15 @@ function rellenarCamposPacienteActivo(){
     const cedula = document.getElementById("cedula");
 
     if(doctor && !doctor.value){
-        doctor.value =
-           function renderPacientes(){
+        doctor.value = config.doctor || "";
+    }
+
+    if(cedula && !cedula.value){
+        cedula.value = config.cedula || "";
+    }
+}
+
+function renderPacientes(){
     const contenedor = document.getElementById("listaPacientes");
     if(!contenedor) return;
 
